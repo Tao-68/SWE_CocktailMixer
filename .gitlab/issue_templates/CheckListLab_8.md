@@ -10,18 +10,10 @@ about: Template zur Bewertung des Praktikums
 - [ ] Die zuvor erreichte Qualität wurde erhalten. Es gibt keine neuen Fehler von CppCheck, Compiler, CCCC oder Doxygen 
 - [ ] Die Tests werden in wenigen Sekunden durchgeführt
 
-# User Story 3 (Fehlerhafte Cocktails verwerfen)
-- [ ] Im GitLab gibt es ein Ticket "User Story 3" mit einem sinnvollen Inhalt und mit Akzeptanzkriterien
-- [ ] Der Test UserStory3 demonstriert, dass ein Cocktail bei dem eine Zutat nicht vollständig eingefüllt werden konnte, verworfen wird
-- [ ] Der Mischprozess hält im Problemfall an, zeigt eine Meldung und wartet auf eine Bestätigung
-- [ ] Der fehlerhafte Cocktail wird aus dem Mischbehälter entleert
-- [ ] Das System schaltet sich anschließend ab
-
-# User Story 4 (Gleiche Zutat in 2 Dosierern)
-- [ ] Im GitLab gibt es ein Ticket "User Story 4" mit einem sinnvollen Inhalt, Akzeptanzkriterien und Aufwandsschätzung (!!!)
-- [ ] Der Test UserStory4 demonstriert den Dosiervorgang mit Füllständen auch für doppelt befüllte Dispenser
-- [ ] Was passiert, wenn der erste Dispenser leer ist? Wird dann aus dem 2. Dispenser weiter dosiert?
-- [ ] Was passiert, wenn der zweite Dispenser leer ist? Vgl. User Story 3!?
+# User Story 5 (Mischbarkeitsprüfung mit Füllstand)
+- [ ] Im GitLab gibt es ein Ticket "User Story 5" mit einem sinnvollen Inhalt und mit Akzeptanzkriterien
+- [ ] Der Test UserStory5 verwendet ein "Spezialrezept" das sehr schnell einige Dispenser fast leer macht
+- [ ] Der Test UserStory5 demonstriert, wie nach und nach Cocktails "ausgegraut" werden, wenn eine Zutat fehlt
 
 # Bemerkungen / Hinweise
 - 

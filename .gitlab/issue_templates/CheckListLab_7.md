@@ -10,19 +10,18 @@ about: Template zur Bewertung des Praktikums
 - [ ] Die zuvor erreichte Qualität wurde erhalten. Es gibt keine neuen Fehler von CppCheck, Compiler, CCCC oder Doxygen 
 - [ ] Die Tests werden in wenigen Sekunden durchgeführt
 
-# User Story 1 (Feste Cocktail-Nummern)
-- [ ] Im GitLab gibt es ein Ticket "User Story 1" mit einem sinnvollen Inhalt und mit Akzeptanzkriterien
-- [ ] Der Test UserStory1 demonstriert, dass die Nummern stabil bleiben, wenn sich die Zutaten ändern
-- [ ] Die Liste zur Auswahl der Cocktails enthält jetzt Lücken
-- [ ] Die Zahlen der aussortierten Cocktails werden als "fehlerhafte Eingabe" abgelehnt
-- [ ] Die Nummern der mischbaren Cocktails bleiben stabil, wenn man (temporär) die Limettenstücke aus der zutaten.txt löscht.
+# User Story 3 (Fehlerhafte Cocktails verwerfen)
+- [ ] Im GitLab gibt es ein Ticket "User Story 3" mit einem sinnvollen Inhalt und mit Akzeptanzkriterien
+- [ ] Der Test UserStory3 demonstriert, dass ein Cocktail bei dem eine Zutat nicht vollständig eingefüllt werden konnte, verworfen wird
+- [ ] Der Mischprozess hält im Problemfall an, zeigt eine Meldung und wartet auf eine Bestätigung
+- [ ] Der fehlerhafte Cocktail wird aus dem Mischbehälter entleert
+- [ ] Das System schaltet sich anschließend ab
 
-# User Story 2 (Füllstandsanzeige)
-- [ ] Im GitLab gibt es ein Ticket "User Story 2" mit einem sinnvollen Inhalt und mit Akzeptanzkriterien
-- [ ] Der Test UserStory2 demonstriert den Dosiervorgang mit Füllständen
-- [ ] Der CocktailPro zeigt jetzt im Auswahlbildschirm für die Cocktails zusätzlich die Zutaten mit ihren aktuellen Füllständen 
-- [ ] Während des Mischens wird der Füllstand korrekt reduziert (100g Eis beim Caipirinha - und nicht 90g wie im Rezept!) 
-- [ ] Was passiert, wenn der Füllstand leer ist? Bleibt er bei 0 stehen?
+# User Story 4 (Gleiche Zutat in 2 Dosierern)
+- [ ] Im GitLab gibt es ein Ticket "User Story 4" mit einem sinnvollen Inhalt, Akzeptanzkriterien und Aufwandsschätzung (!!!)
+- [ ] Der Test UserStory4 demonstriert den Dosiervorgang mit Füllständen auch für doppelt befüllte Dispenser
+- [ ] Was passiert, wenn der erste Dispenser leer ist? Wird dann aus dem 2. Dispenser weiter dosiert?
+- [ ] Was passiert, wenn der zweite Dispenser leer ist? Vgl. User Story 3!?
 
 # Bemerkungen / Hinweise
 - 
