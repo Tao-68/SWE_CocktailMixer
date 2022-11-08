@@ -10,16 +10,31 @@
 /**
  * @class Subject
  *
- * @brief Subject manages a collection of recipes
+ * @brief Subject notifies the observers
  *
+ * Subject (Waage) notifies the observers (Dispenser and Drainer).
+ * The observers will be updated.
  */
 class Subject {
 public:
+
+    /** @brief Adds observer to the observers list
+    * @param [in] observer the observer to be added
+    */
     void attach(Observer * observer);
+
+    /** @brief Removes observer from the observers list
+    * @param [in] observer the observer to be removed
+    */
     void detach(Observer * observer);
+
+    /**
+    * @brief Notifies the observers
+    */
     void notify();
 
 private:
+
     std::vector<Observer *> observers;
 
 };

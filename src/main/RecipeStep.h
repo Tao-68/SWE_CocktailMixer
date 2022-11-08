@@ -7,7 +7,7 @@
 /**
  * @class RecipeStep
  *
- * @brief RecipeStep stores the ingredient and amount required.
+ * @brief RecipeStep stores the ingredient and amount required
  *
  * A RecipeStep stores the ingredient name and amount required
  * You can ask for the name of ingredient, amount required
@@ -31,9 +31,9 @@ class RecipeStep {
     /** @brief Constructor that creates a RecipeStep
     * @return The created RecipeStep object
     *
-    * This method creates a RecipeStep.
+    * This method creates a RecipeStep
     * The ingredient (Zutat) is set to an empty string
-    * and the amount (Menge) is set to zero.
+    * And the amount (Menge) is set to zero
     */
     RecipeStep(void);
 

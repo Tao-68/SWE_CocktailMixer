@@ -10,17 +10,26 @@ using namespace std::chrono;
 /**
  * @class Timer
  *
- * @brief RecipeBook manages a collection of recipes
+ * @brief Timer manages sleeping duration
  *
- * A RecipeBook knows a list of recipes
- * You can ask for the number of recipes, query recipes by index
- * or delete a recipe
- *
+ * You can accelerate the sleeping duration
+ * And create an instance of Timer
  */
 class Timer {
  public:
+
+    /** @brief Sets the value to accelerate the time
+    * @param [in] turbo the accelerating factor
+    */
     void set_Turbo(int turbo);
 
+    /** @brief Gets the instance
+    * @return the instance
+    *
+    * This method creates an instance of Timer if it is not yet created
+    * And return the instance.
+    * Else it returns an existing instance.
+    */
     static Timer * getInstance();
 
     /**
@@ -29,17 +38,36 @@ class Timer {
      *         instanceFlag = false;
      *     };
      */
+
+    /** @brief Sets the time duration to sleep in intervals
+    * @param [in] milliseconds the time to sleep in milliseconds
+    */
     void sleep_in_intervals(long milliseconds);
+
+    /** @brief Sets the time duration to sleep
+    * @param [in] delay_in_ms the time to sleep in milliseconds
+    *
+    * This method divides the input (delay_in_ms) with another input (booster)
+    */
     void sleep(long delay_in_ms);
 
 
  private:
     static bool instanceFlag;
 
+    /**
+     * This is an instance of Timer
+     */
     static Timer * theTimer;
 
     int booster;
 
+    /** @brief Constructor that creates a Timer object
+    * @return the constructed object
+    *
+    * This method creates a Timer;
+    * where the booster has a default value of 1.
+    */
     Timer() : booster(1) {
     };
 
