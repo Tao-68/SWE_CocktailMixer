@@ -7,7 +7,12 @@
 
 #include <vector>
 #include <iostream>
-
+/**
+ * @class Subject
+ *
+ * @brief Subject manages a collection of recipes
+ *
+ */
 class Subject {
 public:
     void attach(Observer * observer);

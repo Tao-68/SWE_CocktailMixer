@@ -7,6 +7,16 @@
 using namespace std::chrono;
 #include <iostream>
 
+/**
+ * @class Timer
+ *
+ * @brief RecipeBook manages a collection of recipes
+ *
+ * A RecipeBook knows a list of recipes
+ * You can ask for the number of recipes, query recipes by index
+ * or delete a recipe
+ *
+ */
 class Timer {
  public:
     void set_Turbo(int turbo);

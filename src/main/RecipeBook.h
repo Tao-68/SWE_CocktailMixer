@@ -30,7 +30,7 @@ class RecipeBook {
     std::list<Recipe *> m_Recipe;
 
   public:
-    /** @brief Construktor that creates a RecipeBook
+    /** @brief Constructor that creates a RecipeBook
     * @return A pointer to the created RecipeBook
     *
     * This method creates a RecipeBook.

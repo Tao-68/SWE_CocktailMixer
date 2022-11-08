@@ -4,7 +4,7 @@
 #include "RecipeStep.h"
 
 /**
- * Konstruktor 
+ * Constructor
  *  
  */
 RecipeStep::RecipeStep(void) {
