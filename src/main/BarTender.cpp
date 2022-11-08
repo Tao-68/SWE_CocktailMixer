@@ -5,7 +5,6 @@ BarTender::BarTender(DeviceVerwalter * dv) {
 }
 
 bool BarTender::cocktailZubereiten(Recipe * rzpt) {
-    //std::system("clear");
     std::cout << "Hallo, ich bin der BarTender!" << std::endl
             << "Ich habe Ihre Bestellung: " << rzpt->getName() << " erhalten." << std::endl
             << "Jetzt geht es los!\n" << std::endl;
