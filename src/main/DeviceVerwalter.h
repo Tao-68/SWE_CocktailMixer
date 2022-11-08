@@ -1,5 +1,3 @@
-//@(#) DeviceVerwalter.h
-
 #ifndef DEVICEVERWALTER_H_H
 #define DEVICEVERWALTER_H_H
 
@@ -14,11 +12,6 @@
 #include "Shaker.h"
 #include "Drainer.h"
 #include "Waage.h"
-
-/*
- * Befuellt die Dispenser, verwaltet die Interne Hardware
- *  
- */
 
 /**
 * @class DeviceVerwalter
