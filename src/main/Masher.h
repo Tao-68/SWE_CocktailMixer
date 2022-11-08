@@ -9,6 +9,7 @@ class Masher : public InternalDevice {
 public:
     Masher();
 
+    // Übergabe einer Zeit (in Sekunden) um den Timer zu setzen
     void doIt(float time);
 
 private:

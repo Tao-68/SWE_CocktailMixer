@@ -13,13 +13,18 @@ class InternalDevice {
 public:
     virtual void doIt(float value) = 0;
 
+    /* Macht im Moment auch nichts
+     * Sollte eventuell das Putzen simulieren
+     */
     void putzen();
 
 private:
+    //Macht nichts
     void setTimer();
 
 
 public:
+    //Erzeugt einen Timer
     InternalDevice();
 protected:
     int zeiteinheit;

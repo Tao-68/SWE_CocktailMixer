@@ -18,7 +18,12 @@
  */
 class MixableRecipeBook : public RecipeBook {
 public:
+    /* Überprüft in allen Rezepten, ob die gebrauchten Zutaten existieren/vorhanden sind.
+     * Wenn nicht, wird das Rezept gelöscht.
+     */
     MixableRecipeBook(AvailableIngredients * ze);
+
+    //Ausgabe aller vorhandenen Cocktails
     void browse();
 
 private:
@@ -26,7 +31,8 @@ private:
 
     std::vector<Recipe *> rezepte;
 
-  void setZutatenVerwalter(AvailableIngredients * ze);
+    // Setzt den Pointer "myZutatenVerwalter" auf den Parameter
+    void setZutatenVerwalter(AvailableIngredients * ze);
 
 };
 

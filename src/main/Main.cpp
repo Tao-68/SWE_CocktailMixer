@@ -4,6 +4,8 @@
 #include "CocktailPro.h"
 #include <iostream>
 
+
+// Erzeugen des CocktailPros mit Prozessargumenten und Aufruf der Methode "start"
 int main(int argc, char * argv[]) {
     CocktailPro cp(argc, argv);
     cp.start();
