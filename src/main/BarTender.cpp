@@ -1,6 +1,3 @@
-//@(#) BarTender.cpp
-
-
 #include "BarTender.h"
 
 BarTender::BarTender(DeviceVerwalter * dv) {
@@ -13,6 +10,7 @@ bool BarTender::cocktailZubereiten(Recipe * rzpt) {
             << "Ich habe Ihre Bestellung: " << rzpt->getName() << " erhalten." << std::endl
             << "Jetzt geht es los!\n" << std::endl;
 	int i=0;
+
     for (int i = 0; i < rzpt->getNoOfRecipeSteps(); i++) {
         RecipeStep * schritt = rzpt->getRecipeStep(i);
         std::string zutat = schritt->getZutat();
@@ -20,8 +18,10 @@ bool BarTender::cocktailZubereiten(Recipe * rzpt) {
         std::cout << "Rezeptschritt: " << zutat << ", " << menge << std::endl;
         myDeviceVerwalter->rezeptSchrittZubereiten(zutat, menge);
     }
-  myDeviceVerwalter->myEntleerer->doIt(i);
 
+  myDeviceVerwalter->myEntleerer->doIt(i); // give out a cocktail
+
+  // device manager cleaning
   for (std::map<std::string, InternalDevice *>::iterator i1 = myDeviceVerwalter->myDevices->begin();
        i1 != myDeviceVerwalter->myDevices->end(); i1++) {
     std::cout << "Device mit der Aktion: " << i1->first << " wird jetzt geputzt: " << std::endl;
