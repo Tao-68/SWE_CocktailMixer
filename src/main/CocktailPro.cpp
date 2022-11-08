@@ -1,10 +1,8 @@
-//@(#) CocktailPro.cpp
-
-
 #include "CocktailPro.h"
 #include <string>
 
 void CocktailPro::start() {
+
   while (OperatingMode == OpMode::NORMAL) {
     int CocktailNo = waehle();
     if (CocktailNo == -1) {
@@ -32,16 +30,15 @@ CocktailPro::CocktailPro(int argc, char **param) {
   theZutatenVerwalter = new AvailableIngredients;
 
   Timer *theTimer = Timer::getInstance();
-  if (argc == 2) {// this has to be changed later
+  if (argc == 2) {
     if (std::string(param[1]) == "-D") {
       this->OperatingMode = OpMode::DEMO;
-      theTimer->set_Turbo(1000);
+      theTimer->set_Turbo(1000); // increase preparing time ?
       this->demo();
-    } else { // Parameter => Turbo an
+    } else {
       theTimer->set_Turbo(10);
     }
   }
-  // Mischen
 }
 
 void CocktailPro::demo() {
@@ -65,16 +62,14 @@ int CocktailPro::waehle() {
 
     std::string eingabe = "";
 
-    //cin.ignore();
     std::cin >> eingabe;
 
-    int zahl = atoi(eingabe.c_str());
+    int zahl = atoi(eingabe.c_str()); // converts a string to int
     int max = theMischbaresRezeptbuch->getNumberOfRecipes();
 
     if ((zahl >= 0 && zahl <= max) || (zahl == -1)) {
       return zahl;
     } else {
-      //std::system("clear");
       std::cout << "MEEEP! Too many fingers on keyboard error!" << std::endl;
       std::cout << "Ihre Eingabe: " << eingabe << " war nicht zwischen 1 und " << max << "!"
                 << std::endl;
