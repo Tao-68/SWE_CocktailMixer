@@ -1,9 +1,6 @@
-//@(#) DeviceVerwalter.cpp
-
-
 #include "DeviceVerwalter.h"
 
-DeviceVerwalter::DeviceVerwalter(AvailableIngredients * zv) {
+DeviceVerwalter::DeviceVerwalter(AvailableIngredients *zv) {
     setZutatenVerwalter(zv);
     this->createDevices();
 }
@@ -26,7 +23,7 @@ void DeviceVerwalter::createDevices() {
 
     std::string myZutat;
     for (int i = myZutatenVerwalter->getAnzahlVorhandeneZutaten() - 1; i >= 0; i--) {
-        myZutat=myZutatenVerwalter->getZutat(i);
+        myZutat = myZutatenVerwalter->getZutat(i);
         if (myZutat == "Eis")
             myDevices->insert(std::make_pair(myZutat, new Dispenser(20, 1000, myZutat, theWaage)));
         else if (myZutat == "Limettenstuecke")
@@ -36,7 +33,7 @@ void DeviceVerwalter::createDevices() {
     }
 }
 
-void DeviceVerwalter::setZutatenVerwalter(AvailableIngredients * zv) {
+void DeviceVerwalter::setZutatenVerwalter(AvailableIngredients *zv) {
     myZutatenVerwalter = zv;
 }
 
