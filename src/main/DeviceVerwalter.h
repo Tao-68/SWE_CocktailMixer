@@ -16,7 +16,7 @@
 /**
 * @class DeviceVerwalter
 *
-* @brief DeviceVerwalter manages the hardware
+* @brief DeviceVerwalter manages the hardware.
 *
 * You can initialize the devices, set ingredients manager,
 * prepare the steps of recipe.
