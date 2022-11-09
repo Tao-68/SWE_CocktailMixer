@@ -1,13 +1,7 @@
-//@(#) AvailableIngredients.cpp
-
 #include "AvailableIngredients.h"
-//
 
 AvailableIngredients::AvailableIngredients(void) {
   zutaten = new std::vector<std::string>;
-
-  // int einlesen(list<string>* zutaten, std::string FileName)
-// Stream anlegen
 
   if (DEBUG) {
     DummyZutatenEinfuegen();
@@ -33,10 +27,11 @@ void AvailableIngredients::ZutatenDateiEinlesen(std::string myfile) {
 
     FileName = myfile;
 
-    in.open(FileName.c_str(), std::ios::in); // c_str wandelt den String in char[]
-    // das braucht fstream
+    // ios::in describes the file open for reading
+    // c_str returns a pointer to an array that contains a null-terminated sequence of characters
+    in.open(FileName.c_str(), std::ios::in);
 
-    if (!in) {// File konnte nicht geoeffnet werden
+    if (!in) {
         std::string my_exception = "File not found: " + FileName;
         std::cout << my_exception << std::endl;
         throw my_exception;
@@ -74,7 +69,7 @@ void AvailableIngredients::DummyZutatenEinfuegen() {
 
 void AvailableIngredients::browse(void) {
     std::cout << "*********** Verfuegbare Einheiten bzw. Zutaten: ***********" << std::endl;
-    for (unsigned int i = 0; i < zutaten->size(); i++/*std::string zutat : zutaten*/) {
+    for (unsigned int i = 0; i < zutaten->size(); i++) {
         std::cout << zutaten->at(i) << std::endl;
     }
     std::cout << "**********************************************************" << std::endl;

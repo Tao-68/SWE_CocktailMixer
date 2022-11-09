@@ -1,5 +1,3 @@
-//@(#) CocktailPro.h
-
 #ifndef COCKTAILPRO_H_H
 #define COCKTAILPRO_H_H
 
@@ -9,75 +7,89 @@
 #include "BarTender.h"
 
 /**
- * Gesamtsystem
- *@class CocktailPro
- *
- *@brief CocktailPro diese Klasse leitet die Einfuehrung in das Programm
- *
- * CocktailPro startet den Prozess
- * und in dem wird die Rezeptnummer ausgewaehlt.
- */
+* @class CocktailPro
+*
+* @brief CocktailPro manages entire program.
+*
+* Initializes an objects, that we need for preparing a cocktail.
+* you can select a recipe number, starts a cocktail preparing or
+* starts a demo version of cocktail preparing.
+*/
 class CocktailPro {
- protected:
-  /**
-  * Objekt von BarTender
-  */
-  BarTender * theCocktailZubereiter;
-  /**
-  * Objekt von DeviceVerwalter
-  */
-  DeviceVerwalter * theDeviceVerwalter;
-  /**
-  * Objekt von MixableRecipeBook
-  */
-  MixableRecipeBook * theMischbaresRezeptbuch;
-  /**
-  *Objekt von AvailableIngredients
-  */
-  AvailableIngredients * theZutatenVerwalter;
 
-  enum OpMode {NORMAL, DEMO, STOP};
-  OpMode OperatingMode = NORMAL;
+protected:
 
- protected:
-  /**
-  *@brief waehle() dient zum Rezeptnummerauswhl
-  *@return die ausgewaehlte Rezeptnummer oder -1 zum Beenden
-  *
-  *und gibt die erste Einleitung aus.
-  */
-  int waehle();
-  /**
-  *@brief demo() macht das gleiche wie Methode start()
-  *@see start()
-  *
-  * aber die ausgewaelte Rezeptnummer ist festgestellt bzw. ist(0).
-  *d.h. es wird den Rezeptnamen gezeigt und das Cocktail wird vorbereitet.
-  *
-  */
-  void demo();
+    /**
+    * This is the bar tender that the CocktailPro uses in constructor, start method and demo method.
+    */
+    BarTender *theCocktailZubereiter;
 
- public:
-  /**
-  *@brief Konstruktor erzeugt objekte von CocktailPro
-  *@return ein Zeiger auf das erzeugten Objekt
-  *@param argc ist die Anzahl der Befehlszeilenoptionen
-  *@param turbo Die einzelnen Befehlszeilenoptionen befinden sich im diesem Array.
-  *
-  *da werden die im protected Variabeln mit dynamischen Objekte intialisiert.
-  *
-  */
-  CocktailPro(int argc, char * * turbo);
-  /**
-  *@brief diese Methode startet den Prozess
-  *
-  *Diese Methode fragt den Benutzer nach einer Rezeptnummer
-  *,die er auswaehlen soll um den Prozess weiterzufuehren
-  *und kontroliert die ausgewaehlte Nummer, ob es sinnvoll ausgewaehlt oder nicht
-  * das Cocktail wir auch durch eine aufgerufte Methode vorbereitet.
-  *
-  */
-  void start();
+    /**
+     * This is the device manager that the CocktailPro uses only in constructor.
+     */
+    DeviceVerwalter *theDeviceVerwalter;
+
+    /**
+    * This is the book of mixable recipe that the CocktailPro uses in constructor,
+    * start method, demo method and waehle method.
+    */
+    MixableRecipeBook *theMischbaresRezeptbuch;
+
+    /**
+    * This is the available ingredients manager that the CocktailPro uses only in constructor.
+    */
+    AvailableIngredients *theZutatenVerwalter;
+
+    /**
+     * Enum modes that the CocktailPro uses in constructor and start method.
+     */
+    enum OpMode {
+        NORMAL, DEMO, STOP
+    };
+
+    /**
+     * Operating mode that the CocktailPro uses in constructor and start method.
+     */
+    OpMode OperatingMode = NORMAL;
+
+protected:
+
+    /**
+    * @brief Selects the recipe number.
+    * @return the selected recipe number or -1 to exit.
+    *
+    * print a text to the terminal.
+    */
+    int waehle();
+
+    /**
+    * @brief starts a cocktail preparing for test purposes.
+    *
+    */
+    void demo();
+
+public:
+
+    /**
+    * @brief Constructor that creates a CocktailPro object.
+    * @param argc is the number of command line options.
+    * @param turbo are individual command line options.
+    *
+    * Initializes the bar tender, the device manager, the book of mixable recipe and
+    * the available ingredient's manager.
+    * Sets time.
+    */
+    CocktailPro(int argc, char **turbo);
+
+    /**
+    * @brief Starts a cocktail preparing
+    *
+    * This method prompts the user for a recipe number,
+    * which he should select to continue the process
+    * and checks the dialed number, whether it is selected meaningfully or not.
+    *
+    */
+    void start();
 
 
 };
