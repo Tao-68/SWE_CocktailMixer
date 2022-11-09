@@ -1,6 +1,3 @@
-//@(#) Drainer.cpp
-
-
 #include "Drainer.h"
 
 Drainer::Drainer(float g, int ze, Waage * wg) : InternalDevice() {
@@ -13,8 +10,6 @@ Drainer::Drainer(float g, int ze, Waage * wg) : InternalDevice() {
 Drainer::~Drainer(){
 
 }
-
-//
 
 void Drainer::update() {
     if (!this->doinIt) return;
