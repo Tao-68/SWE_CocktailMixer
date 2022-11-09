@@ -1,6 +1,3 @@
-//@(#) Dispenser.cpp
-
-
 #include "Dispenser.h"
 
 Dispenser::Dispenser(float g, int ze, std::string inhalt, Waage * wg) : InternalDevice() {
@@ -27,7 +24,6 @@ void Dispenser::doIt(float gramm) {
     while (doinIt) {
       myTimer->sleep_in_intervals(zeiteinheit);
         myWaage->changeWeight(grammProZeit);
-        //myWaage->changeWeight(0);
     }
     std::cout << std::endl << inhalt << " Ventil wurde geschlossen" << std::endl;
     std::cout << "Es wurden " << myWaage->getDelta() << "g " << inhalt << " abgefuellt" << std::endl;
