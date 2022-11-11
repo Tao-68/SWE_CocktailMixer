@@ -11,5 +11,3 @@ Limettensaft
 Tequilla
 Gin
 Noilly Prat
-Test Zutat
-Test Zutat1
