@@ -1,9 +1,9 @@
 #include "Dispenser.h"
 
-Dispenser::Dispenser(float g, int ze, std::string inhalt, Waage * wg) : InternalDevice() {
+Dispenser::Dispenser(float g, int ze, std::string inhaltParameter, Waage * wg) : InternalDevice() {
     this->grammProZeit = g;
     this->zeiteinheit = ze;
-    this->inhalt = inhalt;
+    this->inhalt = inhaltParameter;
     this->myWaage = wg;
     this->myWaage->attach(this);
 }
