@@ -10,7 +10,7 @@ bool BarTender::cocktailZubereiten(Recipe * rzpt) {
             << "Jetzt geht es los!\n" << std::endl;
 	int i=0;
 
-    for (int i = 0; i < rzpt->getNoOfRecipeSteps(); i++) {
+    for (i = 0; i < rzpt->getNoOfRecipeSteps(); i++) {
         RecipeStep * schritt = rzpt->getRecipeStep(i);
         std::string zutat = schritt->getZutat();
         float menge = schritt->getMenge();
