@@ -39,13 +39,9 @@ void DeviceVerwalter::setZutatenVerwalter(AvailableIngredients *zv) {
 
 void DeviceVerwalter::rezeptSchrittZubereiten(std::string zutat, float menge) {
 
-    std::map<std::string, InternalDevice *>::iterator tmpDevice;
-
-    tmpDevice = myDevices->find(zutat);
-
     if (zutat == "Limettenstuecke") {
         // Der Kunde will Limetten ja unbedingt nach Stueck und nicht nach Gewicht abmessen...
-        int stckProZeit = ((Dispenser *) myDevices->at(zutat))->getStueckProZeit();
+        int stckProZeit = dynamic_cast<Dispenser *>(myDevices->at(zutat))->getStueckProZeit();
         myDevices->at(zutat)->doIt(menge * stckProZeit);
     } else {
         myDevices->at(zutat)->doIt(menge);
