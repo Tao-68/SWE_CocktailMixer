@@ -1,15 +1,30 @@
 (1)
-Type: unreadVariable
+Type: unreadVariable.
 What: Variable 'tmpDevice' is assigned a value that is never used.
-Where: DeviceVerwalter.cpp
-Solution: remove the tmpDevice variable.
+Where: DeviceVerwalter.cpp.
+Solution: Remove the tmpDevice variable.
 
 (2)
-Type: cstyleCast
+Type: cstyleCast.
 What: C-style pointer casting detected.
       C++ offers four different kinds of casts as replacements: static_cast, const_cast,
       dynamic_cast and reinterpret_cast.
       A C-style cast could evaluate to any of those automatically,
       thus it is considered safer if the programmer explicitly states which kind of cast is expected.
-Where: DeviceVerwalter.cpp
-Solution: use dynamic_cast for derived class.
+Where: DeviceVerwalter.cpp.
+Solution: Use dynamic_cast for derived class.
+
+(3)
+Type: noCopyConstructor
+What: The class 'CocktailPro' does not have a copy constructor
+      which is recommended since the class contains a pointer to allocated memory.
+Where: CocktailPro.h.
+Solution: Implement a copy constructor.
+
+(4), (5), (6)
+Type: unsafeClassCanLeak.
+What: The class 'CocktailPro' is unsafe, wrong usage can cause memory/resource leaks for
+      'CocktailPro::theCocktailZubereiter'.
+      This can for instance be fixed by adding proper cleanup in the destructor.
+Where: CocktailPro.h.
+Solution: Implement a destructor.

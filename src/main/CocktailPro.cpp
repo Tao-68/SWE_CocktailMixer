@@ -27,7 +27,6 @@ CocktailPro::CocktailPro(int argc, char **param) {
   theMischbaresRezeptbuch = new MixableRecipeBook(theZutatenVerwalter);
   theDeviceVerwalter = new DeviceVerwalter(theZutatenVerwalter);
   theCocktailZubereiter = new BarTender(theDeviceVerwalter);
-  theZutatenVerwalter = new AvailableIngredients;
 
   Timer *theTimer = Timer::getInstance();
   if (argc == 2) {
@@ -39,6 +38,25 @@ CocktailPro::CocktailPro(int argc, char **param) {
       theTimer->set_Turbo(10);
     }
   }
+}
+
+CocktailPro::~CocktailPro() {
+    delete theZutatenVerwalter;
+    delete theMischbaresRezeptbuch;
+    delete theDeviceVerwalter;
+    delete theCocktailZubereiter;
+}
+
+CocktailPro::CocktailPro(const CocktailPro &cocktailPro) {
+
+    theZutatenVerwalter = new AvailableIngredients;
+
+    theMischbaresRezeptbuch = new MixableRecipeBook(theZutatenVerwalter);
+    theDeviceVerwalter = new DeviceVerwalter(theZutatenVerwalter);
+    theCocktailZubereiter = new BarTender(theDeviceVerwalter);
+
+    this->OperatingMode = cocktailPro.OperatingMode;
+
 }
 
 void CocktailPro::demo() {

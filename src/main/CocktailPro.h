@@ -81,6 +81,21 @@ public:
     */
     CocktailPro(int argc, char **turbo);
 
+
+    /**
+     * @brief Destructor for a CocktailPro object.
+     * removes a pointer to the BarTender, a pointer to the DeviceVerwalter,
+     * a pointer to the MixableRecipeBook and a pointer to the AvailableIngredients.
+     */
+    ~CocktailPro();
+
+    /**
+     * @brief Copy constructor that creates a CocktailPro object from the param.
+     * @param cocktailPro is valid CocktailPro object.
+     */
+    CocktailPro(const CocktailPro &cocktailPro);
+
+
     /**
     * @brief Starts a cocktail preparing
     *
