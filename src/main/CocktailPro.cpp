@@ -10,7 +10,7 @@ void CocktailPro::start() {
     }
     else {
       int max = theMischbaresRezeptbuch->getNumberOfRecipes();
-      if (CocktailNo >= 0 && CocktailNo <= max) {
+      if (CocktailNo <= max) {
         Recipe *rezeptptr = theMischbaresRezeptbuch->getRecipe(CocktailNo - 1);
         std::cout << rezeptptr->getName() << std::endl;
         theCocktailZubereiter->cocktailZubereiten(rezeptptr);
@@ -59,10 +59,26 @@ CocktailPro::CocktailPro(const CocktailPro &cocktailPro) {
 
 }
 
+CocktailPro& CocktailPro::operator=(CocktailPro rhs) {
+   swap(*this, rhs);
+   return *this;
+}
+
+void swap(CocktailPro &lhs, CocktailPro &rhs) {
+
+    std::swap(lhs.theZutatenVerwalter, rhs.theZutatenVerwalter);
+    std::swap(lhs.theMischbaresRezeptbuch, rhs.theMischbaresRezeptbuch);
+    std::swap(lhs.theDeviceVerwalter, rhs.theDeviceVerwalter);
+    std::swap(lhs.theCocktailZubereiter, rhs.theCocktailZubereiter);
+    std::swap(lhs.OperatingMode, rhs.OperatingMode);
+
+}
+
+
 void CocktailPro::demo() {
   int CocktailNo = 1;
   int max = theMischbaresRezeptbuch->getNumberOfRecipes();
-  if (CocktailNo >= 0 && CocktailNo <= max) {
+  if (CocktailNo <= max) {
     Recipe *rezeptptr = theMischbaresRezeptbuch->getRecipe(CocktailNo - 1);
     std::cout << rezeptptr->getName() << std::endl;
     theCocktailZubereiter->cocktailZubereiten(rezeptptr);
@@ -78,11 +94,12 @@ int CocktailPro::waehle() {
     theMischbaresRezeptbuch->browse();
     std::cout << "Was haetten Sie denn gern? (-1 zum Verlassen)" << std::endl;
 
-    std::string eingabe = "";
+    std::string eingabe;
 
     std::cin >> eingabe;
 
-    int zahl = atoi(eingabe.c_str()); // converts a string to int
+    // int zahl = atoi(eingabe.c_str()); // alternative 1: converts a string to int.
+    int zahl = (int) strtol(eingabe.c_str(), nullptr, 0); // alternative 2: converts a string to int.
     int max = theMischbaresRezeptbuch->getNumberOfRecipes();
 
     if ((zahl >= 0 && zahl <= max) || (zahl == -1)) {

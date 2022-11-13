@@ -97,6 +97,20 @@ public:
 
 
     /**
+     * @brief Assignment operator for CocktailPro object.
+     * @param rhs must be a valid CocktailPro object.
+     * @return copied CocktailPro object.
+     */
+    CocktailPro& operator=(CocktailPro rhs);
+
+    /**
+     * @brief swap a data between two CocktailPro objects.
+     * @param lhs must be a valid CocktailPro object.
+     * @param rhs must be a valid CocktailPro object.
+     */
+    friend void swap(CocktailPro &lhs, CocktailPro &rhs);
+
+    /**
     * @brief Starts a cocktail preparing
     *
     * This method prompts the user for a recipe number,
