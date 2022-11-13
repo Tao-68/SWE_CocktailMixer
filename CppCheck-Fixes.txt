@@ -28,3 +28,15 @@ What: The class 'CocktailPro' is unsafe, wrong usage can cause memory/resource l
       This can for instance be fixed by adding proper cleanup in the destructor.
 Where: CocktailPro.h.
 Solution: Implement a destructor.
+
+(7)
+Type: knownConditionTrueFalse.
+What: Condition 'CocktailNo>=0' is always true.
+Where: CocktailPro.cpp.
+Solution: Remove the condition 'CocktailNo>=0'.
+
+(8)
+Type: copyCtorAndEqOperator.
+What: The class 'CocktailPro' has 'copy constructor' but lack of 'operator='.
+Where: CocktailPro.h
+Solution: Implement an assigment operator for the CocktailPro class.
