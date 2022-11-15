@@ -32,12 +32,14 @@ AvailableIngredients::AvailableIngredients(const AvailableIngredients &available
 
 AvailableIngredients& AvailableIngredients::operator= (const AvailableIngredients& eqopAvailableIngredients) {
 
-    zutaten = new std::vector<std::string>();
-    for (std::string z : *eqopAvailableIngredients.zutaten){
-        zutaten->push_back(z);
-    }
+    if (&this != eqopAvailableIngredients){
+        zutaten = new std::vector<std::string>();
+        for (std::string z : *eqopAvailableIngredients.zutaten){
+            zutaten->push_back(z);
+        }
 
-    anzahlDosierer = eqopAvailableIngredients.anzahlDosierer;
+        anzahlDosierer = eqopAvailableIngredients.anzahlDosierer;
+    }
 
     return *this;
 }
