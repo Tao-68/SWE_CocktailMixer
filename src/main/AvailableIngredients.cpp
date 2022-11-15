@@ -30,9 +30,9 @@ AvailableIngredients::AvailableIngredients(const AvailableIngredients &available
 
 }
 
-AvailableIngredients& AvailableIngredients::operator= (const AvailableIngredients& eqopAvailableIngredients) {
+AvailableIngredients& AvailableIngredients::operator= (const AvailableIngredients &eqopAvailableIngredients) {
 
-    if (&this != eqopAvailableIngredients){
+    if (&eqopAvailableIngredients != this){
         zutaten = new std::vector<std::string>();
         for (std::string z : *eqopAvailableIngredients.zutaten){
             zutaten->push_back(z);
