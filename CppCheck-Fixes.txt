@@ -109,4 +109,11 @@ Solution: Commented out if-else statement within the constructor so that functio
 Type: copyCtorAndEqOperator
 What: The class 'AvailableIngredients' has 'copy constructor' but lack of 'operator='.
 Where: AvailableIngredients.h
-Solution: Implement an assignment 
+Solution: Implement an assignment operator
+
+(19)
+Type: operatorEqToSelf
+What: 'operator=' should check for assignment to self to avoid problems with dynamic memory..
+      'operator=' should check for assignment to self to ensure that each block of dynamically allocated memory is owned and managed by only one instance of the class.
+Where: AvailableIngredients.cpp
+Solution: Implement an explicit self check for the assignment operator.
