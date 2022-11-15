@@ -18,6 +18,15 @@ AvailableIngredients::AvailableIngredients(void) {
 
 }
 
+AvailableIngredients::AvailableIngredients(AvailableIngredients &availableIngredients) {
+    for (std::string z : *zutaten){
+        availableIngredients.zutaten->push_back(z);
+    }
+
+    availableIngredients.anzahlDosierer = anzahlDosierer;
+
+}
+
 AvailableIngredients::~AvailableIngredients(void) {
 
 }
@@ -52,7 +61,7 @@ void AvailableIngredients::ZutatenDateiEinlesen(std::string myfile) {
     in.close();
 }
 
-void AvailableIngredients::DummyZutatenEinfuegen() {
+ void AvailableIngredients::DummyZutatenEinfuegen() {
     zutaten->push_back("Limettenstuecke");
     zutaten->push_back("Zucker");
     zutaten->push_back("Cointreau");

@@ -8,7 +8,7 @@ Drainer::Drainer(float g, int ze, Waage * wg) : InternalDevice() {
 }
 
 Drainer::~Drainer(){
-
+    this->myWaage->detach(this);
 }
 
 void Drainer::update() {

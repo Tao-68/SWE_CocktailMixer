@@ -8,6 +8,10 @@ Dispenser::Dispenser(float g, int ze, std::string inhaltParameter, Waage * wg) :
     this->myWaage->attach(this);
 }
 
+Dispenser::~Dispenser(){
+    this->myWaage->detach(this);
+}
+
 void Dispenser::update() {
     if (!this->doinIt) return;
     if (myWaage->getDelta() >= gwicht) {

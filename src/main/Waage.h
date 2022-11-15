@@ -17,6 +17,8 @@
 class Waage : public Subject {
  public:
 
+    Waage(int weight, int deltaweight);
+
     /** @brief Updates the value of weight and delta weight
     * @param [in] v The value that changes the initial weight and delta weight
     *
