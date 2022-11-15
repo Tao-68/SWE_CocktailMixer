@@ -97,3 +97,10 @@ What: The class 'Waage' does not have a constructor.. The class 'Waage' does not
       Member variables of builtin types are left uninitialized when the class is instantiated. That may cause bugs or undefined behavior.
 Where: Waage.h
 Solution: Implement constructor and initialize the variables 'weight' and 'deltaweight'.
+
+(17)
+Type: uninitMemberVar
+What: Member variable 'AvailableIngredients::anzahlDosierer' is not initialized in the constructor.
+Where: AvailableIngredients.cpp
+Solution: Commented out if-else statement within the constructor so that function 'ZutatenDateiEinlesen("zutaten.txt")' is executable.
+          The line of code 'anzahlDosierer = zutaten->size()' is executable and variable anzahlDosierer is initialized.
