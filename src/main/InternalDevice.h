@@ -6,31 +6,53 @@
 #include "Timer.h"
 
 /**
- * Abstraktion von Dosierern und Verarbeitungseinheiten
- *  
+ * @class InternalDevice
+ * @brief This class is a mother class.
+ * It has to simulate a machine device.
  */
 class InternalDevice {
 public:
+    /**
+     * @brief This virtual methode is not declared.
+     * @param value
+     */
     virtual void doIt(float value) = 0;
 
-    /* Macht im Moment auch nichts
-     * Sollte eventuell das Putzen simulieren
+
+    /** @brief Can be used to clean the Devices.
+     * This method does nothing
      */
     void putzen();
 
 private:
-    //Macht nichts
+    /** @brief Can be used to clean the Devices.
+     * This method have no code.
+     */
     void setTimer();
 
 
 public:
-    //Erzeugt einen Timer
+
+    /** @brief The Constructor initial the Device.
+     * This method generate a timer with variable myTimer.
+     * Set the variable doinIt to 0.
+     */
     InternalDevice();
 protected:
+    /**
+     * This is not used.
+     */
     int zeiteinheit;
 
+    /**
+     * This have not a useful use.
+     */
     bool doinIt;
 
+    /**
+     * This is a pointer of a class from the bib <timer.h>
+     * Used for a timer instance.
+     */
     Timer * myTimer;
 
 };
