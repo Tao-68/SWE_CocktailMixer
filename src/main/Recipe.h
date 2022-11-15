@@ -5,41 +5,72 @@
 
 #include <list>
 #include <string>
-
+/**
+ * @class Recipe
+ * @brief This class is a recipe and manage there recipe steps
+ */
 class Recipe {
 private:
+    /**
+     * @brief List of the recipe steps of this recipe
+     */
     std::list<RecipeStep*> m_RecipeStep;
 
+    /**
+     * Variable Name
+     */
     std::string m_Name;
 
 public:
-
-    // Löscht den momentanen Rezeptschritt und setzt den Namen
+    /**
+     * @brief Deletes the current recipe step and sets the default name
+     */
     Recipe(void);
 
+    /**
+     * @brief Destructor. No code yet.
+     */
     ~Recipe();
 
-    // Gibt Anzahl der Rezeptschritte aus
-    int getNoOfRecipeSteps();
 
-    /* Gibt einen Pointer auf den momentanen Rezeptschritt aus,
-     * sofern er nicht größer als die maximalen Schritte ist.
+    /**
+     * @brief Give number of recipe steps from the list "m_RecipeStep".
+     * @return Number of recipe steps
+     */
+    int getNoOfRecipeSteps();
+    
+    /**
+     * @brief Returns a pointer of the recipe step by position i,
+     * provided i is not greater than the maximum steps.
+     * @param i
+     * @return A pointer to the recipe step by position i
      */
     RecipeStep * getRecipeStep(unsigned int i);
 
-    // Gibt Rezeptnamen zurück
+    /**
+     * @brief Getter-method of name
+     * @return Get the variable name
+     */
     std::string getName(void) const;
 
-    // Setzt Rezeptnamen
+    /**
+     * @brief Setter-method of name
+     * @return Set the variable name
+     */
     void setName(const std::string& Name);
 
-    /* Fügt dem Rezept einen weiteren Schritt hinzu.
-     * Der Schritt beinhaltet eine gebrauchte Zutat und dessen Menge.
-     * Der Schritt wird dann der Liste "m_RecipeStep" hinzugefügt
+    /**
+     * @brief Adds another step to the recipe.
+     * The step includes a used ingredient and its quantity.
+     * The step is then added to the "m_RecipeStep" list
+     * @param z
+     * @param m
      */
     void appendStep(std::string z, float m);
 
-    // Gibt alle Zutaten aus, die für die einzelnen Schritte des aufrufenden Rezeptes gebraucht werden
+    /**
+     * @brief Returns all the ingredients that are needed for the individual steps of the calling recipe
+     */
     void browse();
 
 };
