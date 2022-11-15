@@ -20,7 +20,7 @@ public:
      *
      * Initializes a device manager (myDeviceVerwalter) variable.
      */
-    BarTender(DeviceVerwalter * dv);
+    explicit BarTender(DeviceVerwalter *dv);
 
     /**
      * @brief Prepares a cocktail following the recipe steps.

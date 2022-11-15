@@ -31,6 +31,8 @@ public:
      */
     Dispenser(float g, int ze, std::string inhalt, Waage * wg);
 
+    ~Dispenser();
+
     /**
      * @brief sets doinIt to false, if the dispenser finished the action.
      *

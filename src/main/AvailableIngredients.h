@@ -34,6 +34,8 @@ public:
     */
     AvailableIngredients(void);
 
+    AvailableIngredients(AvailableIngredients &availableIngredients);
+
     /**
      * @brief Destructor that deletes the AvailableIngredients.
      *
@@ -83,7 +85,7 @@ private:
     /**
      * @brief adds a dummy data to the vector of ingredients (zutaten) for test purposes
      */
-    void DummyZutatenEinfuegen();
+    static void DummyZutatenEinfuegen();
 
 
     /**
