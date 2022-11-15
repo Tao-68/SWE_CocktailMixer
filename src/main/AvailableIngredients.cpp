@@ -4,7 +4,7 @@ AvailableIngredients::AvailableIngredients(void) {
   zutaten = new std::vector<std::string>;
 
   if (DEBUG) {
-    DummyZutatenEinfuegen();
+    //DummyZutatenEinfuegen();
   } else {
     ZutatenDateiEinlesen("zutaten.txt");
   }
@@ -19,6 +19,8 @@ AvailableIngredients::AvailableIngredients(void) {
 }
 
 AvailableIngredients::AvailableIngredients(AvailableIngredients &availableIngredients) {
+
+    availableIngredients.zutaten = new std::vector<std::string>();
     for (std::string z : *zutaten){
         availableIngredients.zutaten->push_back(z);
     }
@@ -61,20 +63,20 @@ void AvailableIngredients::ZutatenDateiEinlesen(std::string myfile) {
     in.close();
 }
 
- void AvailableIngredients::DummyZutatenEinfuegen() {
-    zutaten->push_back("Limettenstuecke");
-    zutaten->push_back("Zucker");
-    zutaten->push_back("Cointreau");
-    zutaten->push_back("Eis");
-    zutaten->push_back("Wodka");
-    zutaten->push_back("Rum weiss");
-    zutaten->push_back("Zitronensaft");
-    zutaten->push_back("Grenadine");
-    //    zutaten->push_back("Limettensaft");
-    //    zutaten->push_back("Tequilla");
-    //    zutaten->push_back("Gin");
-    //    zutaten->push_back("Noilly Prat");
-}
+// void AvailableIngredients::DummyZutatenEinfuegen() {
+//    zutaten->push_back("Limettenstuecke");
+//    zutaten->push_back("Zucker");
+//    zutaten->push_back("Cointreau");
+//    zutaten->push_back("Eis");
+//    zutaten->push_back("Wodka");
+//    zutaten->push_back("Rum weiss");
+//    zutaten->push_back("Zitronensaft");
+//    zutaten->push_back("Grenadine");
+//    //    zutaten->push_back("Limettensaft");
+//    //    zutaten->push_back("Tequilla");
+//    //    zutaten->push_back("Gin");
+//    //    zutaten->push_back("Noilly Prat");
+//}
 
 void AvailableIngredients::browse(void) {
     std::cout << "*********** Verfuegbare Einheiten bzw. Zutaten: ***********" << std::endl;

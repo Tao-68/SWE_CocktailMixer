@@ -6,7 +6,7 @@ DeviceVerwalter::DeviceVerwalter(AvailableIngredients *zv) {
 }
 
 void DeviceVerwalter::createDevices() {
-    theWaage = new Waage();
+    theWaage = new Waage(0,0);
     myDevices = new std::map<std::string, InternalDevice *>;
 
     myEntleerer = new Drainer(25, 1000, theWaage);

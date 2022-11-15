@@ -47,7 +47,7 @@ public:
      * @brief Starts the drainer action.
      * @param value  must not be null.
      */
-    void doIt(float value);
+    void doIt(float drainValue);
 
 private:
 

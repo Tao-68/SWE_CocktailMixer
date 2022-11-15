@@ -84,8 +84,10 @@ private:
 
     /**
      * @brief adds a dummy data to the vector of ingredients (zutaten) for test purposes
+     *
+     * This method is commented for future test purpose.
      */
-    static void DummyZutatenEinfuegen();
+    //void DummyZutatenEinfuegen();
 
 
     /**

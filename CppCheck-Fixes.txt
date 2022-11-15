@@ -52,7 +52,7 @@ Solution: Implement a copy constructor.
 Type: unusedPrivateFunction
 What: Unused private function: 'AvailableIngredients::DummyZutatenEinfuegen'
 Where: AvailableIngredients.h
-Solution: Add static keyword at the front of the private function in header file.
+Solution: Comment out the function 'DummyZutataenEinfuegen' for future test purpose.
 
 (11)
 Type: postfixOperator
