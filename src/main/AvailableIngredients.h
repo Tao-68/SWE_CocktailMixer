@@ -80,7 +80,7 @@ private:
     /**
      * This is the debug that the AvailableIngredients uses for test purposes
      */
-    static const bool DEBUG = false;
+    //static const bool DEBUG = false;
 
     /**
      * @brief adds a dummy data to the vector of ingredients (zutaten) for test purposes
