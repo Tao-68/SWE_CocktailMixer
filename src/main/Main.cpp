@@ -4,13 +4,18 @@
 #include "CocktailPro.h"
 #include <iostream>
 
-
-// Erzeugen des CocktailPros mit Prozessargumenten und Aufruf der Methode "start"
+/**
+ * @brief Generate a CocktailPro and start it
+ * @param argc
+ * @param argv
+ * @return The standard system integer.
+ */
 int main(int argc, char * argv[]) {
     CocktailPro cp(argc, argv);
     cp.start();
     return 0;
 }
 
-// Aenderung nur im Testbranch
-// Zeile mit provoziertem Konflikt von Test_branch aus
+/** Aenderung nur im Testbranch
+* Zeile mit provoziertem Konflikt von Test_branch aus
+*/

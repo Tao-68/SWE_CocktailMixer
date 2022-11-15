@@ -12,26 +12,40 @@
 #include <string>
 
 /**
- *  Kennt die mischbaren Rezepte.
- *  Kann diese Ausgeben.
- *  
- */
+* @class MixableRecipeBook
+* @brief This class is inherits from RecipeBook
+* This class managing the recipes.
+* It can output all recipes and work with ingredients for the available recipes.
+*/
 class MixableRecipeBook : public RecipeBook {
 public:
-    /* Überprüft in allen Rezepten, ob die gebrauchten Zutaten existieren/vorhanden sind.
-     * Wenn nicht, wird das Rezept gelöscht.
+    /**
+     * @brief searching for all recipes if there whether the required ingredients are available.
+     * When the ingredient for an recipe not exist anymore then the recipe will be deleted
+     * @param ze
      */
     MixableRecipeBook(AvailableIngredients * ze);
 
-    //Ausgabe aller vorhandenen Cocktails
+    /**
+     * @brief Output of all existing Cocktails.
+     */
     void browse();
 
 private:
+    /**
+    * This is a vector of all recipes
+    */
     AvailableIngredients * myZutatenVerwalter;
 
+    /**
+    * This is a vector of all recipes
+    */
     std::vector<Recipe *> rezepte;
 
     // Setzt den Pointer "myZutatenVerwalter" auf den Parameter
+    /** @brief This is a setter-method for variable myZutatenVerwalter
+     *  @param ze
+     */
     void setZutatenVerwalter(AvailableIngredients * ze);
 
 };
