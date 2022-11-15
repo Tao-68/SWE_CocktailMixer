@@ -23,6 +23,6 @@ int Waage::getDelta() {
     return deltaweight;
 }
 
-Waage::Waage(int weight, int deltaweight): weight(weight), deltaweight(deltaweight){
+Waage::Waage(int waageWeight, int waageDeltaweight): weight(waageWeight), deltaweight(waageDeltaweight){
 
 }

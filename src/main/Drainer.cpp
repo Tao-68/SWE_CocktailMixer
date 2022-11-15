@@ -17,10 +17,10 @@ void Drainer::update() {
         doinIt = 0;
 }
 
-void Drainer::doIt(float value) {
+void Drainer::doIt(float drainValue) {
     std::cout << "Ihr Cocktail hat ein Gesamtgewicht von " << myWaage->getWeight() << "g" << std::endl;
     std::cout << "Entleervorgang wird begonnen..." << std::endl;
-    this->value = value;
+    this->value = drainValue;
     doinIt = 1;
     while (doinIt) {
       myTimer->sleep_in_intervals(zeiteinheit);
