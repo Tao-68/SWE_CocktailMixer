@@ -40,3 +40,60 @@ Type: copyCtorAndEqOperator.
 What: The class 'CocktailPro' has 'copy constructor' but lack of 'operator='.
 Where: CocktailPro.h
 Solution: Implement an assigment operator for the CocktailPro class.
+
+(9)
+Type: noCopyConstructor
+What: class 'AvailableIngredients' does not have a copy constructor
+      which is recommended since the class contains a pointer to allocated memory.
+Where: AvailableIngredients.h
+Solution: Implement a copy constructor.
+
+(10)
+Type: unusedPrivateFunction
+What: Unused private function: 'AvailableIngredients::DummyZutatenEinfuegen'
+Where: AvailableIngredients.h
+Solution: Add static keyword at the front of the private function in header file.
+
+(11)
+Type: postfixOperator
+What: Prefer prefix ++/-- operators for non-primitive types.. Prefix ++/-- operators should be preferred for non-primitive types.
+      Pre-increment/decrement can be more efficient than post-increment/decrement.
+      Post-increment/decrement usually involves keeping a copy of the previous value around and adds a little extra code.
+Where: BarTender.cpp
+Solution: Implement prefix ++ operator for "i1".
+
+(12)
+Type: noExplicitConstructor
+What: Class 'BarTender' has a constructor with 1 argument that is not explicit. Such constructors should in general be explicit for type safety reasons.
+      Using the explicit keyword in the constructor means some mistakes when using the class can be avoided.
+Where: BarTender.h
+Solution: Add keyword "explicit" in front of constructor in header file.
+
+(13)
+Type: useInitializationList
+What: Variable 'm_Zutat' is assigned in constructor body. Consider performing initialization in initialization list..
+      When an object of a class is created, the constructors of all member variables are called consecutively in the order the variables are declared, even if you don't explicitly write them to the initialization list.
+      You could avoid assigning 'm_Zutat' a value by passing the value to the constructor in the initialization list.
+Where: RecipeStep.cpp
+Solution: Initialize the attributes using a initialization list.
+
+(14)
+Type: passedByValue
+What: Function parameter 'm_Zutat' should be passed by reference.. Parameter 'm_Zutat' is passed by value.
+      It could be passed as a (const) reference which is usually faster and recommended in C++.
+Where: RecipeStep.cpp
+Solution: Change function parameter 'm_Zutat' to be passed by (const) reference.
+
+(15)
+Type: unusedFunction
+What: The function 'detach' is never used.
+Where: Subject.cpp
+Solution: Implement a destructor for each 'Dispenser' class and 'Drainer' class.
+          Place 'detach' function in each of the destructor.
+
+(16)
+Type: noConstructor
+What: The class 'Waage' does not have a constructor.. The class 'Waage' does not have a constructor although it has private member variables.
+      Member variables of builtin types are left uninitialized when the class is instantiated. That may cause bugs or undefined behavior.
+Where: Waage.h
+Solution: Implement constructor and initialize the variables 'weight' and 'deltaweight'.
