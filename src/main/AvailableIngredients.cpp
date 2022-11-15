@@ -3,11 +3,12 @@
 AvailableIngredients::AvailableIngredients(void) {
   zutaten = new std::vector<std::string>;
 
-  if (DEBUG) {
-    //DummyZutatenEinfuegen();
-  } else {
-    ZutatenDateiEinlesen("zutaten.txt");
-  }
+//  if (DEBUG) {
+//    /*DummyZutatenEinfuegen();*/
+//  } else {
+//    ZutatenDateiEinlesen("zutaten.txt");
+//  }
+  ZutatenDateiEinlesen("zutaten.txt");
 
   browse();
 
