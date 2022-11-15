@@ -104,3 +104,9 @@ What: Member variable 'AvailableIngredients::anzahlDosierer' is not initialized 
 Where: AvailableIngredients.cpp
 Solution: Commented out if-else statement within the constructor so that function 'ZutatenDateiEinlesen("zutaten.txt")' is executable.
           The line of code 'anzahlDosierer = zutaten->size()' is executable and variable anzahlDosierer is initialized.
+
+(18)
+Type: copyCtorAndEqOperator
+What: The class 'AvailableIngredients' has 'copy constructor' but lack of 'operator='.
+Where: AvailableIngredients.h
+Solution: Implement an assignment 
