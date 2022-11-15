@@ -19,15 +19,27 @@ AvailableIngredients::AvailableIngredients(void) {
 
 }
 
-AvailableIngredients::AvailableIngredients(AvailableIngredients &availableIngredients) {
+AvailableIngredients::AvailableIngredients(const AvailableIngredients &availableIngredients) {
 
-    availableIngredients.zutaten = new std::vector<std::string>();
-    for (std::string z : *zutaten){
-        availableIngredients.zutaten->push_back(z);
+    zutaten = new std::vector<std::string>();
+    for (std::string z : *availableIngredients.zutaten){
+        zutaten->push_back(z);
     }
 
-    availableIngredients.anzahlDosierer = anzahlDosierer;
+    anzahlDosierer = availableIngredients.anzahlDosierer;
 
+}
+
+AvailableIngredients& AvailableIngredients::operator= (const AvailableIngredients& eqopAvailableIngredients) {
+
+    zutaten = new std::vector<std::string>();
+    for (std::string z : *eqopAvailableIngredients.zutaten){
+        zutaten->push_back(z);
+    }
+
+    anzahlDosierer = eqopAvailableIngredients.anzahlDosierer;
+
+    return *this;
 }
 
 AvailableIngredients::~AvailableIngredients(void) {

@@ -34,7 +34,8 @@ public:
     */
     AvailableIngredients(void);
 
-    AvailableIngredients(AvailableIngredients &availableIngredients);
+    AvailableIngredients(const AvailableIngredients &availableIngredients);
+    AvailableIngredients& operator= (const AvailableIngredients& eqopAvailableIngredients);
 
     /**
      * @brief Destructor that deletes the AvailableIngredients.
