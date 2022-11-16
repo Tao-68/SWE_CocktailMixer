@@ -17,6 +17,15 @@
 class Waage : public Subject {
  public:
 
+    /**
+     * @brief Constructor that creates a Waage.
+     *
+     * @param waageWeight must not be null.
+     * @param waageDeltaweight must not be null.
+     *
+     * Creates a Waage object.
+     * Initializes the private variables 'waageWeight' and 'waageDeltaweight'.
+     */
     Waage(int waageWeight, int waageDeltaweight);
 
     /** @brief Updates the value of weight and delta weight
