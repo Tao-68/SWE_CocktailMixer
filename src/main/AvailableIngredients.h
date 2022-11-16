@@ -34,7 +34,21 @@ public:
     */
     AvailableIngredients(void);
 
+    /** @brief Copy constructor that copy the existing object, when a new object is created from an existing object.
+    *
+    * Initializes a vector of ingredients (zutaten) variable.
+    * Copies the elements from the vector of the existing object to the new object.
+    * Copies the value of dispenser (anzahlDosierer) Variable from the existing object.
+    */
     AvailableIngredients(const AvailableIngredients &availableIngredients);
+
+    /** @brief Assignment operator that assign a new value from another existing object to an already initialized object.
+    *
+    * Initializes a vector of ingredients (zutaten) variable.
+    * Assigns the elements from the vector of the existing object to the new object.
+    * Assigns the value of dispenser (anzahlDosierer) Variable from the existing object.
+    * Executes a self-assignment check to prevent unpredictable behavior.
+    */
     AvailableIngredients& operator= (const AvailableIngredients& eqopAvailableIngredients);
 
     /**
