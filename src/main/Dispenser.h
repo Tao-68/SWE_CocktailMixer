@@ -29,7 +29,7 @@ public:
      * @param inhalt must be a valid string.
      * @param wg must be not null pointer.
      */
-    Dispenser(float g, int ze, std::string inhalt, Waage * wg);
+    Dispenser(float g, int ze, const std::string &inhalt, Waage * wg);
 
     ~Dispenser();
 

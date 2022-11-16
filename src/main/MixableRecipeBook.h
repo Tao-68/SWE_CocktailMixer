@@ -24,7 +24,7 @@ public:
      * When the ingredient for an recipe not exist anymore then the recipe will be deleted
      * @param ze
      */
-    MixableRecipeBook(AvailableIngredients * ze);
+    explicit MixableRecipeBook(AvailableIngredients * ze);
 
     /**
      * @brief Output of all existing Cocktails.
