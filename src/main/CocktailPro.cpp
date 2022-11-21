@@ -89,25 +89,27 @@ void CocktailPro::demo() {
 
 
 int CocktailPro::waehle() {
-  while (true) {
-    std::cout << "********** Mischbare Rezepte **********" << std::endl;
-    theMischbaresRezeptbuch->browse();
-    std::cout << "Was haetten Sie denn gern? (-1 zum Verlassen)" << std::endl;
 
     std::string eingabe;
 
+    std::cout << "********** Mischbare Rezepte **********" << std::endl;
+    theMischbaresRezeptbuch->browse();
+    std::cout << "Was haetten Sie denn gern? (-1 zum Verlassen)" << std::endl;
     std::cin >> eingabe;
 
     // int zahl = atoi(eingabe.c_str()); // alternative 1: converts a string to int.
     int zahl = (int) strtol(eingabe.c_str(), nullptr, 0); // alternative 2: converts a string to int.
-    int max = theMischbaresRezeptbuch->getNumberOfRecipes();
 
-    if ((zahl >= 0 && zahl <= max) || (zahl == -1)) {
+    if(zahl == -1)
+        return zahl;
+
+    int max = theMischbaresRezeptbuch->getNumberOfRecipes();
+    if (zahl > 0 && zahl <= max)
       return zahl;
-    } else {
+    else {
       std::cout << "MEEEP! Too many fingers on keyboard error!" << std::endl;
       std::cout << "Ihre Eingabe: " << eingabe << " war nicht zwischen 1 und " << max << "!"
                 << std::endl;
     }
-  }
+
 }
