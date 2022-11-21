@@ -15,7 +15,7 @@ about: Template zur Bewertung des Praktikums
 - [ ] Der Test UserStory1 demonstriert, dass die Nummern stabil bleiben, wenn sich die Zutaten ändern
 - [ ] Die Liste zur Auswahl der Cocktails enthält jetzt Lücken
 - [ ] Die Zahlen der aussortierten Cocktails werden als "fehlerhafte Eingabe" abgelehnt
-- [ ] Die Nummern der mischbaren Cocktails bleiben stabil, wenn man (temporär) die Limettenstücke aus der zutaten.txt löscht.
+- [ ] Die Nummern der mischbaren Cocktails bleiben stabil, wenn man (temporär) die Limettenstücke aus der ingredients.txt löscht.
 
 # User Story 2 (Füllstandsanzeige)
 - [ ] Im GitLab gibt es ein Ticket "User Story 2" mit einem sinnvollen Inhalt und mit Akzeptanzkriterien

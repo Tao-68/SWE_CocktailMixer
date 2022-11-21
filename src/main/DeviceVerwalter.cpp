@@ -22,8 +22,8 @@ void DeviceVerwalter::createDevices() {
     myDevices->insert(std::make_pair("Mischen", myMixer));
 
     std::string myZutat;
-    for (int i = myZutatenVerwalter->getAnzahlVorhandeneZutaten() - 1; i >= 0; i--) {
-        myZutat = myZutatenVerwalter->getZutat(i);
+    for (int i = myZutatenVerwalter->getNumberAvailableIngredients() - 1; i >= 0; i--) {
+        myZutat = myZutatenVerwalter->getIngredient(i);
         if (myZutat == "Eis")
             myDevices->insert(std::make_pair(myZutat, new Dispenser(20, 1000, myZutat, theWaage)));
         else if (myZutat == "Limettenstuecke")
