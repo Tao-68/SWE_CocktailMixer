@@ -31,7 +31,7 @@ private:
 
     std::vector<Recipe *> rezepte;
 
-    // Setzt den Pointer "myZutatenVerwalter" auf den Parameter
+    // Setzt den Pointer "availableIngredients" auf den Parameter
     void setZutatenVerwalter(AvailableIngredients * ze);
 
 };

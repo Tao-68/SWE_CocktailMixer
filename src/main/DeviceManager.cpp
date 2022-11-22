@@ -1,50 +1,49 @@
 #include "DeviceManager.h"
 
 DeviceManager::DeviceManager(AvailableIngredients *zv) {
-    setZutatenVerwalter(zv);
+    setIngredientsManager(zv);
     this->createDevices();
 }
 
 void DeviceManager::createDevices() {
-    theWaage = new Waage();
-    myDevices = new std::map<std::string, InternalDevice *>;
+    scale = new Waage();
+    devices = new std::map<std::string, InternalDevice *>;
 
-    myEntleerer = new Drainer(25, 1000, theWaage);
-    myDevices->insert(std::make_pair("Entleeren", myEntleerer));
+    drainer = new Drainer(25, 1000, scale);
+    devices->insert(std::make_pair("Entleeren", drainer));
 
-    myStampfer = new Masher();
-    myDevices->insert(std::make_pair("Stampfen", myStampfer));
+    masher = new Masher();
+    devices->insert(std::make_pair("Stampfen", masher));
 
-    mySchuettler = new Shaker();
-    myDevices->insert(std::make_pair("Schuetteln", mySchuettler));
+    shaker = new Shaker();
+    devices->insert(std::make_pair("Schuetteln", shaker));
 
-    myMixer = new Mixer();
-    myDevices->insert(std::make_pair("Mischen", myMixer));
+    mixer = new Mixer();
+    devices->insert(std::make_pair("Mischen", mixer));
 
     std::string myZutat;
-    for (int i = myZutatenVerwalter->getNumberAvailableIngredients() - 1; i >= 0; i--) {
-        myZutat = myZutatenVerwalter->getIngredient(i);
+    for (int i = availableIngredients->getNumberAvailableIngredients() - 1; i >= 0; i--) {
+        myZutat = availableIngredients->getIngredient(i);
         if (myZutat == "Eis")
-            myDevices->insert(std::make_pair(myZutat, new Dispenser(20, 1000, myZutat, theWaage)));
+            devices->insert(std::make_pair(myZutat, new Dispenser(20, 1000, myZutat, scale)));
         else if (myZutat == "Limettenstuecke")
-            myDevices->insert(std::make_pair(myZutat, new Dispenser(10, 1000, myZutat, theWaage)));
+            devices->insert(std::make_pair(myZutat, new Dispenser(10, 1000, myZutat, scale)));
         else
-            myDevices->insert(std::make_pair(myZutat, new Dispenser(1, 250, myZutat, theWaage)));
+            devices->insert(std::make_pair(myZutat, new Dispenser(1, 250, myZutat, scale)));
     }
 }
 
-void DeviceManager::setZutatenVerwalter(AvailableIngredients *zv) {
-    myZutatenVerwalter = zv;
+void DeviceManager::setIngredientsManager(AvailableIngredients *ze) {
+    availableIngredients = ze;
 }
 
-void DeviceManager::rezeptSchrittZubereiten(std::string zutat, float menge) {
+void DeviceManager::prepareRecipeSteps(std::string ingredient, float amount) {
 
-    if (zutat == "Limettenstuecke") {
+    if (ingredient == "Limettenstuecke") {
         // Der Kunde will Limetten ja unbedingt nach Stueck und nicht nach Gewicht abmessen...
-        int stckProZeit = dynamic_cast<Dispenser *>(myDevices->at(zutat))->getStueckProZeit();
-        myDevices->at(zutat)->doIt(menge * stckProZeit);
-    } else {
-        myDevices->at(zutat)->doIt(menge);
-    }
+        int stckProZeit = dynamic_cast<Dispenser *>(devices->at(ingredient))->getStueckProZeit();
+        devices->at(ingredient)->doIt(amount * stckProZeit);
+    } else
+        devices->at(ingredient)->doIt(amount);
 }
 

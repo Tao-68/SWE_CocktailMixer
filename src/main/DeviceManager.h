@@ -28,7 +28,7 @@ public:
     /**
      * @brief Constructor that creates a DeviceManager object.
      *
-     * invokes setZutatenVerwalter method and createDevices method.
+     * invokes setIngredientsManager method and createDevices method.
      *
      * @param ze must not be null pointer.
      */
@@ -37,24 +37,24 @@ public:
     /**
      * @brief prepares the steps of recipe.
      *
-     * @param zutat must be a valid ingredient. Special case by the "Limettenstuecke" ingredient.
+     * @param ingredient must be a valid ingredient. Special case by the "Limettenstuecke" ingredient.
      *
-     * @param menge must not be null.
+     * @param amount must not be null.
      *
      */
-    void rezeptSchrittZubereiten(std::string zutat, float menge);
+    void prepareRecipeSteps(std::string ingredient, float amount);
 
     /**
      * This is the drainer, that the DeviceManager uses in createDevices method.
      */
-    Drainer *myEntleerer;
+    Drainer *drainer;
 
     /**
      * This is the map, where strings are the keys and pointers of InternalDevice are value.
      * Apart from that, the DeviceManager uses this map in createDevices method
-     * and rezeptSchrittZubereiten method.
+     * and prepareRecipeSteps method.
      */
-    std::map<std::string, InternalDevice *> *myDevices;
+    std::map<std::string, InternalDevice *> *devices;
 
 private:
 
@@ -63,33 +63,33 @@ private:
      *
      * @param ze must not be null pointer.
      */
-    void setZutatenVerwalter(AvailableIngredients *ze);
+    void setIngredientsManager(AvailableIngredients *ze);
 
     /**
      * This is the mixer, that the DeviceManager uses in createDevices method.
      */
-    Mixer *myMixer;
+    Mixer *mixer;
 
     /**
      * This is the masher, that the DeviceManager uses in createDevices method.
      */
-    Masher *myStampfer;
+    Masher *masher;
 
     /**
      * This is the shaker, that the DeviceManager uses in createDevices method.
      */
-    Shaker *mySchuettler;
+    Shaker *shaker;
 
     /**
      * This is the available ingredients, that the DeviceManager uses in createDevices method
-     * and setZutatenVerwalter method.
+     * and setIngredientsManager method.
      */
-    AvailableIngredients *myZutatenVerwalter;
+    AvailableIngredients *availableIngredients;
 
     /**
      * This is Scale (Waage) that, the DeviceManager uses in createDevices method.
      */
-    Waage *theWaage;
+    Waage *scale;
 
     /**
      * @brief initializes the devices and sets the dispenser.
