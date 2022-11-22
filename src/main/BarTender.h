@@ -25,11 +25,11 @@ public:
     /**
      * @brief Prepares a cocktail following the recipe steps.
      *
-     * @param rzpt must not be null.
+     * @param recipe must not be null.
      *
      * @return always true.
      */
-    bool cocktailZubereiten(Recipe * rzpt);
+    bool prepareCocktail(Recipe * recipe);
 
 private:
 
