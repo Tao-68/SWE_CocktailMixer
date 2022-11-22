@@ -4,19 +4,18 @@
 void CocktailPro::start() {
 
   while (OperatingMode == OpMode::NORMAL) {
-    int CocktailNo = waehle();
-    if (CocktailNo == -1) {
+    int CocktailNo = selectCocktail();
+
+    if (CocktailNo == -1)
       OperatingMode = OpMode::STOP;
-    }
     else {
       int max = theMischbaresRezeptbuch->getNumberOfRecipes();
       if (CocktailNo <= max) {
         Recipe *rezeptptr = theMischbaresRezeptbuch->getRecipe(CocktailNo - 1);
         std::cout << rezeptptr->getName() << std::endl;
-          theCocktailZubereiter->prepareCocktail(rezeptptr);
-      } else {
+        theCocktailZubereiter->prepareCocktail(rezeptptr);
+      } else
         std::cout << "Falsche Cocktailnummer!" << std::endl;
-      }
     }
   }
 }
@@ -76,6 +75,7 @@ void swap(CocktailPro &lhs, CocktailPro &rhs) {
 
 
 void CocktailPro::demo() {
+
   int CocktailNo = 1;
   int max = theMischbaresRezeptbuch->getNumberOfRecipes();
   if (CocktailNo <= max) {
@@ -88,7 +88,7 @@ void CocktailPro::demo() {
 }
 
 
-int CocktailPro::waehle() {
+int CocktailPro::selectCocktail() {
 
     std::string eingabe;
 

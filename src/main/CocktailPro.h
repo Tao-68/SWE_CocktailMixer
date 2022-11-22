@@ -31,7 +31,7 @@ protected:
 
     /**
     * This is the book of mixable recipe that the CocktailPro uses in constructor,
-    * start method, demo method and waehle method.
+    * start method, demo method and selectCocktail method.
     */
     MixableRecipeBook *theMischbaresRezeptbuch;
 
@@ -60,7 +60,7 @@ protected:
     *
     * print a text to the terminal.
     */
-    int waehle();
+    int selectCocktail();
 
     /**
     * @brief starts a cocktail preparing for test purposes.
