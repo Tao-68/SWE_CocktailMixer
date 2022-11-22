@@ -11,7 +11,7 @@
  */
 class InternalDevice {
 public:
-    virtual void doIt(float value) = 0;
+    virtual void doIt(float valueParameter) = 0;
 
     /* Macht im Moment auch nichts
      * Sollte eventuell das Putzen simulieren
