@@ -7,25 +7,25 @@
  * Constructor
  *  
  */
-RecipeStep::RecipeStep(void): m_Zutat(""), m_Menge(0){
+RecipeStep::RecipeStep(): zutat(""), menge(0){
 
 }
 
 RecipeStep::~RecipeStep() {
 }
 
-std::string RecipeStep::getZutat(void) const {
-    return m_Zutat;
+std::string RecipeStep::getZutat() const {
+    return zutat;
 }
 
-float RecipeStep::getMenge(void) const {
-    return m_Menge;
+float RecipeStep::getMenge() const {
+    return menge;
 }
 
-void RecipeStep::setZutat(const std::string &zutat) {
-    m_Zutat = zutat;
+void RecipeStep::setZutat(std::string inputZutat) {
+    zutat = inputZutat;
 }
 
-void RecipeStep::setMenge(float menge) {
-    m_Menge = menge;
+void RecipeStep::setMenge(float inputMenge) {
+    menge = inputMenge;
 }

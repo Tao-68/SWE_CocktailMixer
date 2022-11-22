@@ -19,12 +19,12 @@ class RecipeStep {
     /**
     * Each step has an ingredient
     */
-    std::string m_Zutat;
+    std::string zutat;
 
     /**
     * Each step has a required amount of the ingredient
     */
-    float m_Menge;
+    float menge;
 
  public:
 
@@ -35,31 +35,31 @@ class RecipeStep {
     * The ingredient (Zutat) is set to an empty string
     * And the amount (Menge) is set to zero
     */
-    RecipeStep(void);
+    RecipeStep();
 
     /** @brief Destructor that deletes the RecipeStep
     */
     ~RecipeStep();
 
-    /** @brief Gets the ingredient (Zutat) of RecipeStep
+    /** @brief Gets the ingredient (zutat) of RecipeStep
     * @return The name of ingredient in the RecipeStep
     */
-    std::string getZutat(void) const;
+    std::string getZutat() const;
 
-    /** @brief Gets the amount (Menge) of RecipeStep
+    /** @brief Gets the amount (menge) of RecipeStep
     * @return The amount of ingredient in the RecipeStep
     */
-    float getMenge(void) const;
+    float getMenge() const;
 
     /** @brief Sets ingredient for the RecipeStep
-    * @param [in] m_Zutat the ingredient for the RecipeStep
+    * @param [in] inputZutat the ingredient for the RecipeStep
     */
-    void setZutat(const std::string &m_Zutat);
+    void setZutat(std::string inputZutat);
 
     /** @brief Sets amount for the RecipeStep
-    * @param [in] m_Menge the amount for the RecipeStep
+    * @param [in] inputMenge the amount for the RecipeStep
     */
-    void setMenge(float m_Menge);
+    void setMenge(float inputMenge);
 
 };
 #endif
