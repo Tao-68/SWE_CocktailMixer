@@ -41,7 +41,7 @@ void DeviceManager::prepareRecipeSteps(std::string ingredient, float amount) {
 
     if (ingredient == "Limettenstuecke") {
         // Der Kunde will Limetten ja unbedingt nach Stueck und nicht nach Gewicht abmessen...
-        int stckProZeit = dynamic_cast<Dispenser *>(devices->at(ingredient))->getStueckProZeit();
+        int stckProZeit = dynamic_cast<Dispenser *>(devices->at(ingredient))->getPiecePerTime();
         devices->at(ingredient)->doIt(amount * stckProZeit);
     } else
         devices->at(ingredient)->doIt(amount);

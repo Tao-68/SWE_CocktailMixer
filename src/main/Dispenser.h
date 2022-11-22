@@ -22,7 +22,7 @@ public:
      * @brief Constructor that creates a Dispenser object.
      *
      * Invokes Constructor of InternalDevice.
-     * Initializes the number of gram per time, the scale (Waage) and the content (inhalt).
+     * Initializes the number of gram per time, the scale (Waage) and the content (content).
      *
      * @param g must not be null.
      * @param ze must not be null.
@@ -51,30 +51,30 @@ public:
      *
      * @return the number of gram per time.
      */
-    int getStueckProZeit();
+    float getPiecePerTime() const;
 
 private:
 
     /**
      * This is the number of gram per time,
-     * that Dispenser uses in constructor, doIt method and getStueckProZeit method.
+     * that Dispenser uses in constructor, doIt method and getPiecePerTime method.
      */
-    float grammProZeit;
+    float gramPerTime;
 
     /**
      * This is the scale (Waage), that Dispenser uses in constructor, doIt method and update method.
      */
-    Waage * myWaage;
+    Waage * scale;
 
     /**
      * This is the weight, that Dispenser uses in doIt method and update method.
      */
-    float gwicht;
+    float weight;
 
     /**
      * This is the content, that Dispenser uses in constructor and doIt method.
      */
-    std::string inhalt;
+    std::string content;
 };
 
 #endif
