@@ -3,6 +3,7 @@
 DeviceVerwalter::DeviceVerwalter(AvailableIngredients *zv) {
     setZutatenVerwalter(zv);
     this->createDevices();
+
 }
 
 void DeviceVerwalter::createDevices() {

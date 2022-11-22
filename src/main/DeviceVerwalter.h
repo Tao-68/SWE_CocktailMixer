@@ -59,7 +59,7 @@ public:
     /**
      * This is a vector with iterator on map from myDevices, where all used Devices from the BarTender that have to clean up
      */
-    std::map<std::string, InternalDevice *> *benutzteDevices;
+    std::map<std::string, InternalDevice *> *benutzteDevices = nullptr;
 
 private:
 
