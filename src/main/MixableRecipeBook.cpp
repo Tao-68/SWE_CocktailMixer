@@ -5,14 +5,14 @@
 #include <iostream>
 //
 
-void MixableRecipeBook::browse() {
+void MixableRecipeBook::getAllCocktails() {
     std::cout << "*********************************************" << std::endl;
     std::cout << "Es gibt " << this->getNumberOfRecipes() << " Cocktails" << std::endl;
 
     for (int i = 0; i<this->getNumberOfRecipes(); i++) {
         Recipe* r = this->getRecipe(i);
         std::cout << i + 1 << ". ";
-        r->browse();
+        r->getAllIngredients();
         std::cout << std::endl;
     }
     std::cout << "*********************************************" << std::endl;
@@ -23,35 +23,35 @@ MixableRecipeBook::MixableRecipeBook(AvailableIngredients * zv) {
 
     // Debug *********
     std::cout << "********** Rezepte vor dem Filtern **********" << std::endl;
-    browse();
+    getAllCocktails();
     // ******************
 
     setZutatenVerwalter(zv);
 
+  bool istZutatGefunden = false;
   for (int i = 0; i < getNumberOfRecipes(); i++) {
-    bool x;
     Recipe *r = getRecipe(i);
-    x = true;
+
+    // Steps durchgehen
     for (int j = 0; j < r->getNoOfRecipeSteps(); j++) {
       std::string gesuchteZutat;
-
       gesuchteZutat = r->getRecipeStep(j)->getZutat();
-      bool zOk = false;
-
-      for (int k = 0; k < myZutatenVerwalter->getAnzahlVorhandeneZutaten(); k++) {
-        if (myZutatenVerwalter->getZutat(k) == gesuchteZutat) {
-          zOk = true;
-          break;
-        }
-      }
-      if (!zOk) {
-        x = false;
-      }
+      istZutatGefunden = sucheZutat(gesuchteZutat);
     }
-    if (!x) {
+
+    if (!istZutatGefunden) {
       deleteRecipe(i);
     }
   }
+}
+
+bool MixableRecipeBook::sucheZutat(const std::string &gesuchteZutat) {
+    for (int k = 0; k < myZutatenVerwalter->getAnzahlVorhandeneZutaten(); k++) {
+      if (myZutatenVerwalter->getZutat(k) == gesuchteZutat) {
+        return true;
+      }
+    }
+    return false;
 }
 
 void MixableRecipeBook::setZutatenVerwalter(AvailableIngredients * zv) {

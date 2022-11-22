@@ -29,7 +29,7 @@ public:
     /**
      * @brief Output of all existing Cocktails.
      */
-    void browse();
+    void getAllCocktails();
 
 private:
     /**
@@ -42,12 +42,17 @@ private:
     */
     std::vector<Recipe *> rezepte;
 
-    // Setzt den Pointer "myZutatenVerwalter" auf den Parameter
     /** @brief This is a setter-method for variable myZutatenVerwalter
      *  @param ze
      */
     void setZutatenVerwalter(AvailableIngredients * ze);
 
+    /**
+     * @brief A search function through all ingredients.
+     * @param gesuchteZutat
+     * @return Boolean whether the ingredient you are looking for exists
+     */
+    bool sucheZutat(const std::string &gesuchteZutat);
 };
 
 #endif
