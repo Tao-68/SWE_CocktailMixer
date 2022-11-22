@@ -40,7 +40,7 @@ class Timer {
      */
 
     /** @brief Sets the time duration to sleep in intervals
-    * @param [in] milliseconds the time to sleep in milliseconds
+    * @param [in] delayInMS the time to delay in milliseconds
     */
     void sleep_in_intervals(long delayInMS);
 
