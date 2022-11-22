@@ -3,7 +3,7 @@
 
 #include "Recipe.h"
 #include "RecipeBook.h"
-#include "DeviceVerwalter.h"
+#include "DeviceManager.h"
 
 /**
 * @class BarTender
@@ -20,7 +20,7 @@ public:
      *
      * Initializes a device manager (myDeviceVerwalter) variable.
      */
-    BarTender(DeviceVerwalter * dv);
+    BarTender(DeviceManager * dv);
 
     /**
      * @brief Prepares a cocktail following the recipe steps.
@@ -36,7 +36,7 @@ private:
     /**
     * This is the device manager that the BarTender uses for cocktail preparing.
     */
-    DeviceVerwalter * myDeviceVerwalter;
+    DeviceManager * myDeviceVerwalter;
 
 
 };

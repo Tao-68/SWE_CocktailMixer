@@ -1,6 +1,6 @@
 #include "BarTender.h"
 
-BarTender::BarTender(DeviceVerwalter * dv) {
+BarTender::BarTender(DeviceManager * dv) {
     myDeviceVerwalter = dv;
 }
 
