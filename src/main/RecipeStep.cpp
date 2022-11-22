@@ -22,7 +22,7 @@ float RecipeStep::getMenge() const {
     return menge;
 }
 
-void RecipeStep::setZutat(std::string inputZutat) {
+void RecipeStep::setZutat(const std::string& inputZutat) {
     zutat = inputZutat;
 }
 

@@ -54,7 +54,7 @@ class RecipeStep {
     /** @brief Sets ingredient for the RecipeStep
     * @param [in] inputZutat the ingredient for the RecipeStep
     */
-    void setZutat(std::string inputZutat);
+    void setZutat(const std::string& inputZutat);
 
     /** @brief Sets amount for the RecipeStep
     * @param [in] inputMenge the amount for the RecipeStep

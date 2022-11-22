@@ -79,10 +79,10 @@ Solution: Initialize the attributes using a initialization list.
 
 (14)
 Type: passedByValue
-What: Function parameter 'm_Zutat' should be passed by reference.. Parameter 'm_Zutat' is passed by value.
+What: Function parameter 'inputZutat' should be passed by reference.. Parameter 'inputZutat' is passed by value.
       It could be passed as a (const) reference which is usually faster and recommended in C++.
 Where: RecipeStep.cpp
-Solution: Change function parameter 'm_Zutat' to be passed by (const) reference.
+Solution: Change function parameter 'inputZutat' to be passed by (const) reference.
 
 (15)
 Type: unusedFunction
