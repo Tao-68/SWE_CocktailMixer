@@ -14,25 +14,25 @@
 #include "Waage.h"
 
 /**
-* @class DeviceVerwalter
+* @class DeviceManager
 *
-* @brief DeviceVerwalter manages the hardware.
+* @brief DeviceManager manages the hardware.
 *
 * You can initialize the devices, set ingredients manager,
 * prepare the steps of recipe.
 *
 */
-class DeviceVerwalter {
+class DeviceManager {
 public:
 
     /**
-     * @brief Constructor that creates a DeviceVerwalter object.
+     * @brief Constructor that creates a DeviceManager object.
      *
      * invokes setZutatenVerwalter method and createDevices method.
      *
      * @param ze must not be null pointer.
      */
-    DeviceVerwalter(AvailableIngredients *ze);
+    DeviceManager(AvailableIngredients *ze);
 
     /**
      * @brief prepares the steps of recipe.
@@ -45,13 +45,13 @@ public:
     void rezeptSchrittZubereiten(std::string zutat, float menge);
 
     /**
-     * This is the drainer, that the DeviceVerwalter uses in createDevices method.
+     * This is the drainer, that the DeviceManager uses in createDevices method.
      */
     Drainer *myEntleerer;
 
     /**
      * This is the map, where strings are the keys and pointers of InternalDevice are value.
-     * Apart from that, the DeviceVerwalter uses this map in createDevices method
+     * Apart from that, the DeviceManager uses this map in createDevices method
      * and rezeptSchrittZubereiten method.
      */
     std::map<std::string, InternalDevice *> *myDevices;
@@ -66,28 +66,28 @@ private:
     void setZutatenVerwalter(AvailableIngredients *ze);
 
     /**
-     * This is the mixer, that the DeviceVerwalter uses in createDevices method.
+     * This is the mixer, that the DeviceManager uses in createDevices method.
      */
     Mixer *myMixer;
 
     /**
-     * This is the masher, that the DeviceVerwalter uses in createDevices method.
+     * This is the masher, that the DeviceManager uses in createDevices method.
      */
     Masher *myStampfer;
 
     /**
-     * This is the shaker, that the DeviceVerwalter uses in createDevices method.
+     * This is the shaker, that the DeviceManager uses in createDevices method.
      */
     Shaker *mySchuettler;
 
     /**
-     * This is the available ingredients, that the DeviceVerwalter uses in createDevices method
+     * This is the available ingredients, that the DeviceManager uses in createDevices method
      * and setZutatenVerwalter method.
      */
     AvailableIngredients *myZutatenVerwalter;
 
     /**
-     * This is Scale (Waage) that, the DeviceVerwalter uses in createDevices method.
+     * This is Scale (Waage) that, the DeviceManager uses in createDevices method.
      */
     Waage *theWaage;
 

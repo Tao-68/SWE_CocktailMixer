@@ -24,7 +24,7 @@ Solution: Implement a copy constructor.
 (4), (5), (6)
 Type: unsafeClassCanLeak.
 What: The class 'CocktailPro' is unsafe, wrong usage can cause memory/resource leaks for
-      'CocktailPro::theCocktailZubereiter'.
+      'CocktailPro::barTender'.
       This can for instance be fixed by adding proper cleanup in the destructor.
 Where: CocktailPro.h.
 Solution: Implement a destructor.

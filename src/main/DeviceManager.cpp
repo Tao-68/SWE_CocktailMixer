@@ -1,11 +1,11 @@
-#include "DeviceVerwalter.h"
+#include "DeviceManager.h"
 
-DeviceVerwalter::DeviceVerwalter(AvailableIngredients *zv) {
+DeviceManager::DeviceManager(AvailableIngredients *zv) {
     setZutatenVerwalter(zv);
     this->createDevices();
 }
 
-void DeviceVerwalter::createDevices() {
+void DeviceManager::createDevices() {
     theWaage = new Waage();
     myDevices = new std::map<std::string, InternalDevice *>;
 
@@ -33,11 +33,11 @@ void DeviceVerwalter::createDevices() {
     }
 }
 
-void DeviceVerwalter::setZutatenVerwalter(AvailableIngredients *zv) {
+void DeviceManager::setZutatenVerwalter(AvailableIngredients *zv) {
     myZutatenVerwalter = zv;
 }
 
-void DeviceVerwalter::rezeptSchrittZubereiten(std::string zutat, float menge) {
+void DeviceManager::rezeptSchrittZubereiten(std::string zutat, float menge) {
 
     if (zutat == "Limettenstuecke") {
         // Der Kunde will Limetten ja unbedingt nach Stueck und nicht nach Gewicht abmessen...

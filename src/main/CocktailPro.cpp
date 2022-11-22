@@ -9,11 +9,11 @@ void CocktailPro::start() {
     if (CocktailNo == -1)
       OperatingMode = OpMode::STOP;
     else {
-      int max = theMischbaresRezeptbuch->getNumberOfRecipes();
+      int max = mixableRecipeBook->getNumberOfRecipes();
       if (CocktailNo <= max) {
-        Recipe *rezeptptr = theMischbaresRezeptbuch->getRecipe(CocktailNo - 1);
+        Recipe *rezeptptr = mixableRecipeBook->getRecipe(CocktailNo - 1);
         std::cout << rezeptptr->getName() << std::endl;
-        theCocktailZubereiter->prepareCocktail(rezeptptr);
+        barTender->prepareCocktail(rezeptptr);
       } else
         std::cout << "Falsche Cocktailnummer!" << std::endl;
     }
@@ -21,11 +21,11 @@ void CocktailPro::start() {
 }
 
 CocktailPro::CocktailPro(int argc, char **param) {
-  theZutatenVerwalter = new AvailableIngredients;
+    availableIngredients = new AvailableIngredients;
 
-  theMischbaresRezeptbuch = new MixableRecipeBook(theZutatenVerwalter);
-  theDeviceVerwalter = new DeviceVerwalter(theZutatenVerwalter);
-  theCocktailZubereiter = new BarTender(theDeviceVerwalter);
+    mixableRecipeBook = new MixableRecipeBook(availableIngredients);
+  theDeviceVerwalter = new DeviceManager(availableIngredients);
+    barTender = new BarTender(theDeviceVerwalter);
 
   Timer *theTimer = Timer::getInstance();
   if (argc == 2) {
@@ -40,19 +40,19 @@ CocktailPro::CocktailPro(int argc, char **param) {
 }
 
 CocktailPro::~CocktailPro() {
-    delete theZutatenVerwalter;
-    delete theMischbaresRezeptbuch;
+    delete availableIngredients;
+    delete mixableRecipeBook;
     delete theDeviceVerwalter;
-    delete theCocktailZubereiter;
+    delete barTender;
 }
 
 CocktailPro::CocktailPro(const CocktailPro &cocktailPro) {
 
-    theZutatenVerwalter = new AvailableIngredients;
+    availableIngredients = new AvailableIngredients;
 
-    theMischbaresRezeptbuch = new MixableRecipeBook(theZutatenVerwalter);
-    theDeviceVerwalter = new DeviceVerwalter(theZutatenVerwalter);
-    theCocktailZubereiter = new BarTender(theDeviceVerwalter);
+    mixableRecipeBook = new MixableRecipeBook(availableIngredients);
+    theDeviceVerwalter = new DeviceManager(availableIngredients);
+    barTender = new BarTender(theDeviceVerwalter);
 
     this->OperatingMode = cocktailPro.OperatingMode;
 
@@ -65,10 +65,10 @@ CocktailPro& CocktailPro::operator=(CocktailPro rhs) {
 
 void swap(CocktailPro &lhs, CocktailPro &rhs) {
 
-    std::swap(lhs.theZutatenVerwalter, rhs.theZutatenVerwalter);
-    std::swap(lhs.theMischbaresRezeptbuch, rhs.theMischbaresRezeptbuch);
+    std::swap(lhs.availableIngredients, rhs.availableIngredients);
+    std::swap(lhs.mixableRecipeBook, rhs.mixableRecipeBook);
     std::swap(lhs.theDeviceVerwalter, rhs.theDeviceVerwalter);
-    std::swap(lhs.theCocktailZubereiter, rhs.theCocktailZubereiter);
+    std::swap(lhs.barTender, rhs.barTender);
     std::swap(lhs.OperatingMode, rhs.OperatingMode);
 
 }
@@ -77,11 +77,11 @@ void swap(CocktailPro &lhs, CocktailPro &rhs) {
 void CocktailPro::demo() {
 
   int CocktailNo = 1;
-  int max = theMischbaresRezeptbuch->getNumberOfRecipes();
+  int max = mixableRecipeBook->getNumberOfRecipes();
   if (CocktailNo <= max) {
-    Recipe *rezeptptr = theMischbaresRezeptbuch->getRecipe(CocktailNo - 1);
+    Recipe *rezeptptr = mixableRecipeBook->getRecipe(CocktailNo - 1);
     std::cout << rezeptptr->getName() << std::endl;
-      theCocktailZubereiter->prepareCocktail(rezeptptr);
+      barTender->prepareCocktail(rezeptptr);
   } else {
     std::cout << "Falsche Cocktailnummer!" << std::endl;
   }
@@ -93,7 +93,7 @@ int CocktailPro::selectCocktail() {
     std::string eingabe;
 
     std::cout << "********** Mischbare Rezepte **********" << std::endl;
-    theMischbaresRezeptbuch->browse();
+    mixableRecipeBook->browse();
     std::cout << "Was haetten Sie denn gern? (-1 zum Verlassen)" << std::endl;
     std::cin >> eingabe;
 
@@ -103,7 +103,7 @@ int CocktailPro::selectCocktail() {
     if(zahl == -1)
         return zahl;
 
-    int max = theMischbaresRezeptbuch->getNumberOfRecipes();
+    int max = mixableRecipeBook->getNumberOfRecipes();
     if (zahl > 0 && zahl <= max)
       return zahl;
     else {
