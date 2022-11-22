@@ -5,6 +5,11 @@ BarTender::BarTender(DeviceVerwalter * dv) {
 }
 
 bool BarTender::cocktailZubereiten(Recipe * rzpt) {
+
+    if (!checkAvailabilityIngredients(rzpt)){
+        std::cout << "Sorry! Lack of ingredients! Please choose another drink!\n" << std::endl;
+        return false;
+    }
     std::cout << "Hallo, ich bin der BarTender!" << std::endl
             << "Ich habe Ihre Bestellung: " << rzpt->getName() << " erhalten." << std::endl
             << "Jetzt geht es los!\n" << std::endl;
@@ -27,5 +32,18 @@ bool BarTender::cocktailZubereiten(Recipe * rzpt) {
     i1->second->putzen();
   }
   return (true);
+}
+
+bool BarTender::checkAvailabilityIngredients(Recipe* recipe) {
+    for (int i = 0; i < recipe->getNoOfRecipeSteps(); i++) {
+
+        RecipeStep * schritt = recipe->getRecipeStep(i);
+        std::basic_string<char> zutat = schritt->getZutat();
+
+        if (myDeviceVerwalter->myDevices->count(zutat) == 0){
+            return false;
+        }
+    }
+    return true;
 }
 
