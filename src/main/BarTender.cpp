@@ -21,11 +21,12 @@ bool BarTender::cocktailZubereiten(Recipe * rzpt) {
   myDeviceVerwalter->myEntleerer->doIt(i); // give out a cocktail
 
   // device manager cleaning
-  for (std::map<std::string, InternalDevice *>::iterator i1 = myDeviceVerwalter->myDevices->begin();
-       i1 != myDeviceVerwalter->myDevices->end(); ++i1) {
+  for (std::map<std::string, InternalDevice *>::iterator i1 = myDeviceVerwalter->benutzteDevices->begin();
+       i1 != myDeviceVerwalter->benutzteDevices->end(); ++i1) {
     std::cout << "Device mit der Aktion: " << i1->first << " wird jetzt geputzt: " << std::endl;
     i1->second->putzen();
   }
+  myDeviceVerwalter->benutzteDevices->clear();
   return (true);
 }
 

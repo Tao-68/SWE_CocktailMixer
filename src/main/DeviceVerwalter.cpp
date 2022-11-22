@@ -43,8 +43,12 @@ void DeviceVerwalter::rezeptSchrittZubereiten(std::string zutat, float menge) {
         // Der Kunde will Limetten ja unbedingt nach Stueck und nicht nach Gewicht abmessen...
         int stckProZeit = dynamic_cast<Dispenser *>(myDevices->at(zutat))->getStueckProZeit();
         myDevices->at(zutat)->doIt(menge * stckProZeit);
+        std::map<std::string, InternalDevice *>::iterator usedDevice = myDevices->find(zutat);
+        benutzteDevices->insert(std::make_pair(usedDevice->first, usedDevice->second));
     } else {
         myDevices->at(zutat)->doIt(menge);
+        std::map<std::string, InternalDevice *>::iterator usedDevice = myDevices->find(zutat);
+        benutzteDevices->insert(std::make_pair(usedDevice->first, usedDevice->second));
     }
 }
 
