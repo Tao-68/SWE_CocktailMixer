@@ -12,6 +12,7 @@ AvailableIngredients::AvailableIngredients(void) {
 
     ingredients->push_back("Mischen");
     ingredients->push_back("Stampfen");
+    ingredients->push_back("Schuetteln");
 
     numberOfDispenser = ingredients->size();
 
