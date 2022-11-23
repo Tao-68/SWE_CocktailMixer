@@ -19,18 +19,18 @@ class RecipeBookTest : public ::testing::Test {
         // you never know what the constructor is really doing
         // so make the list empty and fill it yourself!
         
-        r->m_Recipe.clear();
+        r->recipes.clear();
         Recipe* r1;
 
         r1 = new Recipe;
         r1->setName("Caipirinha");
         r1->appendStep("Limettenstuecke", 8);
-        r->m_Recipe.push_back(r1);
+        r->recipes.push_back(r1);
 
         r1 = new Recipe;
         r1->setName("Margarita");
         r1->appendStep("Zitronensaft", 2);
-        r->m_Recipe.push_back(r1);
+        r->recipes.push_back(r1);
           
   }
 
@@ -42,7 +42,7 @@ class RecipeBookTest : public ::testing::Test {
 };
 
 TEST_F(RecipeBookTest,getNumberOfRecipesReturnsValueOfAttribute){
-    int noOfRecipes=r->m_Recipe.size();
+    int noOfRecipes=r->recipes.size();
     EXPECT_EQ(noOfRecipes,r->getNumberOfRecipes());
 }
 

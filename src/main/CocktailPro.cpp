@@ -102,7 +102,7 @@ int CocktailPro::waehle() {
     int zahl = (int) strtol(eingabe.c_str(), nullptr, 0); // alternative 2: converts a string to int.
     int max = theMischbaresRezeptbuch->getNumberOfRecipes();
 
-    if ((zahl >= 0 && zahl <= max) || (zahl == -1)) {
+    if ((zahl >= 1 && zahl <= max) || (zahl == -1)) {
       return zahl;
     } else {
       std::cout << "MEEEP! Too many fingers on keyboard error!" << std::endl;

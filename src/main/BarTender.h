@@ -38,6 +38,8 @@ private:
     */
     DeviceVerwalter * myDeviceVerwalter;
 
+    bool checkAvailabilityIngredients(Recipe* recipe);
+
 
 };
 

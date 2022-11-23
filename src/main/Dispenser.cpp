@@ -13,7 +13,7 @@ Dispenser::~Dispenser(){
 
 void Dispenser::update() {
     if (!this->doinIt) return;
-    if (myWaage->getDelta() >= gwicht) {
+    if (myWaage->getDeltaWeight() >= gwicht) {
         doinIt = false;
     }
 
@@ -21,7 +21,7 @@ void Dispenser::update() {
 
 void Dispenser::doIt(float gramm) {
     this->gwicht = gramm;
-    myWaage->tara();
+    myWaage->resetDeltaWeight();
     doinIt = true;
     std::cout << inhalt << " Ventil wurde geoeffnet" << std::endl;
     while (doinIt) {
@@ -29,7 +29,7 @@ void Dispenser::doIt(float gramm) {
         myWaage->changeWeight(grammProZeit);
     }
     std::cout << std::endl << inhalt << " Ventil wurde geschlossen" << std::endl;
-    std::cout << "Es wurden " << myWaage->getDelta() << "g " << inhalt << " abgefuellt" << std::endl;
+    std::cout << "Es wurden " << myWaage->getDeltaWeight() << "g " << inhalt << " abgefuellt" << std::endl;
     std::cout << std::endl;
 }
 
