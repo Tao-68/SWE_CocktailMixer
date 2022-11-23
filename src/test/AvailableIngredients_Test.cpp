@@ -47,7 +47,7 @@ protected:
 
 TEST_F(AvailableIngredientsTest, getNumberAvailableIngredients)
 {
-    EXPECT_EQ(15, zv->getNumberAvailableIngredients());
+    EXPECT_EQ(16, zv->getNumberAvailableIngredients());
 }
 
 TEST_F(AvailableIngredientsTest, FileZutatenDotTxtIsAvailable)
