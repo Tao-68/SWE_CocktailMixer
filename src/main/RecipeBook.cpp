@@ -12,70 +12,24 @@
 
 RecipeBook::RecipeBook() {
     recipes.clear();
+    Recipe *r1 = new Recipe();
 
-    // Stream anlegen
-    std::ifstream in;
+    createCaipirinha(r1);
 
-    std::string FileName = "Rezepte.csv";
-    // Datei oeffnen
-    in.open(FileName.c_str(), std::ios::in);
+    createMargarita(r1);
 
-    if (!in) {// File konnte nicht geoeffnet werden
-        Recipe *r1 = new Recipe();
+    createDaiquri(r1);
 
-        createCaipirinha(r1);
+    createPlantersPunch(r1);
 
-        createMargarita(r1);
+    createCaipiroska(r1);
 
-        createDaiquri(r1);
+    createCaipirissima(r1);
 
-        createPlantersPunch(r1);
+    createCubanIsland(r1);
 
-        createCaipiroska(r1);
+    createMartiniJamesB(r1);
 
-        createCaipirissima(r1);
-
-        createCubanIsland(r1);
-
-        createMartiniJamesB(r1);
-    } else {
-        /* Daten lesen und ausgeben */
-        std::string zeile;
-
-        // 1. Zeile ist Ueberschrift - Einlesen und wegwerfen!
-        getline(in, zeile);
-        // cout << zeile << endl;
-
-        while (getline(in, zeile)) {
-            // cout << zeile << endl;
-            std::istringstream inputString(zeile);
-            std::string name;
-            std::string zutat;
-            std::string tempstring;
-            float menge;
-
-            Recipe *r1 = new Recipe;
-
-            // Aus istringstream Name einlesen mit Komma als Trennzeichen
-            getline(inputString, name, ';');
-            // Weiter einlesen bis zum naechsten Trennzeichen (Zutat)
-            r1->setName(name);
-            //cout << "Name: " << Name << endl;
-
-            while (getline(inputString, zutat, ';') && !zutat.empty()) {
-                // Weiter einlesen bis zum naechsten Trennzeichen (Menge)
-                if (getline(inputString, tempstring, ';')) {
-                    std::istringstream(tempstring) >> menge;
-                }
-                r1->appendStep(zutat, menge);
-                //cout << " Zutat: " << Zutat << " Menge: " << Menge << "\n" << endl;
-            }
-            this->recipes.push_back(r1);
-        }
-
-        /* Datei wieder schliessen */
-        in.close();
-    }
 }
 
 void RecipeBook::createCaipirinha(Recipe *r1) {
