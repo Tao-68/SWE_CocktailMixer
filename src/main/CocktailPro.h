@@ -56,11 +56,9 @@ protected:
 
     /**
     * @brief Selects the recipe number.
-    * @return the selected recipe number or -1 to exit.
-    *
     * print a text to the terminal.
     */
-    int selectCocktail();
+    void selectCocktail();
 
     /**
     * @brief starts a cocktail preparing for test purposes.
@@ -121,6 +119,11 @@ public:
     void start();
 
 
+    void validateSelectedNumber(int cocktailNumberInput);
+
+    bool isNotValidNumber(int cocktailNumberInput) const;
+
+    void notValidInputMsg(int cocktailNumberInput);
 };
 
 #endif
