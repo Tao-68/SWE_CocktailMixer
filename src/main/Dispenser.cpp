@@ -1,9 +1,8 @@
 #include "Dispenser.h"
 
-Dispenser::Dispenser(float gram, int timeUnit, const std::string &dispenserContent, Waage * dispenserScale) : InternalDevice() {
+Dispenser::Dispenser(float gram, int timeUnit, const std::string &dispenserContent, Waage * dispenserScale) : InternalDevice(),content{dispenserContent} {
     this->gramPerTime = gram;
     this->zeiteinheit = timeUnit;
-    this->content = dispenserContent;
     this->scale = dispenserScale;
     this->scale->attach(this);
 }
