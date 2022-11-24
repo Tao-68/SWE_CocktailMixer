@@ -3,10 +3,7 @@
 AvailableIngredients::AvailableIngredients(void) {
     ingredients = new std::vector<std::string>;
 
-    if (DEBUG)
-        insertDummyData();
-    else
-        readIngredientsFile("ingredients.txt");
+    readIngredientsFile("ingredients.txt");
 
     browse();
 
@@ -73,21 +70,6 @@ void AvailableIngredients::readIngredientsFile(std::string fileName) {
         this->ingredients->push_back(zeile);
     }
     in.close();
-}
-
-void AvailableIngredients::insertDummyData() {
-    ingredients->push_back("Limettenstuecke");
-    ingredients->push_back("Zucker");
-    ingredients->push_back("Cointreau");
-    ingredients->push_back("Eis");
-    ingredients->push_back("Wodka");
-    ingredients->push_back("Rum weiss");
-    ingredients->push_back("Zitronensaft");
-    ingredients->push_back("Grenadine");
-    //    ingredients->push_back("Limettensaft");
-    //    ingredients->push_back("Tequilla");
-    //    ingredients->push_back("Gin");
-    //    ingredients->push_back("Noilly Prat");
 }
 
 void AvailableIngredients::browse(void) {

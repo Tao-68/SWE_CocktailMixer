@@ -92,18 +92,7 @@ private:
      * This is the number of Dispenser that the AvailableIngredients uses
      */
     int numberOfDispenser;
-
-    /**
-     * This is the debug that the AvailableIngredients uses for test purposes
-     */
-    static const bool DEBUG = false;
-
-    /**
-     * @brief adds a dummy data to the vector of ingredients (ingredients) for test purposes.
-     */
-    void insertDummyData();
-
-
+    
     /**
      * @brief Reads an ingredients file and adds each
      *

@@ -119,10 +119,23 @@ public:
     void start();
 
 
+    /**
+     *
+     * @param cocktailNumberInput
+     */
     void validateSelectedNumber(int cocktailNumberInput);
 
+    /**
+     *
+     * @param cocktailNumberInput
+     * @return
+     */
     bool isNotValidNumber(int cocktailNumberInput) const;
 
+    /**
+     * @brief print message, that input was not valid.
+     * @param cocktailNumberInput must be an integer number.
+     */
     void notValidInputMsg(int cocktailNumberInput);
 };
 
