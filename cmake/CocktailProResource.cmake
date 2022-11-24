@@ -1,4 +1,4 @@
-add_custom_target(CocktailProResource SOURCES ../src/resources/zutaten.txt)
+add_custom_target(CocktailProResource SOURCES ../src/resources/ingredients.txt)
 
 # Resolving absolute (real) paths to prevent misleading relative paths
 get_target_property(COCKTAIL_PRO_RESOURCES CocktailProResource SOURCES)

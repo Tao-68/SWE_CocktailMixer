@@ -3,7 +3,7 @@
 
 #include "Recipe.h"
 #include "RecipeBook.h"
-#include "DeviceVerwalter.h"
+#include "DeviceManager.h"
 
 /**
 * @class BarTender
@@ -20,23 +20,24 @@ public:
      *
      * Initializes a device manager (myDeviceVerwalter) variable.
      */
-    explicit BarTender(DeviceVerwalter *dv);
+    explicit BarTender(DeviceManager * dv);
+
 
     /**
      * @brief Prepares a cocktail following the recipe steps.
      *
-     * @param rzpt must not be null.
+     * @param recipe must not be null.
      *
      * @return always true.
      */
-    bool cocktailZubereiten(Recipe * rzpt);
+    bool prepareCocktail(Recipe * recipe);
 
 private:
 
     /**
     * This is the device manager that the BarTender uses for cocktail preparing.
     */
-    DeviceVerwalter * myDeviceVerwalter;
+    DeviceManager * myDeviceVerwalter;
 
     bool checkAvailabilityIngredients(Recipe* recipe);
 

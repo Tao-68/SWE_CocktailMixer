@@ -1,38 +1,41 @@
 #include "Dispenser.h"
 
-Dispenser::Dispenser(float g, int ze, const std::string & inhaltParameter, Waage * wg) : InternalDevice(), inhalt{inhaltParameter} {
-    this->grammProZeit = g;
-    this->zeiteinheit = ze;
-    this->myWaage = wg;
-    this->myWaage->attach(this);
+Dispenser::Dispenser(float gram, int timeUnit, std::string content, Waage * scale) : InternalDevice() {
+    this->gramPerTime = gram;
+    this->zeiteinheit = timeUnit;
+    this->content = std::move(content);
+    this->scale = scale;
+    this->scale->attach(this);
 }
 
 Dispenser::~Dispenser(){
-    this->myWaage->detach(this);
+    this->scale->detach(this);
+    delete scale;
 }
 
 void Dispenser::update() {
     if (!this->doinIt) return;
-    if (myWaage->getDeltaWeight() >= gwicht) {
+
+    if (static_cast<float>(scale->getDeltaWeight()) >= weight)
         doinIt = false;
-    }
 
 }
 
 void Dispenser::doIt(float gramm) {
-    this->gwicht = gramm;
-    myWaage->resetDeltaWeight();
+    this->weight = gramm;
+    scale->resetDeltaWeight();
+
     doinIt = true;
-    std::cout << inhalt << " Ventil wurde geoeffnet" << std::endl;
+    std::cout << content << " Ventil wurde geoeffnet" << std::endl;
     while (doinIt) {
       myTimer->sleep_in_intervals(zeiteinheit);
-        myWaage->changeWeight(grammProZeit);
+      scale->changeWeight(static_cast<int>(gramPerTime));
     }
-    std::cout << std::endl << inhalt << " Ventil wurde geschlossen" << std::endl;
-    std::cout << "Es wurden " << myWaage->getDeltaWeight() << "g " << inhalt << " abgefuellt" << std::endl;
+    std::cout << std::endl << content << " Ventil wurde geschlossen" << std::endl;
+    std::cout << "Es wurden " << scale->getDeltaWeight() << "g " << content << " abgefuellt" << std::endl;
     std::cout << std::endl;
 }
 
-int Dispenser::getStueckProZeit() {
-    return this->grammProZeit;
+float Dispenser::getPiecePerTime() const {
+    return this->gramPerTime;
 }

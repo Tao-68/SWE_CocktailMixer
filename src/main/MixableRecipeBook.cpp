@@ -1,9 +1,5 @@
-//@(#) MixableRecipeBook.cpp
-
-
 #include "MixableRecipeBook.h"
 #include <iostream>
-//
 
 void MixableRecipeBook::browse() {
     std::cout << "*********************************************" << std::endl;
@@ -38,8 +34,8 @@ MixableRecipeBook::MixableRecipeBook(AvailableIngredients * zv) {
       gesuchteZutat = r->getRecipeStep(j)->getZutat();
       bool zOk = false;
 
-      for (int k = 0; k < myZutatenVerwalter->getAnzahlVorhandeneZutaten(); k++) {
-        if (myZutatenVerwalter->getZutat(k) == gesuchteZutat) {
+      for (int k = 0; k < myZutatenVerwalter->getNumberAvailableIngredients(); k++) {
+        if (myZutatenVerwalter->getIngredient(k) == gesuchteZutat) {
           zOk = true;
           break;
         }

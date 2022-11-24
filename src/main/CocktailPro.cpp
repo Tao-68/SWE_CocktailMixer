@@ -4,29 +4,28 @@
 void CocktailPro::start() {
 
   while (OperatingMode == OpMode::NORMAL) {
-    int CocktailNo = waehle();
-    if (CocktailNo == -1) {
+    int CocktailNo = selectCocktail();
+
+    if (CocktailNo == -1)
       OperatingMode = OpMode::STOP;
-    }
     else {
-      int max = theMischbaresRezeptbuch->getNumberOfRecipes();
+      int max = mixableRecipeBook->getNumberOfRecipes();
       if (CocktailNo <= max) {
-        Recipe *rezeptptr = theMischbaresRezeptbuch->getRecipe(CocktailNo - 1);
+        Recipe *rezeptptr = mixableRecipeBook->getRecipe(CocktailNo - 1);
         std::cout << rezeptptr->getName() << std::endl;
-        theCocktailZubereiter->cocktailZubereiten(rezeptptr);
-      } else {
+        barTender->prepareCocktail(rezeptptr);
+      } else
         std::cout << "Falsche Cocktailnummer!" << std::endl;
-      }
     }
   }
 }
 
 CocktailPro::CocktailPro(int argc, char **param) {
-  theZutatenVerwalter = new AvailableIngredients;
+    availableIngredients = new AvailableIngredients;
 
-  theMischbaresRezeptbuch = new MixableRecipeBook(theZutatenVerwalter);
-  theDeviceVerwalter = new DeviceVerwalter(theZutatenVerwalter);
-  theCocktailZubereiter = new BarTender(theDeviceVerwalter);
+    mixableRecipeBook = new MixableRecipeBook(availableIngredients);
+  theDeviceVerwalter = new DeviceManager(availableIngredients);
+    barTender = new BarTender(theDeviceVerwalter);
 
   Timer *theTimer = Timer::getInstance();
   if (argc == 2) {
@@ -41,19 +40,19 @@ CocktailPro::CocktailPro(int argc, char **param) {
 }
 
 CocktailPro::~CocktailPro() {
-    delete theZutatenVerwalter;
-    delete theMischbaresRezeptbuch;
+    delete availableIngredients;
+    delete mixableRecipeBook;
     delete theDeviceVerwalter;
-    delete theCocktailZubereiter;
+    delete barTender;
 }
 
 CocktailPro::CocktailPro(const CocktailPro &cocktailPro) {
 
-    theZutatenVerwalter = new AvailableIngredients;
+    availableIngredients = new AvailableIngredients;
 
-    theMischbaresRezeptbuch = new MixableRecipeBook(theZutatenVerwalter);
-    theDeviceVerwalter = new DeviceVerwalter(theZutatenVerwalter);
-    theCocktailZubereiter = new BarTender(theDeviceVerwalter);
+    mixableRecipeBook = new MixableRecipeBook(availableIngredients);
+    theDeviceVerwalter = new DeviceManager(availableIngredients);
+    barTender = new BarTender(theDeviceVerwalter);
 
     this->OperatingMode = cocktailPro.OperatingMode;
 
@@ -66,48 +65,51 @@ CocktailPro& CocktailPro::operator=(CocktailPro rhs) {
 
 void swap(CocktailPro &lhs, CocktailPro &rhs) {
 
-    std::swap(lhs.theZutatenVerwalter, rhs.theZutatenVerwalter);
-    std::swap(lhs.theMischbaresRezeptbuch, rhs.theMischbaresRezeptbuch);
+    std::swap(lhs.availableIngredients, rhs.availableIngredients);
+    std::swap(lhs.mixableRecipeBook, rhs.mixableRecipeBook);
     std::swap(lhs.theDeviceVerwalter, rhs.theDeviceVerwalter);
-    std::swap(lhs.theCocktailZubereiter, rhs.theCocktailZubereiter);
+    std::swap(lhs.barTender, rhs.barTender);
     std::swap(lhs.OperatingMode, rhs.OperatingMode);
 
 }
 
 
 void CocktailPro::demo() {
+
   int CocktailNo = 1;
-  int max = theMischbaresRezeptbuch->getNumberOfRecipes();
+  int max = mixableRecipeBook->getNumberOfRecipes();
   if (CocktailNo <= max) {
-    Recipe *rezeptptr = theMischbaresRezeptbuch->getRecipe(CocktailNo - 1);
+    Recipe *rezeptptr = mixableRecipeBook->getRecipe(CocktailNo - 1);
     std::cout << rezeptptr->getName() << std::endl;
-    theCocktailZubereiter->cocktailZubereiten(rezeptptr);
+      barTender->prepareCocktail(rezeptptr);
   } else {
     std::cout << "Falsche Cocktailnummer!" << std::endl;
   }
 }
 
 
-int CocktailPro::waehle() {
-  while (true) {
-    std::cout << "********** Mischbare Rezepte **********" << std::endl;
-    theMischbaresRezeptbuch->browse();
-    std::cout << "Was haetten Sie denn gern? (-1 zum Verlassen)" << std::endl;
+int CocktailPro::selectCocktail() {
 
     std::string eingabe;
 
+    std::cout << "********** Mischbare Rezepte **********" << std::endl;
+    mixableRecipeBook->browse();
+    std::cout << "Was haetten Sie denn gern? (-1 zum Verlassen)" << std::endl;
     std::cin >> eingabe;
 
     // int zahl = atoi(eingabe.c_str()); // alternative 1: converts a string to int.
     int zahl = (int) strtol(eingabe.c_str(), nullptr, 0); // alternative 2: converts a string to int.
-    int max = theMischbaresRezeptbuch->getNumberOfRecipes();
 
-    if ((zahl >= 1 && zahl <= max) || (zahl == -1)) {
+    if(zahl == -1)
+        return zahl;
+
+    int max = mixableRecipeBook->getNumberOfRecipes();
+    if (zahl > 0 && zahl <= max)
       return zahl;
-    } else {
+    else {
       std::cout << "MEEEP! Too many fingers on keyboard error!" << std::endl;
       std::cout << "Ihre Eingabe: " << eingabe << " war nicht zwischen 1 und " << max << "!"
                 << std::endl;
     }
-  }
+
 }

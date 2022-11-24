@@ -4,8 +4,8 @@ add_library(CocktailProSource STATIC
         ../src/main/CocktailPro.h
         ../src/main/BarTender.cpp
         ../src/main/BarTender.h
-        ../src/main/DeviceVerwalter.cpp
-        ../src/main/DeviceVerwalter.h
+        ../src/main/DeviceManager.cpp
+        ../src/main/DeviceManager.h
         ../src/main/Dispenser.cpp
         ../src/main/Dispenser.h
         ../src/main/Drainer.cpp
