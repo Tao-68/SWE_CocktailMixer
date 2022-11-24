@@ -56,6 +56,12 @@ public:
      */
     std::map<std::string, InternalDevice *> *devices;
 
+    /**
+     * This is a vector with iterator on map from devices, where all used Devices from the BarTender that have to clean up
+     */
+    std::vector<std::map<std::string, InternalDevice *>::iterator> usedDevices;
+
+
 private:
 
     /**

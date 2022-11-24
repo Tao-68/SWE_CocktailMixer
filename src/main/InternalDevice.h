@@ -47,7 +47,7 @@ protected:
     /**
      * This have not a useful use.
      */
-    bool doinIt; //Keinen sinnvollen nutzen im Moment
+    bool doinIt;
 
     /**
      * This is a pointer of a class from the bib <timer.h>
