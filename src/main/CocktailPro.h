@@ -120,15 +120,15 @@ public:
 
 
     /**
-     *
-     * @param cocktailNumberInput
+     * @brief validate selected number
+     * @param cocktailNumberInput  must be an integer number.
      */
     void validateSelectedNumber(int cocktailNumberInput);
 
     /**
-     *
-     * @param cocktailNumberInput
-     * @return
+     * @brief checks, if cocktailNumberInput is not valid cocktail number.
+     * @param cocktailNumberInput must be an integer number.
+     * @return true if cocktailNumberInput is not valid number, otherwise false.
      */
     bool isNotValidNumber(int cocktailNumberInput) const;
 
