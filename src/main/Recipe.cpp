@@ -33,7 +33,7 @@ void Recipe::setName(const std::string& Name) {
     this->m_Name = Name;
 }
 
-void Recipe::browse() {
+void Recipe::getAllIngredients() {
     std::cout << m_Name << ": ";
     for (int i = 0; i< this->getNoOfRecipeSteps(); i++) {
         if (i > 0) std::cout << ", ";

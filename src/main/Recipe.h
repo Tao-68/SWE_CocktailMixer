@@ -71,7 +71,7 @@ public:
     /**
      * @brief Returns all the ingredients that are needed for the individual steps of the calling recipe
      */
-    void browse();
+    void getAllIngredients();
 
 };
 

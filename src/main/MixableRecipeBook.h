@@ -27,7 +27,7 @@ public:
     /**
      * @brief Output of all existing Cocktails.
      */
-    void browse();
+    void getAllCocktails();
 
 private:
     /**
@@ -45,6 +45,12 @@ private:
      */
     void setZutatenVerwalter(AvailableIngredients * ze);
 
+    /**
+     * @brief A search function through all ingredients.
+     * @param gesuchteZutat
+     * @return Boolean whether the ingredient you are looking for exists
+     */
+    bool sucheZutat(const std::string &gesuchteZutat);
 };
 
 #endif

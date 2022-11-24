@@ -1,14 +1,15 @@
 #include "MixableRecipeBook.h"
 #include <iostream>
+//
 
-void MixableRecipeBook::browse() {
+void MixableRecipeBook::getAllCocktails() {
     std::cout << "*********************************************" << std::endl;
     std::cout << "Es gibt " << this->getNumberOfRecipes() << " Cocktails" << std::endl;
 
     for (int i = 0; i<this->getNumberOfRecipes(); i++) {
         Recipe* r = this->getRecipe(i);
         std::cout << i + 1 << ". ";
-        r->browse();
+        r->getAllIngredients();
         std::cout << std::endl;
     }
     std::cout << "*********************************************" << std::endl;
@@ -19,38 +20,37 @@ MixableRecipeBook::MixableRecipeBook(AvailableIngredients * zv) {
 
     // Debug *********
     std::cout << "********** Rezepte vor dem Filtern **********" << std::endl;
-    browse();
+    getAllCocktails();
     // ******************
 
     setZutatenVerwalter(zv);
 
-  for (int i = 0; i < getNumberOfRecipes(); i++) {
-    bool x;
-    Recipe *r = getRecipe(i);
-    x = true;
-    for (int j = 0; j < r->getNoOfRecipeSteps(); j++) {
-      std::string gesuchteZutat;
+    bool istZutatGefunden = false;
+    for (int i = 0; i < getNumberOfRecipes(); i++) {
+        Recipe *r = getRecipe(i);
 
-      gesuchteZutat = r->getRecipeStep(j)->getZutat();
-      bool zOk = false;
-
-      for (int k = 0; k < myZutatenVerwalter->getNumberAvailableIngredients(); k++) {
-        if (myZutatenVerwalter->getIngredient(k) == gesuchteZutat) {
-          zOk = true;
-          break;
+        // Steps durchgehen
+        for (int j = 0; j < r->getNoOfRecipeSteps(); j++) {
+            std::string gesuchteZutat;
+            gesuchteZutat = r->getRecipeStep(j)->getZutat();
+            istZutatGefunden = sucheZutat(gesuchteZutat);
         }
-      }
-      if (!zOk) {
-        x = false;
-      }
+
+        if (!istZutatGefunden) {
+            deleteRecipe(i);
+        }
     }
-    if (!x) {
-      deleteRecipe(i);
+}
+
+bool MixableRecipeBook::sucheZutat(const std::string &gesuchteZutat) {
+    for (int k = 0; k < myZutatenVerwalter->getNumberAvailableIngredients(); k++) {
+        if (myZutatenVerwalter->getIngredient(k) == gesuchteZutat) {
+            return true;
+        }
     }
-  }
+    return false;
 }
 
 void MixableRecipeBook::setZutatenVerwalter(AvailableIngredients * zv) {
     myZutatenVerwalter = zv;
 }
-

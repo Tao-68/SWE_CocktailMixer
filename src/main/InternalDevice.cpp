@@ -6,7 +6,7 @@
 InternalDevice::InternalDevice() {
     zeiteinheit=0;
     myTimer = Timer::getInstance();
-    this->doinIt = 0;
+    this->doinIt = false;
 }
 
 void InternalDevice::putzen() {

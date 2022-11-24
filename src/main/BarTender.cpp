@@ -28,11 +28,12 @@ bool BarTender::prepareCocktail(Recipe * recipe) {
   myDeviceVerwalter->drainer->doIt(i); // give out a cocktail
 
   // device manager cleaning
-  for (auto & myDevice : *myDeviceVerwalter->devices) {
-    std::cout << "Device mit der Aktion: " << myDevice.first << " wird jetzt geputzt: " << std::endl;
-    myDevice.second->putzen();
+  for (auto & cleanDevice : myDeviceVerwalter->usedDevices) {
+    std::cout << "Device mit der Aktion: " << cleanDevice->first << " wird jetzt geputzt: " << std::endl;
+      cleanDevice->second->putzen();
   }
-  return (true);
+    myDeviceVerwalter->usedDevices.clear();
+    return (true);
 }
 
 bool BarTender::checkAvailabilityIngredients(Recipe* recipe) {
