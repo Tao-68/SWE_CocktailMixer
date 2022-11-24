@@ -1,7 +1,7 @@
 #ifndef COCKTAILPRO_H_H
 #define COCKTAILPRO_H_H
 
-#include "DeviceVerwalter.h"
+#include "DeviceManager.h"
 #include "AvailableIngredients.h"
 #include "MixableRecipeBook.h"
 #include "BarTender.h"
@@ -22,23 +22,23 @@ protected:
     /**
     * This is the bar tender that the CocktailPro uses in constructor, start method and demo method.
     */
-    BarTender *theCocktailZubereiter;
+    BarTender *barTender;
 
     /**
      * This is the device manager that the CocktailPro uses only in constructor.
      */
-    DeviceVerwalter *theDeviceVerwalter;
+    DeviceManager *theDeviceVerwalter;
 
     /**
     * This is the book of mixable recipe that the CocktailPro uses in constructor,
-    * start method, demo method and waehle method.
+    * start method, demo method and selectCocktail method.
     */
-    MixableRecipeBook *theMischbaresRezeptbuch;
+    MixableRecipeBook *mixableRecipeBook;
 
     /**
     * This is the available ingredients manager that the CocktailPro uses only in constructor.
     */
-    AvailableIngredients *theZutatenVerwalter;
+    AvailableIngredients *availableIngredients;
 
     /**
      * Enum modes that the CocktailPro uses in constructor and start method.
@@ -56,11 +56,9 @@ protected:
 
     /**
     * @brief Selects the recipe number.
-    * @return the selected recipe number or -1 to exit.
-    *
     * print a text to the terminal.
     */
-    int waehle();
+    void selectCocktail();
 
     /**
     * @brief starts a cocktail preparing for test purposes.
@@ -84,7 +82,7 @@ public:
 
     /**
      * @brief Destructor for a CocktailPro object.
-     * removes a pointer to the BarTender, a pointer to the DeviceVerwalter,
+     * removes a pointer to the BarTender, a pointer to the DeviceManager,
      * a pointer to the MixableRecipeBook and a pointer to the AvailableIngredients.
      */
     ~CocktailPro();
@@ -121,6 +119,24 @@ public:
     void start();
 
 
+    /**
+     * @brief validate selected number
+     * @param cocktailNumberInput  must be an integer number.
+     */
+    void validateSelectedNumber(int cocktailNumberInput);
+
+    /**
+     * @brief checks, if cocktailNumberInput is not valid cocktail number.
+     * @param cocktailNumberInput must be an integer number.
+     * @return true if cocktailNumberInput is not valid number, otherwise false.
+     */
+    bool isNotValidNumber(int cocktailNumberInput) const;
+
+    /**
+     * @brief print message, that input was not valid.
+     * @param cocktailNumberInput must be an integer number.
+     */
+    void notValidInputMsg(int cocktailNumberInput);
 };
 
 #endif

@@ -45,9 +45,9 @@ protected:
     }
 };
 
-TEST_F(AvailableIngredientsTest, getAnzahlVorhandeneZutaten)
+TEST_F(AvailableIngredientsTest, getNumberAvailableIngredients)
 {
-    EXPECT_EQ(15,zv->getAnzahlVorhandeneZutaten());
+    EXPECT_EQ(16, zv->getNumberAvailableIngredients());
 }
 
 TEST_F(AvailableIngredientsTest, FileZutatenDotTxtIsAvailable)
@@ -57,7 +57,7 @@ TEST_F(AvailableIngredientsTest, FileZutatenDotTxtIsAvailable)
     // in TearDown() the normal cout is restored again
 
     test_cout.clear();
-    zv->ZutatenDateiEinlesen("zutaten.txt");
+    zv->readIngredientsFile("ingredients.txt");
     EXPECT_EQ("Oeffne Zutatendatei", test_cout.str().substr(0, 19));
     //std::string s = test_cout.str();
     //std::cout << "!!!" << s.substr(0,31) << "!!!" << std::endl;
@@ -71,7 +71,7 @@ TEST_F(AvailableIngredientsTest, FileZutatenDotTxtIsNotAvailable)
     {
         try
         {
-            zv->ZutatenDateiEinlesen("xxxx.txt");
+            zv->readIngredientsFile("xxxx.txt");
         }
         catch( std::string e)
         {

@@ -3,26 +3,26 @@
 
 #include "Waage.h"
 
-void Waage::changeWeight(int v) {
-    weight += v;
+void Waage::changeWeight(int value) {
+    weight += value;
     if (weight < 0)
         weight = 0;
-    deltaweight += v;
+    deltaWeight += value;
     notify();
 }
 
-int Waage::tara() {
-    return deltaweight = 0;
+int Waage::resetDeltaWeight() {
+    return deltaWeight = 0;
 }
 
 int Waage::getWeight() {
     return weight;
 }
 
-int Waage::getDelta() {
-    return deltaweight;
+int Waage::getDeltaWeight() {
+    return deltaWeight;
 }
 
-Waage::Waage(int waageWeight, int waageDeltaweight): weight(waageWeight), deltaweight(waageDeltaweight){
+Waage::Waage(int waageWeight, int waageDeltaWeight): weight(waageWeight), deltaWeight(waageDeltaWeight){
 
 }

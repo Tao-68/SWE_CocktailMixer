@@ -24,21 +24,20 @@
 class RecipeBook {
     /**
     * This is the list of recipes that the RecipeBook manages
-    *
     */
   private:
-    std::list<Recipe *> m_Recipe;
+    std::list<Recipe *> recipes;
 
   public:
     /** @brief Constructor that creates a RecipeBook
     * @return A pointer to the created RecipeBook
     *
     * This method creates a RecipeBook.
-    * It uses temporarily an object of the class Initialisierer
+    * It uses temporarily an object of the class Initializer
     * to initialize the list of recipes. After that the
-    * Initialisierer is destroyed.
+    * Initializer is destroyed.
     */
-    RecipeBook(void);
+    RecipeBook();
 
     /** @brief Destructor that deletes the RecipeBook
     */
@@ -49,25 +48,89 @@ class RecipeBook {
     */
     int getNumberOfRecipes();
 
-    /** @brief fetches the i-th recipe
-    * @param [in] i a positive integer for the i-th recipe
-    * @return A pointer to the requested recipe object, NULL for invalid i
+    /** @brief fetches the i-th recipe at position recipeIndex
+    * @param [in] recipeIndex a positive integer for the i-th recipe
+    * @return A pointer to the requested recipe object, NULL for invalid recipeIndex
     *
-    * This method returns the i-th recipe;
-    * where i is an integer from 0 to n-1
+    * This method returns the recipeIndex-th recipe;
+    * where recipeIndex is an integer from 0 to n-1
     * where n is the number of recipes in the RecipeBook
     */
-    Recipe * getRecipe(unsigned int i);
+    Recipe * getRecipe(unsigned int recipeIndex);
 
-    /** @brief Deletes the i-th recipe from the RecipeBook
-    * @param [in] i a positive integer for the i-th recipe
+    /** @brief Deletes the i-th recipe from the RecipeBook at position recipeIndex
+    * @param [in] recipeIndex a positive integer for the i-th recipe
     * @return Boolean that indicates whether the deletion was successful
     *
-    * This method deletes the i-th recipe from the RecipeBook.
-    * And returns true if the deletion was successful (valid i).
-    * For values of i that are invalid (i <0 or i>=n) the function return false.
+    * This method deletes the recipeIndex-th recipe from the RecipeBook.
+    * And returns true if the deletion was successful (valid recipeIndex).
+    * For values of recipeIndex that are invalid (recipeIndex < 0 or recipeIndex >= n) the function return false.
     */
-    bool deleteRecipe(unsigned int i);   
+    bool deleteRecipe(unsigned int recipeIndex);
+
+    /** @brief Function that creates a Recipe Object
+    * @param [in] r1 pointer to class Recipe
+    *
+    * This method creates the Recipe object for Caipirinha.
+    * It sets the name of Recipe and manages the ingredients (zutat) and amounts (menge).
+    */
+    void createCaipirinha(Recipe *r1);
+
+    /** @brief Function that creates a Recipe Object
+    * @param [in] r1 pointer to class Recipe
+    *
+    * This method creates the Recipe object for Margarita.
+    * It sets the name of Recipe and manages the ingredients (zutat) and amounts (menge).
+    */
+    void createMargarita(Recipe *r1);
+
+    /** @brief Function that creates a Recipe Object
+    * @param [in] r1 pointer to class Recipe
+    *
+    * This method creates the Recipe object for Daiquri.
+    * It sets the name of Recipe and manages the ingredients (zutat) and amounts (menge).
+    */
+    void createDaiquri(Recipe *r1);
+
+    /** @brief Function that creates a Recipe Object
+    * @param [in] r1 pointer to class Recipe
+    *
+    * This method creates the Recipe object for Planters Punch.
+    * It sets the name of Recipe and manages the ingredients (zutat) and amounts (menge).
+    */
+    void createPlantersPunch(Recipe *r1);
+
+    /** @brief Function that creates a Recipe Object
+    * @param [in] r1 pointer to class Recipe
+    *
+    * This method creates the Recipe object for Caipiroska.
+    * It sets the name of Recipe and manages the ingredients (zutat) and amounts (menge).
+    */
+    void createCaipiroska(Recipe *r1);
+
+    /** @brief Function that creates a Recipe Object
+    * @param [in] r1 pointer to class Recipe
+    *
+    * This method creates the Recipe object for Caipirissima.
+    * It sets the name of Recipe and manages the ingredients (zutat) and amounts (menge).
+    */
+    void createCaipirissima(Recipe *r1);
+
+    /** @brief Function that creates a Recipe Object
+    * @param [in] r1 pointer to class Recipe
+    *
+    * This method creates the Recipe object for Cuban Island.
+    * It sets the name of Recipe and manages the ingredients (zutat) and amounts (menge).
+    */
+    void createCubanIsland(Recipe *r1);
+
+    /** @brief Function that creates a Recipe Object
+    * @param [in] r1 pointer to class Recipe
+    *
+    * This method creates the Recipe object for Martini James B.
+    * It sets the name of Recipe and manages the ingredients (zutat) and amounts (menge).
+    */
+    void createMartiniJamesB(Recipe *r1);
 };
 
 #endif

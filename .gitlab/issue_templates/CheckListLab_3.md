@@ -14,7 +14,7 @@ about: Template zur Bewertung des Praktikums
 # Refactoring
 - [ ] Die CCCC-Statistik in Jenkins enthält keine gelben oder roten Einträge mehr
 - [ ] Stichprobe: Die Magic Number 1000 in der Datei Timer.cpp wurde durch Refactoring ersetzt
-- [ ] Stichprobe: In AvailableIngredients.cpp Zeile 15 wurde der Dateiname "zutaten.txt" extrahiert
+- [ ] Stichprobe: In AvailableIngredients.cpp Zeile 15 wurde der Dateiname "ingredients.txt" extrahiert
 - [ ] Der Konstruktor von RecipeBook wurde in mehrere Methoden aufgeteilt
 - [ ] Der Konstruktor von MixableRecipeBook wurde in mehrere Methoden aufgeteilt
 

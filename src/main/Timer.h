@@ -40,16 +40,16 @@ class Timer {
      */
 
     /** @brief Sets the time duration to sleep in intervals
-    * @param [in] milliseconds the time to sleep in milliseconds
+    * @param [in] delayInMS the time to delay in milliseconds
     */
-    void sleep_in_intervals(long milliseconds);
+    void sleep_in_intervals(long delayInMS);
 
     /** @brief Sets the time duration to sleep
-    * @param [in] delay_in_ms the time to sleep in milliseconds
+    * @param [in] delayInMS the time to sleep in milliseconds
     *
     * This method divides the input (delay_in_ms) with another input (booster)
     */
-    void sleep(long delay_in_ms);
+    void sleep(long delayInMS);
 
 
  private:
@@ -61,6 +61,8 @@ class Timer {
     static Timer * theTimer;
 
     int booster;
+
+    const int delayTime = 1000;
 
     /** @brief Constructor that creates a Timer object
     * @return the constructed object

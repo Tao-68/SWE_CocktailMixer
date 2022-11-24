@@ -1,5 +1,3 @@
-//@(#) MixableRecipeBook.h
-
 #ifndef MISCHBARESREZEPTBUCH_H_H
 #define MISCHBARESREZEPTBUCH_H_H
 
@@ -33,7 +31,7 @@ public:
 
 private:
     /**
-    * This is a vector of all recipes
+    * This is the pointer to available ingredients that MixableRecipeBook uses in the constructor.
     */
     AvailableIngredients * myZutatenVerwalter;
 

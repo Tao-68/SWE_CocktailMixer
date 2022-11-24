@@ -21,25 +21,25 @@ class Waage : public Subject {
      * @brief Constructor that creates a Waage.
      *
      * @param waageWeight must not be null.
-     * @param waageDeltaweight must not be null.
+     * @param waageDeltaWeight must not be null.
      *
      * Creates a Waage object.
      * Initializes the private variables 'waageWeight' and 'waageDeltaweight'.
      */
-    Waage(int waageWeight, int waageDeltaweight);
+    Waage(int waageWeight, int waageDeltaWeight);
 
     /** @brief Updates the value of weight and delta weight
-    * @param [in] v The value that changes the initial weight and delta weight
+    * @param [in] value The value that changes the initial weight and delta weight
     *
     * This method assigns the value 0 to weight if weight < 0.
     * And updates the observers.
     */
-    void changeWeight(int v);
+    void changeWeight(int value);
 
     /** @brief Resets the value of delta weight to zero
     * @return The value zero for delta weight
     */
-    int tara();
+    int resetDeltaWeight();
 
     /** @brief Gets the weight value
     * @return The value for weight
@@ -49,10 +49,10 @@ class Waage : public Subject {
     /** @brief Gets the delta weight value
     * @return The value for delta weight
     */
-    int getDelta();
+    int getDeltaWeight();
  private:
     int weight;
-    int deltaweight;
+    int deltaWeight;
 };
 
 #endif

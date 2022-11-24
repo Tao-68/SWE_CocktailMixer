@@ -14,7 +14,7 @@ about: Template zur Bewertung des Praktikums
 - [ ] Der CocktailPro kann durch das Anhängen von -T beim Aufruf im Turbomodus gestartet werden
 - [ ] Mit der Standard-Zutatenliste werden die 6 bekannten Cocktails angeboten:
 Caipirinha, Margarita, Caipiroska, Caipirissima, Cuban Island, Martini J.B.
-- [ ] Wenn man aus der zutaten.txt den Wodka löscht (bzw. durch Tequilla ersetzt), sind nur noch Caipirinha, Margarita und Caipirissima mischbar
+- [ ] Wenn man aus der ingredients.txt den Wodka löscht (bzw. durch Tequilla ersetzt), sind nur noch Caipirinha, Margarita und Caipirissima mischbar
 - [ ] Die Cocktailnummern wurden bei der Zutatenänderung beibehalten
 - [ ] Die Füllstände werden beim Mischen eines Caipirinha aktualisiert und korrekt angezeigt
 - [ ] Das (für die Abnahme geänderte) Margarita-Rezept verwendet 450 Einheiten Tequilla und demonstriert schnell den korrekten Einsatz der 2 Tequilla-Dispenser 
