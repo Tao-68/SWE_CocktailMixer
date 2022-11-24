@@ -26,10 +26,10 @@ public:
      *
      * @param gram must not be null.
      * @param timeUnit must not be null.
-     * @param content must be a valid string.
-     * @param scale must be not null pointer.
+     * @param dispenserContent must be a valid string.
+     * @param dispenserScale must be not null pointer.
      */
-    Dispenser(float gram, int timeUnit,  std::string content, Waage * scale);
+    Dispenser(float gram, int timeUnit,  std::string dispenserContent, Waage * dispenserScale);
 
     /**
      * @brief Destructor for Dispenser object.
