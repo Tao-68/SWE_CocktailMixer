@@ -41,6 +41,11 @@ private:
 
     bool checkAvailabilityIngredients(Recipe* recipe);
 
+    /**
+     * This cleaning all devices that are to clean up
+     */
+    void cleaningDevices();
+
 
 };
 
