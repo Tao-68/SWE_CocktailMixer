@@ -32,7 +32,7 @@ public:
      *
      * @param ze must not be null pointer.
      */
-    DeviceManager(AvailableIngredients *ze);
+    explicit DeviceManager(AvailableIngredients *ze);
 
     /**
      * @brief prepares the steps of recipe.
