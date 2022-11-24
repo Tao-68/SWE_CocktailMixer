@@ -29,7 +29,7 @@ public:
      * @param dispenserContent must be a valid string.
      * @param dispenserScale must be not null pointer.
      */
-    Dispenser(float gram, int timeUnit,  std::string dispenserContent, Waage * dispenserScale);
+    Dispenser(float gram, int timeUnit, const std::string &dispenserContent, Waage * dispenserScale);
 
     /**
      * @brief Destructor for Dispenser object.
