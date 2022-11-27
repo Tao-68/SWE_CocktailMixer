@@ -32,7 +32,7 @@ public:
     * Adds a state of aggregation (Mischen and Stampfen) to the vector of ingredients (ingredients).
     * Initializes a number of dispenser (numberOfDispenser) Variable.
     */
-    AvailableIngredients(void);
+    AvailableIngredients();
 
     /** @brief Copy constructor that copy the existing object, when a new object is created from an existing object.
     *

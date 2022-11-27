@@ -1,6 +1,6 @@
 #include "AvailableIngredients.h"
 
-AvailableIngredients::AvailableIngredients(void) {
+AvailableIngredients::AvailableIngredients() {
     ingredients = new std::vector<std::string>;
 
     readIngredientsFile("ingredients.txt");
@@ -18,21 +18,19 @@ AvailableIngredients::AvailableIngredients(void) {
 AvailableIngredients::AvailableIngredients(const AvailableIngredients &availableIngredients) {
 
     ingredients = new std::vector<std::string>();
-    for (std::string z : *availableIngredients.ingredients){
+    for (std::string z : *availableIngredients.ingredients)
         ingredients->push_back(z);
-    }
 
     numberOfDispenser = availableIngredients.numberOfDispenser;
 
 }
 
-AvailableIngredients& AvailableIngredients::operator= (const AvailableIngredients &eqopAvailableIngredients) {
+AvailableIngredients& AvailableIngredients::operator=(const AvailableIngredients &eqopAvailableIngredients) {
 
-    if (&eqopAvailableIngredients != this){
+    if (&eqopAvailableIngredients != this) {
         ingredients = new std::vector<std::string>();
-        for (std::string z : *eqopAvailableIngredients.ingredients){
+        for (std::string z : *eqopAvailableIngredients.ingredients)
             ingredients->push_back(z);
-        }
 
         numberOfDispenser = eqopAvailableIngredients.numberOfDispenser;
     }
