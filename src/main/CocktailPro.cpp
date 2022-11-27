@@ -103,7 +103,7 @@ void CocktailPro::selectCocktail() {
 
     std::string input;
 
-    std::cout << "********** Mischbare Rezepte **********" << std::endl;
+    std::cout << "************* Mischbare Rezepte *************" << std::endl;
     mixableRecipeBook->getAllCocktails();
     std::cout << "Was haetten Sie denn gern? (-1 zum Verlassen)" << std::endl;
     std::cin >> input;
