@@ -92,6 +92,16 @@ TEST_F(AvailableIngredientsTest, Ingredients_file_is_valid) {
     EXPECT_EQ("Open the ingredients file", test_cout.str().substr(0, 25));
 }
 
+/*
+TEST_F(AvailableIngredientsTest, browse_ingredients_is_valid) {
+    test_cout.clear();
+
+    availableIngredientsPtr->browse();
+    // How can I test it?
+}
+*/
+
+
 TEST_F(AvailableIngredientsTest, Ingredients_file_is_not_available) {
     // Test asserts that an exception is thrown and that the type of the exception is the one expected
     //https://stackoverflow.com/questions/23270078/test-a-specific-exception-type-is-thrown-and-the-exception-has-the-right-propert

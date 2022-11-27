@@ -52,18 +52,18 @@ public:
     AvailableIngredients& operator= (const AvailableIngredients& eqopAvailableIngredients);
 
     /**
-     * @brief Destructor that deletes the AvailableIngredients.
+     * @brief Destructor that deletes the AvailableIngredients Object.
      *
-     * TODO: the vector of ingredients (ingredients) is a pointer and must be removed
+     * Apart from that it deletes Ingredients pointer.
      */
-    virtual ~AvailableIngredients();
+    ~AvailableIngredients();
 
     /**
      * @brief Shows the available ingredients (ingredients)
      * and the state of aggregation (Mischen and Stampfen) line by line.
      *
      */
-    void browse(void);
+    void browse();
 
     /**
      * @brief Returns the ingredient (ingredients) at specified position.
@@ -99,7 +99,7 @@ private:
      * @param fileName must be a valid file name.
      * ingredient to the vector of ingredients (ingredients) variable.
      */
-    virtual void readIngredientsFile(std::string fileName);
+     void readIngredientsFile(std::string fileName);
 
 };
 #endif

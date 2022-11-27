@@ -38,8 +38,8 @@ AvailableIngredients& AvailableIngredients::operator=(const AvailableIngredients
     return *this;
 }
 
-AvailableIngredients::~AvailableIngredients(void) {
-
+AvailableIngredients::~AvailableIngredients() {
+    delete ingredients;
 }
 
 void AvailableIngredients::readIngredientsFile(std::string fileName) {
@@ -70,12 +70,11 @@ void AvailableIngredients::readIngredientsFile(std::string fileName) {
     in.close();
 }
 
-void AvailableIngredients::browse(void) {
-    std::cout << "*********** Verfuegbare Einheiten bzw. Zutaten: ***********" << std::endl;
-    for (unsigned int i = 0; i < ingredients->size(); i++) {
-        std::cout << ingredients->at(i) << std::endl;
-    }
-    std::cout << "**********************************************************" << std::endl;
+void AvailableIngredients::browse() {
+    std::cout << "*********** Verfuegbare Zutaten: *************" << std::endl;
+    for (auto & ingredient : *ingredients)
+        std::cout << ingredient << std::endl;
+    std::cout << "*********************************************" << std::endl;
 }
 
 std::string AvailableIngredients::getIngredient(int position) {
