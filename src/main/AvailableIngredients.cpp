@@ -57,7 +57,7 @@ void AvailableIngredients::readIngredientsFile(std::string fileName) {
         throw my_exception;
     }
 
-    std::cout << "Oeffne Zutatendatei " << fileName << std::endl;
+    std::cout << "Open the ingredients file" << fileName << std::endl;
 
     std::string zeile;
     while (getline(in, zeile)) {

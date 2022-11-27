@@ -1,6 +1,6 @@
-#include <limits.h>
 #include <string>
 #include "gtest/gtest.h"
+#include <sstream>
 
 // Using this ugly tweak you make all private elements public!
 // But be careful! Some methods are private for good reasons!
@@ -11,13 +11,11 @@
 #undef protected
 #undef private
 
-#include <sstream>
-
 class AvailableIngredientsTest: public ::testing::Test
 {
 protected:
-    AvailableIngredients* zv;
-    std::basic_streambuf<char>* orig_cout;
+    AvailableIngredients* zv = nullptr;
+    std::basic_streambuf<char>* orig_cout = nullptr;
     std::stringstream test_cout;
 
     void SetUp() override
@@ -33,7 +31,7 @@ protected:
       zv = new AvailableIngredients();
     }
 
-    virtual void TearDown()
+    void TearDown() override
     {
         // Code here will be called immediately after each test
         // (right before the destructor).
@@ -45,12 +43,12 @@ protected:
     }
 };
 
-TEST_F(AvailableIngredientsTest, getNumberAvailableIngredients)
+TEST_F(AvailableIngredientsTest, Number_of_available_ingredients_is_valid)
 {
     EXPECT_EQ(16, zv->getNumberAvailableIngredients());
 }
 
-TEST_F(AvailableIngredientsTest, FileZutatenDotTxtIsAvailable)
+TEST_F(AvailableIngredientsTest, Ingredients_file_is_valid)
 {
     // SetUp() redirects the standard cout to another stream (test_cout)
     // this stream can be read and compared
@@ -58,12 +56,10 @@ TEST_F(AvailableIngredientsTest, FileZutatenDotTxtIsAvailable)
 
     test_cout.clear();
     zv->readIngredientsFile("ingredients.txt");
-    EXPECT_EQ("Oeffne Zutatendatei", test_cout.str().substr(0, 19));
-    //std::string s = test_cout.str();
-    //std::cout << "!!!" << s.substr(0,31) << "!!!" << std::endl;
+    EXPECT_EQ("Open the ingredients file", test_cout.str().substr(0, 25));
 }
 
-TEST_F(AvailableIngredientsTest, FileZutatenDotTxtIsNotAvailable)
+TEST_F(AvailableIngredientsTest, Ingredients_file_is_not_available)
 {
     // Test asserts that an exception is thrown and that the type of the exception is the one expected
     //https://stackoverflow.com/questions/23270078/test-a-specific-exception-type-is-thrown-and-the-exception-has-the-right-propert
@@ -73,7 +69,7 @@ TEST_F(AvailableIngredientsTest, FileZutatenDotTxtIsNotAvailable)
         {
             zv->readIngredientsFile("xxxx.txt");
         }
-        catch( std::string e)
+        catch( std::string &e)
         {
             std::cout << e << std::endl;
             EXPECT_EQ("File not found", e.substr(0,14));
