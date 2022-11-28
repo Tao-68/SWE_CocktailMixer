@@ -34,10 +34,12 @@ MixableRecipeBook::MixableRecipeBook(AvailableIngredients * zv) {
             std::string gesuchteZutat;
             gesuchteZutat = r->getRecipeStep(j)->getZutat();
             istZutatGefunden = sucheZutat(gesuchteZutat);
-        }
 
-        if (!istZutatGefunden) {
-            deleteRecipe(i);
+            if (!istZutatGefunden) {
+                deleteRecipe(i);
+                i--;
+                break;
+            }
         }
     }
 }
