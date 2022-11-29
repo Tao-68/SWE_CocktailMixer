@@ -8,9 +8,8 @@ void Timer::set_Turbo(int turbo) {
 }
 
 Timer *Timer::getInstance() {
-    if (!instanceFlag) {
+    if (theTimer == nullptr) {
         theTimer = new Timer();
-        instanceFlag = true;
         return theTimer;
     } else {
         return theTimer;
