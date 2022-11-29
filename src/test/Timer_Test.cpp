@@ -39,7 +39,6 @@ TEST_F(TimerTest, setTurbo){
 }
 
 TEST_F(TimerTest, getInstance){
-    timer = nullptr;
     EXPECT_TRUE(timer->theTimer == nullptr);
     timer->getInstance();
     EXPECT_FALSE(timer->theTimer == nullptr);
