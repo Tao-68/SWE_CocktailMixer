@@ -39,9 +39,9 @@ TEST_F(TimerTest, setTurbo){
 }
 
 TEST_F(TimerTest, getInstance){
-    EXPECT_TRUE(timer->theTimer == NULL);
+    //EXPECT_TRUE(timer->theTimer == NULL);
     timer->getInstance();
-    EXPECT_FALSE(timer->theTimer == NULL);
+    EXPECT_FALSE(timer->theTimer == nullptr);
 }
 
 TEST_F(TimerTest, checkSleepInIntervalTimeGreaterThan1000) {
