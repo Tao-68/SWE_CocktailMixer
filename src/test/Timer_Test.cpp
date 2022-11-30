@@ -49,7 +49,7 @@ TEST_F(TimerTest, checkSleepInIntervalTimeGreaterThan1000) {
     timer->sleep_in_intervals(1000);
     std::chrono::steady_clock::time_point end = std::chrono::steady_clock::now();
     int timeDifference = std::chrono::duration_cast<std::chrono::milliseconds>(end - begin).count();
-    EXPECT_TRUE(timeDifference < 1005 && timeDifference > 995);
+    EXPECT_TRUE(timeDifference < 1100 && timeDifference > 900);
 }
 
 TEST_F(TimerTest, checkSleepInIntervalTimeLessThan1000) {
@@ -57,7 +57,7 @@ TEST_F(TimerTest, checkSleepInIntervalTimeLessThan1000) {
     timer->sleep_in_intervals(200);
     std::chrono::steady_clock::time_point end = std::chrono::steady_clock::now();
     int timeDifference = std::chrono::duration_cast<std::chrono::milliseconds>(end - begin).count();
-    EXPECT_TRUE(timeDifference < 205 && timeDifference > 195);
+    EXPECT_TRUE(timeDifference < 250 && timeDifference > 150);
 }
 
 TEST_F(TimerTest, checkSleepTime) {
@@ -65,5 +65,5 @@ TEST_F(TimerTest, checkSleepTime) {
     timer->sleep_in_intervals(2000);
     std::chrono::steady_clock::time_point end = std::chrono::steady_clock::now();
     int timeDifference = std::chrono::duration_cast<std::chrono::milliseconds>(end - begin).count();
-    EXPECT_TRUE(timeDifference < 2005 && timeDifference > 1995);
+    EXPECT_TRUE(timeDifference < 2100 && timeDifference > 1900);
 }
