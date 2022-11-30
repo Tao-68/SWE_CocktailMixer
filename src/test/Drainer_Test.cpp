@@ -18,7 +18,7 @@ protected:
     Drainer* drainer = new Drainer(25, 1000, scale);
 
     void SetUp() override {
-        std::cout << "Start of " << "DispenserTest" << std::endl << std::flush;
+        std::cout << "Start of " << "DrainerTest" << std::endl << std::flush;
         orig_cout = std::cout.rdbuf(test_cout.rdbuf());
     }
 
@@ -27,7 +27,7 @@ protected:
         delete drainer;
 
         std::cout.rdbuf(orig_cout);
-        std::cout << "End of " << "DispenserTest" << std::endl << std::flush;
+        std::cout << "End of " << "DrainerTest" << std::endl << std::flush;
     }
 };
 
