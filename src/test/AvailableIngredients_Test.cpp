@@ -42,7 +42,7 @@ protected:
     }
 };
 
-TEST_F(AvailableIngredientsTest, Copy_constructor_is_valid) {
+TEST_F(AvailableIngredientsTest, copyConstructorIsValid) {
 
     AvailableIngredients copiedObject(*availableIngredientsPtr);
 
@@ -58,7 +58,7 @@ TEST_F(AvailableIngredientsTest, Copy_constructor_is_valid) {
 
 }
 
-TEST_F(AvailableIngredientsTest, Assignment_operator_is_valid) {
+TEST_F(AvailableIngredientsTest, assignmentOperatorIsValid) {
 
     AvailableIngredients copiedObject = *availableIngredientsPtr;
 
@@ -74,15 +74,15 @@ TEST_F(AvailableIngredientsTest, Assignment_operator_is_valid) {
 
 }
 
-TEST_F(AvailableIngredientsTest, Ingredient_is_valid) {
+TEST_F(AvailableIngredientsTest, ingredientIsValid) {
     EXPECT_EQ("Limettenstuecke", availableIngredientsPtr->getIngredient(0));
 }
 
-TEST_F(AvailableIngredientsTest, Number_of_available_ingredients_is_valid) {
+TEST_F(AvailableIngredientsTest, numberOfAvailableIngredientsIsValid) {
     EXPECT_EQ(16, availableIngredientsPtr->getNumberAvailableIngredients());
 }
 
-TEST_F(AvailableIngredientsTest, Ingredients_file_is_valid) {
+TEST_F(AvailableIngredientsTest, ingredientsFileIsValid) {
     // SetUp() redirects the standard cout to another stream (test_cout)
     // this stream can be read and compared
     // in TearDown() the normal cout is restored again
@@ -93,7 +93,7 @@ TEST_F(AvailableIngredientsTest, Ingredients_file_is_valid) {
 }
 
 /*
-TEST_F(AvailableIngredientsTest, browse_ingredients_is_valid) {
+TEST_F(AvailableIngredientsTest, browseIngredientsIsValid) {
     test_cout.clear();
 
     availableIngredientsPtr->browse();
@@ -102,7 +102,7 @@ TEST_F(AvailableIngredientsTest, browse_ingredients_is_valid) {
 */
 
 
-TEST_F(AvailableIngredientsTest, Ingredients_file_is_not_available) {
+TEST_F(AvailableIngredientsTest, ingredientsFileIsNotAvailable) {
     // Test asserts that an exception is thrown and that the type of the exception is the one expected
     //https://stackoverflow.com/questions/23270078/test-a-specific-exception-type-is-thrown-and-the-exception-has-the-right-propert
     EXPECT_THROW({
