@@ -66,3 +66,67 @@ TEST_F(RecipeBookTest,deleteRecipeRemovesCorrectRecipe){
     rez = r->getRecipe(0);
     EXPECT_EQ(rez->getName(),"Margarita");    
 }
+
+TEST_F(RecipeBookTest, createCaipirinha)
+{
+    r->recipes.clear();
+    r->createCaipirinha(new Recipe);
+    EXPECT_EQ(r->getNumberOfRecipes(), 1);
+    EXPECT_EQ(r->getRecipe(0)->getName(), "Caipirinha");
+}
+
+TEST_F(RecipeBookTest, createMargarita)
+{
+    r->recipes.clear();
+    r->createMargarita(new Recipe);
+    EXPECT_EQ(r->getNumberOfRecipes(), 1);
+    EXPECT_EQ(r->getRecipe(0)->getName(), "Margarita");
+}
+
+TEST_F(RecipeBookTest, createDaiquiri)
+{
+    r->recipes.clear();
+    r->createDaiquiri(new Recipe);
+    EXPECT_EQ(r->getNumberOfRecipes(), 1);
+    EXPECT_EQ(r->getRecipe(0)->getName(), "Daiquiri");
+}
+
+TEST_F(RecipeBookTest, createPlantersPunch)
+{
+    r->recipes.clear();
+    r->createPlantersPunch(new Recipe);
+    EXPECT_EQ(r->getNumberOfRecipes(), 1);
+    EXPECT_EQ(r->getRecipe(0)->getName(), "Planters Punch");
+}
+
+TEST_F(RecipeBookTest, createCaipiroska)
+{
+    r->recipes.clear();
+    r->createCaipiroska(new Recipe);
+    EXPECT_EQ(r->getNumberOfRecipes(), 1);
+    EXPECT_EQ(r->getRecipe(0)->getName(), "Caipiroska");
+}
+
+TEST_F(RecipeBookTest, createCaipirissima)
+{
+    r->recipes.clear();
+    r->createCaipirissima(new Recipe);
+    EXPECT_EQ(r->getNumberOfRecipes(), 1);
+    EXPECT_EQ(r->getRecipe(0)->getName(), "Caipirissima");
+}
+
+TEST_F(RecipeBookTest, createCubanIsland)
+{
+    r->recipes.clear();
+    r->createCubanIsland(new Recipe);
+    EXPECT_EQ(r->getNumberOfRecipes(), 1);
+    EXPECT_EQ(r->getRecipe(0)->getName(), "Cuban Island");
+}
+
+TEST_F(RecipeBookTest, createMartiniJamesB)
+{
+    r->recipes.clear();
+    r->createMartiniJamesB(new Recipe);
+    EXPECT_EQ(r->getNumberOfRecipes(), 1);
+    EXPECT_EQ(r->getRecipe(0)->getName(), "Martini James B");
+}
