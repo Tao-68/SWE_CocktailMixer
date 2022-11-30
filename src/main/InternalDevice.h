@@ -1,5 +1,3 @@
-//@(#) InternalDevice.h
-
 #ifndef INTERNALDEVICE_H_H
 #define INTERNALDEVICE_H_H
 

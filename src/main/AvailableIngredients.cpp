@@ -1,6 +1,6 @@
 #include "AvailableIngredients.h"
 
-AvailableIngredients::AvailableIngredients(void) {
+AvailableIngredients::AvailableIngredients() {
     ingredients = new std::vector<std::string>;
 
     readIngredientsFile("ingredients.txt");
@@ -18,21 +18,19 @@ AvailableIngredients::AvailableIngredients(void) {
 AvailableIngredients::AvailableIngredients(const AvailableIngredients &availableIngredients) {
 
     ingredients = new std::vector<std::string>();
-    for (std::string z : *availableIngredients.ingredients){
+    for (std::string z : *availableIngredients.ingredients)
         ingredients->push_back(z);
-    }
 
     numberOfDispenser = availableIngredients.numberOfDispenser;
 
 }
 
-AvailableIngredients& AvailableIngredients::operator= (const AvailableIngredients &eqopAvailableIngredients) {
+AvailableIngredients& AvailableIngredients::operator=(const AvailableIngredients &eqopAvailableIngredients) {
 
-    if (&eqopAvailableIngredients != this){
+    if (&eqopAvailableIngredients != this) {
         ingredients = new std::vector<std::string>();
-        for (std::string z : *eqopAvailableIngredients.ingredients){
+        for (std::string z : *eqopAvailableIngredients.ingredients)
             ingredients->push_back(z);
-        }
 
         numberOfDispenser = eqopAvailableIngredients.numberOfDispenser;
     }
@@ -40,8 +38,8 @@ AvailableIngredients& AvailableIngredients::operator= (const AvailableIngredient
     return *this;
 }
 
-AvailableIngredients::~AvailableIngredients(void) {
-
+AvailableIngredients::~AvailableIngredients() {
+    delete ingredients;
 }
 
 void AvailableIngredients::readIngredientsFile(std::string fileName) {
@@ -57,7 +55,7 @@ void AvailableIngredients::readIngredientsFile(std::string fileName) {
         throw my_exception;
     }
 
-    std::cout << "Oeffne Zutatendatei " << fileName << std::endl;
+    std::cout << "Open the ingredients file" << fileName << std::endl;
 
     std::string zeile;
     while (getline(in, zeile)) {
@@ -72,12 +70,11 @@ void AvailableIngredients::readIngredientsFile(std::string fileName) {
     in.close();
 }
 
-void AvailableIngredients::browse(void) {
-    std::cout << "*********** Verfuegbare Einheiten bzw. Zutaten: ***********" << std::endl;
-    for (unsigned int i = 0; i < ingredients->size(); i++) {
-        std::cout << ingredients->at(i) << std::endl;
-    }
-    std::cout << "**********************************************************" << std::endl;
+void AvailableIngredients::browse() {
+    std::cout << "*********** Verfuegbare Zutaten: *************" << std::endl;
+    for (auto & ingredient : *ingredients)
+        std::cout << ingredient << std::endl;
+    std::cout << "*********************************************" << std::endl;
 }
 
 std::string AvailableIngredients::getIngredient(int position) {

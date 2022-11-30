@@ -10,7 +10,12 @@ add_executable(CocktailProTest
         ../src/test/Shaker_Test.cpp
         ../src/test/Subject_Test.cpp
         ../src/test/Timer_Test.cpp
-        ../src/test/Waage_Test.cpp)
+        ../src/test/Waage_Test.cpp
+        ../src/test/DeviceManager_Test.cpp
+        ../src/test/Dispenser_Test.cpp
+        ../src/test/Drainer_Test.cpp
+        ../src/test/InternalDevice_Test.cpp
+        )
 
 # Link CocktailProTest against CocktailProSource
 linkCocktailProSource(CocktailProTest)

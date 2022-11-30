@@ -5,8 +5,6 @@ Drainer::Drainer(float g, int ze, Waage * wg) : InternalDevice() {
     this->zeiteinheit = ze;
     this->scale = wg;
     this->scale->attach(this);
-
-    this->value = 0;
 }
 
 Drainer::~Drainer(){
@@ -16,8 +14,6 @@ Drainer::~Drainer(){
 }
 
 void Drainer::update() {
-
-    if (!this->doinIt) return;
     if (static_cast<float>(scale->getWeight()) <= this->value)
         doinIt = false;
 }
