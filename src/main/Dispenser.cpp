@@ -13,11 +13,8 @@ Dispenser::~Dispenser(){
 }
 
 void Dispenser::update() {
-    if (!this->doinIt) return;
-
     if (static_cast<float>(scale->getDeltaWeight()) >= weight)
         doinIt = false;
-
 }
 
 void Dispenser::doIt(float gramm) {
