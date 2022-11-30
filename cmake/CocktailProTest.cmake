@@ -3,8 +3,7 @@ add_executable(CocktailProTest
         ../src/test/RecipeBook_Test.cpp
         ../src/test/AvailableIngredients_Test.cpp 
         ../src/test/Recipe_Test.cpp 
-        ../src/test/MixableRecipeBook_Test.cpp)
-        ../src/test/AvailableIngredients_Test.cpp
+        ../src/test/MixableRecipeBook_Test.cpp
         ../src/test/Masher_Test.cpp
         ../src/test/Mixer_Test.cpp
         ../src/test/RecipeStep_Test.cpp
