@@ -1,7 +1,7 @@
 # Add all test files including the file holding the test main function
 add_executable(CocktailProTest
         ../src/test/RecipeBook_Test.cpp
-        ../src/test/AvailableIngredients_Test.cpp)
+        ../src/test/AvailableIngredients_Test.cpp ../src/test/DeviceManager_Test.cpp ../src/test/Dispenser_Test.cpp ../src/test/Drainer_Test.cpp ../src/test/InternalDevice_Test.cpp)
 
 # Link CocktailProTest against CocktailProSource
 linkCocktailProSource(CocktailProTest)
