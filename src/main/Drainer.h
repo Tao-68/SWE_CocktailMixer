@@ -66,7 +66,7 @@ private:
     /**
      * This is the value, that the Drainer uses in doIt method and update method.
      */
-    float value;
+    float value = 0;
 
 };
 
