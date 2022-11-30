@@ -43,13 +43,10 @@ void DeviceManager::prepareRecipeSteps(std::string ingredient, float amount) {
         // Der Kunde will Limetten ja unbedingt nach Stueck und nicht nach Gewicht abmessen...
         int stckProZeit = dynamic_cast<Dispenser *>(devices->at(ingredient))->getPiecePerTime();
         devices->at(ingredient)->doIt(amount * stckProZeit);
-        std::map<std::string, InternalDevice *>::iterator usedDevice = devices->find(ingredient);
-        usedDevices.push_back(usedDevice);
-    }else {
+    }else
         devices->at(ingredient)->doIt(amount);
-        std::map<std::string, InternalDevice *>::iterator usedDevice = devices->find(ingredient);
-        usedDevices.push_back(usedDevice);
-    }
 
+    auto usedDevice = devices->find(ingredient);
+    usedDevices.push_back(usedDevice);
 }
 
