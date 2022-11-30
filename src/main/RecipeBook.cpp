@@ -18,7 +18,7 @@ RecipeBook::RecipeBook() {
 
     createMargarita(r1);
 
-    createDaiquri(r1);
+    createDaiquiri(r1);
 
     createPlantersPunch(r1);
 
@@ -55,7 +55,7 @@ void RecipeBook::createMargarita(Recipe *r1) {
     recipes.push_back(r1);
 }
 
-void RecipeBook::createDaiquri(Recipe *r1) {
+void RecipeBook::createDaiquiri(Recipe *r1) {
     r1 = new Recipe;
     r1->setName("Daiquiri");
     r1->appendStep("Limettensaft", 2);

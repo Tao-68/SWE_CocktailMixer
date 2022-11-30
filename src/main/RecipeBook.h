@@ -90,7 +90,7 @@ class RecipeBook {
     * This method creates the Recipe object for Daiquri.
     * It sets the name of Recipe and manages the ingredients (zutat) and amounts (menge).
     */
-    void createDaiquri(Recipe *r1);
+    void createDaiquiri(Recipe *r1);
 
     /** @brief Function that creates a Recipe Object
     * @param [in] r1 pointer to class Recipe
