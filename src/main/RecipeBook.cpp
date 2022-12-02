@@ -134,7 +134,7 @@ int RecipeBook::getNumberOfRecipes() {
 
 Recipe *RecipeBook::getRecipe(unsigned int recipeIndex) {
     if (recipeIndex >= recipes.size()) {
-        return NULL;
+        return nullptr;
     } else {
         std::list<Recipe *>::iterator recipe; // Iterator
         advance(recipe = recipes.begin(), recipeIndex); // p zeigt jetzt auf das i-te Element

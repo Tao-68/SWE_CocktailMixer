@@ -55,6 +55,11 @@ TEST_F(RecipeBookTest,getRecipeReturnsCorrectRecipe){
     EXPECT_EQ(rez->getName(),"Margarita");
 }
 
+TEST_F(RecipeBookTest,getRecipeReturnsNoRecipe)
+{
+    EXPECT_EQ(r->getRecipe(2), nullptr);
+}
+
 TEST_F(RecipeBookTest,deleteRecipeRemovesCorrectRecipe){
     EXPECT_FALSE(r->deleteRecipe(-1));
     EXPECT_FALSE(r->deleteRecipe(42));
