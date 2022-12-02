@@ -19,7 +19,7 @@ protected:
     std::stringstream test_cout;
 
     void SetUp() override {
-        
+
         std::cout << "Start of " << "CocktailProTest" << std::endl << std::flush;
         orig_cout = std::cout.rdbuf(test_cout.rdbuf());
     }
