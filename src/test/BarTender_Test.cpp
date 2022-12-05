@@ -36,6 +36,7 @@ protected:
                 r->appendStep("Limettensaft", 2.7);
             }
         }
+
         if(bt == nullptr){
             std::cout << "Objekt BarTender konnte nicht erzeugt werden" << std::endl;
         }
