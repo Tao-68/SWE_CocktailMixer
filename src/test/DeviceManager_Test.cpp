@@ -88,10 +88,15 @@ TEST_F(DeviceManagerTest, prepareRecipeStepsIsValid) {
 
 
     DeviceManager deviceManager(availableIngredients);
+    deviceManager.masher->myTimer->booster = 10;
+    deviceManager.mixer->myTimer->booster = 10;
+    deviceManager.drainer->myTimer->booster = 10;
+    deviceManager.shaker->myTimer->booster = 10;
 
 
     // Test Case 1
     deviceManager.prepareRecipeSteps("Limettenstuecke", 8); // amount is 8 as in RecipeBook.cpp
+
     // Test Case 2
     deviceManager.prepareRecipeSteps("Gin", 6); // amount is 6 as in RecipeBook.cpp
 

@@ -61,9 +61,10 @@ TEST_F(TimerTest, checkSleepInIntervalTimeLessThan1000) {
 }
 
 TEST_F(TimerTest, checkSleepTime) {
+    timer->booster = 10;
     std::chrono::steady_clock::time_point begin = std::chrono::steady_clock::now();
     timer->sleep_in_intervals(2000);
     std::chrono::steady_clock::time_point end = std::chrono::steady_clock::now();
     int timeDifference = std::chrono::duration_cast<std::chrono::milliseconds>(end - begin).count();
-    EXPECT_TRUE(timeDifference < 2100 && timeDifference > 1900);
+    EXPECT_TRUE(timeDifference < 200 && timeDifference > 150);
 }

@@ -88,8 +88,7 @@ void CocktailPro::validateSelectedNumber(int cocktailNumberInput) {
 }
 
 void CocktailPro::notValidInputMsg(int cocktailNumberInput) {
-    std::cout << "Falsche Cocktailnummer!" << std::endl;
-    std::cout << "Ihre Eingabe: " << cocktailNumberInput << " war nicht zwischen 1 und " << mixableRecipeBook->getNumberOfRecipes()
+    std::cout << "Falsche Cocktailnummer! Ihre Eingabe: " << cocktailNumberInput << " war nicht zwischen 1 und " << mixableRecipeBook->getNumberOfRecipes()
               << "!" << std::endl;
 }
 

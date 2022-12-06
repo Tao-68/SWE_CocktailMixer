@@ -22,7 +22,7 @@ protected:
     std::stringstream test_cout;
 
     virtual void SetUp() {
-        std::cout << "Start of " << "RecipeTest" << std::endl << std::flush;
+        std::cout << "Start of " << "BarTenderTest" << std::endl << std::flush;
 
         ai = new AvailableIngredients();
         if(ai != nullptr){
@@ -53,7 +53,8 @@ protected:
         delete bt;
         delete dm;
         delete ai;
-        std::cout.rdbuf(orig_cout);
+        std::cout << "End of " << "BarTenderTest" << std::endl << std::flush;
+        //std::cout.rdbuf(orig_cout);
     }
 };
 
