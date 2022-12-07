@@ -27,7 +27,7 @@ protected:
     /**
      * This is the device manager that the CocktailPro uses only in constructor.
      */
-    DeviceManager *theDeviceVerwalter;
+    DeviceManager *deviceManager;
 
     /**
     * This is the book of mixable recipe that the CocktailPro uses in constructor,

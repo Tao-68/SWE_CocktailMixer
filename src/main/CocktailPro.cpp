@@ -11,14 +11,14 @@ CocktailPro::CocktailPro(int argc, char **param) {
     availableIngredients = new AvailableIngredients;
 
     mixableRecipeBook = new MixableRecipeBook(availableIngredients);
-    theDeviceVerwalter = new DeviceManager(availableIngredients);
-    barTender = new BarTender(theDeviceVerwalter);
+    deviceManager = new DeviceManager(availableIngredients);
+    barTender = new BarTender(deviceManager);
 
     Timer *theTimer = Timer::getInstance();
     if (argc == 2) {
         if (std::string(param[1]) == "-D") {
             this->OperatingMode = OpMode::DEMO;
-            theTimer->set_Turbo(1000); // increase preparing time ?
+            theTimer->set_Turbo(1000); // increase preparing time.
             this->demo();
         } else {
             theTimer->set_Turbo(10);
@@ -29,7 +29,7 @@ CocktailPro::CocktailPro(int argc, char **param) {
 CocktailPro::~CocktailPro() {
     delete availableIngredients;
     delete mixableRecipeBook;
-    delete theDeviceVerwalter;
+    delete deviceManager;
     delete barTender;
 }
 
@@ -38,8 +38,8 @@ CocktailPro::CocktailPro(const CocktailPro &cocktailPro) {
     availableIngredients = new AvailableIngredients;
 
     mixableRecipeBook = new MixableRecipeBook(availableIngredients);
-    theDeviceVerwalter = new DeviceManager(availableIngredients);
-    barTender = new BarTender(theDeviceVerwalter);
+    deviceManager = new DeviceManager(availableIngredients);
+    barTender = new BarTender(deviceManager);
 
     this->OperatingMode = cocktailPro.OperatingMode;
 
@@ -54,7 +54,7 @@ void swap(CocktailPro &lhs, CocktailPro &rhs) {
 
     std::swap(lhs.availableIngredients, rhs.availableIngredients);
     std::swap(lhs.mixableRecipeBook, rhs.mixableRecipeBook);
-    std::swap(lhs.theDeviceVerwalter, rhs.theDeviceVerwalter);
+    std::swap(lhs.deviceManager, rhs.deviceManager);
     std::swap(lhs.barTender, rhs.barTender);
     std::swap(lhs.OperatingMode, rhs.OperatingMode);
 
