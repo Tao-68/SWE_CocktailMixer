@@ -38,8 +38,71 @@ protected:
     }
 };
 
+TEST_F(CocktailProTest, startIsValid){
+    EXPECT_EQ(cocktailPro->OperatingMode, cocktailPro->NORMAL);
+}
+
+TEST_F(CocktailProTest, constructorIsValid){
+
+    EXPECT_NE(cocktailPro->availableIngredients, nullptr);
+    EXPECT_NE(cocktailPro->mixableRecipeBook, nullptr);
+    EXPECT_NE(cocktailPro->deviceManager, nullptr);
+    EXPECT_NE(cocktailPro->barTender, nullptr);
+
+    char data1[] = "fileDoesNotExist.txt";
+    char data2[] = "-D";
+    char *ptr_array[2] = { data1, data2 };
+    Timer *theTimer = Timer::getInstance();
+
+    CocktailPro cocktailPro1(2,ptr_array);
+    EXPECT_EQ(cocktailPro1.OperatingMode, cocktailPro1.DEMO);
+    EXPECT_EQ(theTimer->booster, 1000);
+
+    char data3[] = "fileDoesNotExist.txt";
+    char data4[] = "argument";
+    char *ptr_array2[2] = { data3, data4 };
+    CocktailPro cocktailPro2(2,ptr_array2);
+    theTimer = Timer::getInstance();
+    EXPECT_EQ(theTimer->booster, 10);
+
+}
+
+TEST_F(CocktailProTest, copyConstructroIsValid){
+
+    CocktailPro cocktailProCopy(*cocktailPro);
+    EXPECT_NE(cocktailProCopy.availableIngredients, cocktailPro->availableIngredients);
+    EXPECT_NE(cocktailProCopy.mixableRecipeBook, cocktailPro->mixableRecipeBook);
+    EXPECT_NE(cocktailProCopy.deviceManager, cocktailPro->deviceManager);
+    EXPECT_NE(cocktailProCopy.barTender, cocktailPro->barTender);
+    EXPECT_EQ(cocktailProCopy.OperatingMode, cocktailPro->OperatingMode);
+}
+
+TEST_F(CocktailProTest, assignmentOperatorIsValid){
+
+    CocktailPro copiedObject(0,nullptr);
+    copiedObject.operator=(*cocktailPro);
+
+    EXPECT_NE(copiedObject.availableIngredients, cocktailPro->availableIngredients);
+    EXPECT_NE(copiedObject.mixableRecipeBook, cocktailPro->mixableRecipeBook);
+    EXPECT_NE(copiedObject.deviceManager, cocktailPro->deviceManager);
+    EXPECT_NE(copiedObject.barTender, cocktailPro->barTender);
+    EXPECT_EQ(copiedObject.OperatingMode, cocktailPro->OperatingMode);
+}
+
+TEST_F(CocktailProTest, swapIdValid){
+
+    CocktailPro cocktailPro1(0,nullptr);
+
+    swap(cocktailPro1, *cocktailPro);
+    EXPECT_NE(cocktailPro1.availableIngredients, cocktailPro->availableIngredients);
+    EXPECT_NE(cocktailPro1.mixableRecipeBook, cocktailPro->mixableRecipeBook);
+    EXPECT_NE(cocktailPro1.deviceManager, cocktailPro->deviceManager);
+    EXPECT_NE(cocktailPro1.barTender, cocktailPro->barTender);
+    EXPECT_EQ(cocktailPro1.OperatingMode, cocktailPro->OperatingMode);
+}
+
 TEST_F(CocktailProTest, checkDemo){
-    cocktailPro->theDeviceVerwalter->drainer->myTimer->booster = 1000;
+    cocktailPro->deviceManager->drainer->myTimer->booster = 1000;
     cocktailPro->demo();
     Recipe *rezeptptr = mixableRecipeBook->getRecipe( 0);
     EXPECT_TRUE(bartender->prepareCocktail(rezeptptr));
@@ -53,7 +116,7 @@ TEST_F(CocktailProTest, validateSelectedNumber){
 
     cocktailPro->OperatingMode = cocktailPro->NORMAL;
     cocktailNumber = 1;
-    cocktailPro->theDeviceVerwalter->drainer->myTimer->booster = 1000;
+    cocktailPro->deviceManager->drainer->myTimer->booster = 1000;
     cocktailPro->validateSelectedNumber(cocktailNumber);
     Recipe *rezeptptr = mixableRecipeBook->getRecipe(cocktailNumber - 1);
     EXPECT_TRUE(bartender->prepareCocktail(rezeptptr));
