@@ -59,8 +59,9 @@ TEST_F(AvailableIngredientsTest, copyConstructorIsValid) {
 }
 
 TEST_F(AvailableIngredientsTest, assignmentOperatorIsValid) {
-
-    AvailableIngredients copiedObject = *availableIngredientsPtr;
+    
+    AvailableIngredients copiedObject;
+    copiedObject.operator=(*availableIngredientsPtr);
 
     // have different pointer address
     EXPECT_NE(availableIngredientsPtr, &copiedObject);
