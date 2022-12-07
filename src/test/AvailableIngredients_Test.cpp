@@ -98,6 +98,7 @@ TEST_F(AvailableIngredientsTest, browseIngredientsIsValid) {
 
     availableIngredientsPtr->browse();
     // How can I test it?
+    // Solution: change browse() method signature and return number of printed lines
 }
 */
 
