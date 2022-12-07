@@ -40,6 +40,8 @@ protected:
 
 TEST_F(CocktailProTest, startIsValid){
     EXPECT_EQ(cocktailPro->OperatingMode, cocktailPro->NORMAL);
+    cocktailPro->debug = true;
+    cocktailPro->start();
 }
 
 TEST_F(CocktailProTest, constructorIsValid){
@@ -141,7 +143,30 @@ TEST_F(CocktailProTest, isNotValidNumber){
     EXPECT_TRUE(cocktailPro->isNotValidNumber(cocktailNumberInput));
 }
 
-TEST_F(CocktailProTest, selectCocktail){
+TEST_F(CocktailProTest, selectCocktailIsValid){
+    cocktailPro->debug = true;
+
+    test_cout.clear();
+    std::string backN = "\n";
+    std::string expectedText =
+            "************* Mischbare Rezepte *************" + backN
+            +"*********************************************" + backN
+            + "Es gibt 6 Cocktails" + backN
+            + "1. Caipirinha: Limettenstuecke, Zucker, Stampfen, Eis, Cachaca, Mischen" + backN
+            + "2. Margarita: Zitronensaft, Cointreau, Tequilla, Eis, Mischen" + backN
+            + "3. Caipiroska: Limettenstuecke, Zucker, Stampfen, Eis, Wodka, Mischen" + backN
+            + "4. Caipirissima: Limettenstuecke, Zucker, Stampfen, Eis, Rum weiss, Mischen" + backN
+            + "5. Cuban Island: Zitronensaft, Cointreau, Rum weiss, Wodka, Eis, Mischen" + backN
+            + "6. Martini James B: Gin, Wodka, Noilly Prat, Schuetteln" + backN
+            + "*********************************************" + backN
+            + "Was haetten Sie denn gern? (-1 zum Verlassen)" + backN
+            + "Falsche Cocktailnummer! Ihre Eingabe:";
+
+
+    // call selectCocktail
+    cocktailPro->selectCocktail();
+
+    EXPECT_EQ(expectedText, test_cout.str().substr(0, 650));
 
     std::string input = "1";
     int inputNumber = (int)strtol(input.c_str(), nullptr, 0);

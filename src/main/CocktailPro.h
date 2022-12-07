@@ -17,6 +17,12 @@
 */
 class CocktailPro {
 
+private:
+    /**
+     * This is debug value that we uses in CocktailPro_Test.cpp especially by start() and selectCocktail() methods
+     */
+    bool debug = false;
+
 protected:
 
     /**
@@ -51,8 +57,6 @@ protected:
      * Operating mode that the CocktailPro uses in constructor and start method.
      */
     OpMode OperatingMode = NORMAL;
-
-protected:
 
     /**
     * @brief Selects the recipe number.

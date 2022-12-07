@@ -3,7 +3,7 @@
 
 void CocktailPro::start() {
 
-    while (OperatingMode == OpMode::NORMAL)
+    while (OperatingMode == OpMode::NORMAL && !debug)
         selectCocktail();
 }
 
@@ -105,7 +105,9 @@ void CocktailPro::selectCocktail() {
     std::cout << "************* Mischbare Rezepte *************" << std::endl;
     mixableRecipeBook->getAllCocktails();
     std::cout << "Was haetten Sie denn gern? (-1 zum Verlassen)" << std::endl;
-    std::cin >> input;
+    
+    if( !debug)
+        std::cin >> input;
 
     // int zahl = atoi(eingabe.c_str()); // alternative 1: converts a string to int.
     int inputNumber = (int) strtol(input.c_str(), nullptr, 0); // alternative 2: converts a string to int.
