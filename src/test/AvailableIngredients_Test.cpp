@@ -59,7 +59,7 @@ TEST_F(AvailableIngredientsTest, copyConstructorIsValid) {
 }
 
 TEST_F(AvailableIngredientsTest, assignmentOperatorIsValid) {
-    
+
     AvailableIngredients copiedObject;
     copiedObject.operator=(*availableIngredientsPtr);
 

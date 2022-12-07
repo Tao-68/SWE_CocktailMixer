@@ -27,6 +27,8 @@ AvailableIngredients::AvailableIngredients(const AvailableIngredients &available
 
 AvailableIngredients& AvailableIngredients::operator=(const AvailableIngredients &eqopAvailableIngredients) {
 
+    delete ingredients;
+
     if (&eqopAvailableIngredients != this) {
         ingredients = new std::vector<std::string>();
         for (std::string z : *eqopAvailableIngredients.ingredients)
