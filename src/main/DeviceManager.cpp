@@ -25,11 +25,13 @@ void DeviceManager::createDevices() {
     for (int i = availableIngredients->getNumberAvailableIngredients() - 1; i >= 0; i--) {
         myZutat = availableIngredients->getIngredient(i);
         if (myZutat == "Eis")
-            devices->insert(std::make_pair(myZutat, new Dispenser(20, 1000, myZutat, scale)));
+            devices->insert(std::make_pair(myZutat, new Dispenser(20, 1000, myZutat, scale, "g")));
         else if (myZutat == "Limettenstuecke")
-            devices->insert(std::make_pair(myZutat, new Dispenser(10, 1000, myZutat, scale)));
+            devices->insert(std::make_pair(myZutat, new Dispenser(10, 1000, myZutat, scale, "g")));
+        else if (myZutat == "Zucker")
+            devices->insert(std::make_pair(myZutat, new Dispenser(1, 250, myZutat, scale, "g")));
         else
-            devices->insert(std::make_pair(myZutat, new Dispenser(1, 250, myZutat, scale)));
+            devices->insert(std::make_pair(myZutat, new Dispenser(1, 250, myZutat, scale, "ml")));
     }
 }
 

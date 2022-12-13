@@ -16,7 +16,7 @@ protected:
     std::basic_streambuf<char> *orig_cout = nullptr;
     std::stringstream test_cout;
     Waage* scale = new Waage(0, 0);
-    Dispenser* dispenser = new Dispenser(20, 1000, "Gin", scale);
+    Dispenser* dispenser = new Dispenser(20, 1000, "Gin", scale, "ml");
 
     void SetUp() override {
         std::cout << "Start of " << "DispenserTest" << std::endl << std::flush;
@@ -75,4 +75,25 @@ TEST_F(DispenserTest, DoItIsValid) {
     dispenser->doIt(5.0);
     EXPECT_EQ(dispenser->weight, 5.0);
     EXPECT_EQ(dispenser->doinIt, false);
+}
+
+TEST_F(DispenserTest, decreaseCapacity) {
+
+    EXPECT_EQ(1000, dispenser->capacity);
+    dispenser->decreaseCapacity(100);
+    EXPECT_EQ(900, dispenser->capacity);
+
+    dispenser->decreaseCapacity(1000000);
+    EXPECT_EQ(0, dispenser->capacity);
+}
+
+TEST_F(DispenserTest, maxAvailableOutput) {
+
+    dispenser->weight = 0;
+    EXPECT_EQ(0, dispenser->weight);
+    dispenser->maxAvailableOutput(100);
+    EXPECT_EQ(100, dispenser->weight);
+
+    dispenser->maxAvailableOutput(900000);
+    EXPECT_EQ(dispenser->capacity, dispenser->weight);
 }

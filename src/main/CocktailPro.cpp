@@ -5,6 +5,11 @@ void CocktailPro::start() {
 
     while (OperatingMode == OpMode::NORMAL && !debug)
         selectCocktail();
+
+    while (OperatingMode == OpMode::US2 && executeStart != 0){
+        selectCocktail();
+        executeStart = executeStart - 1;
+    }
 }
 
 CocktailPro::CocktailPro(int argc, char **param) {
@@ -20,6 +25,10 @@ CocktailPro::CocktailPro(int argc, char **param) {
             this->OperatingMode = OpMode::DEMO;
             theTimer->set_Turbo(1000); // increase preparing time.
             this->demo();
+        } else if (std::string(param[0]) == "-US2") {
+            OperatingMode = US2;
+            theTimer->set_Turbo(1000); // increase preparing time.
+            debug = true;
         } else {
             theTimer->set_Turbo(10);
         }
@@ -108,6 +117,10 @@ void CocktailPro::selectCocktail() {
     
     if( !debug)
         std::cin >> input;
+
+    if(OperatingMode == OpMode::US2 && debug){
+        input = "1";
+    }
 
     // int zahl = atoi(eingabe.c_str()); // alternative 1: converts a string to int.
     int inputNumber = (int) strtol(input.c_str(), nullptr, 0); // alternative 2: converts a string to int.

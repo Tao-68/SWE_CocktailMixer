@@ -28,7 +28,7 @@ protected:
         subject = new Subject();
         scale = new Waage(0,0);
         drainer = new Drainer(25, 1000, scale);
-        dispenser = new Dispenser(20 ,1000, "Eis", scale);
+        dispenser = new Dispenser(20 ,1000, "Eis", scale, "g");
         // you never know what the constructor is really doing
         // so make the list empty and fill it yourself!
 
