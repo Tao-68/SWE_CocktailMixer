@@ -79,16 +79,22 @@ TEST_F(DispenserTest, DoItIsValid) {
 
 TEST_F(DispenserTest, decreaseCapacity) {
 
+    int temp_capa = dispenser->capacity;
+
     EXPECT_EQ(1000, dispenser->capacity);
     dispenser->decreaseCapacity(100);
     EXPECT_EQ(900, dispenser->capacity);
 
     dispenser->decreaseCapacity(1000000);
     EXPECT_EQ(0, dispenser->capacity);
+
+    dispenser->capacity = temp_capa;
+
 }
 
 TEST_F(DispenserTest, maxAvailableOutput) {
 
+    float temp_weight = dispenser->weight;
     dispenser->weight = 0;
     EXPECT_EQ(0, dispenser->weight);
     dispenser->maxAvailableOutput(100);
@@ -96,4 +102,6 @@ TEST_F(DispenserTest, maxAvailableOutput) {
 
     dispenser->maxAvailableOutput(900000);
     EXPECT_EQ(dispenser->capacity, dispenser->weight);
+
+    dispenser->weight = temp_weight;
 }
