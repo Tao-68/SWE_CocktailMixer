@@ -28,6 +28,7 @@ public:
      * @param timeUnit must not be null.
      * @param dispenserContent must be a valid string.
      * @param dispenserScale must be not null pointer.
+     * @param type must not be null
      */
     Dispenser(float gram, int timeUnit, const std::string &dispenserContent, Waage * dispenserScale, const std::string &type);
 
@@ -60,7 +61,7 @@ public:
 
     /**
      * @brief Decrease the Capacity with weight
-     * @param weight
+     * @param amount
      */
     void decreaseCapacity(int amount);
 
