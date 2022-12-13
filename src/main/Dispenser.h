@@ -29,7 +29,7 @@ public:
      * @param dispenserContent must be a valid string.
      * @param dispenserScale must be not null pointer.
      */
-    Dispenser(float gram, int timeUnit, const std::string &dispenserContent, Waage * dispenserScale);
+    Dispenser(float gram, int timeUnit, const std::string &dispenserContent, Waage * dispenserScale, const std::string &type);
 
     /**
      * @brief Destructor for Dispenser object.
@@ -58,6 +58,12 @@ public:
      */
     float getPiecePerTime() const;
 
+    /**
+     * @brief Decrease the Capacity with weight
+     * @param weight
+     */
+    void decreaseCapacity(int amount);
+
 private:
 
     /**
@@ -80,6 +86,18 @@ private:
      * This is the content, that Dispenser uses in constructor and doIt method.
      */
     std::string content;
+
+    /**
+     * This is the capacity, that Dispenser know how many uses it can take
+     */
+    int capacity;
+
+    /**
+     * This is the weightTyp, that Dispenser calculate the right capacity
+     */
+     std::string weightTyp;
+
+    void maxAvailableOutput(float gramm);
 };
 
 #endif

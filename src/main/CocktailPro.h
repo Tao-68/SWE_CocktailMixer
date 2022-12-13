@@ -50,7 +50,7 @@ protected:
      * Enum modes that the CocktailPro uses in constructor and start method.
      */
     enum OpMode {
-        NORMAL, DEMO, STOP
+        NORMAL, DEMO, STOP, US2
     };
 
     /**
@@ -141,6 +141,11 @@ public:
      * @param cocktailNumberInput must be an integer number.
      */
     void notValidInputMsg(int cocktailNumberInput);
+
+    /**
+     * @brief This is a variable how often method start() has been executing for tests
+     */
+    int executeStart = 0;
 };
 
 #endif
