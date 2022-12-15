@@ -27,7 +27,7 @@ private:
      * This is lastInputForDebug value that we use in CocktailPro_Test.cpp especially by start() and selectCocktail() method
      * This is for UserStory1
      */
-    int lastInputForDebug;
+    int lastInputForDebug = 0;
 
 protected:
 

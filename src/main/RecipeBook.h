@@ -85,7 +85,6 @@ public:
     bool deleteRecipe(unsigned int recipeIndex);
 
     /** @brief Function that creates a Recipe Object
-    * @param [in] r1 pointer to class Recipe
     *
     * This method creates the Recipe object for Caipirinha.
     * It sets the name of Recipe and manages the ingredients (zutat) and amounts (menge).
@@ -93,7 +92,6 @@ public:
     void createCaipirinha();
 
     /** @brief Function that creates a Recipe Object
-    * @param [in] r1 pointer to class Recipe
     *
     * This method creates the Recipe object for Margarita.
     * It sets the name of Recipe and manages the ingredients (zutat) and amounts (menge).
@@ -101,7 +99,6 @@ public:
     void createMargarita();
 
     /** @brief Function that creates a Recipe Object
-    * @param [in] r1 pointer to class Recipe
     *
     * This method creates the Recipe object for Daiquri.
     * It sets the name of Recipe and manages the ingredients (zutat) and amounts (menge).
@@ -109,7 +106,6 @@ public:
     void createDaiquiri();
 
     /** @brief Function that creates a Recipe Object
-    * @param [in] r1 pointer to class Recipe
     *
     * This method creates the Recipe object for Planters Punch.
     * It sets the name of Recipe and manages the ingredients (zutat) and amounts (menge).
@@ -117,7 +113,6 @@ public:
     void createPlantersPunch();
 
     /** @brief Function that creates a Recipe Object
-    * @param [in] r1 pointer to class Recipe
     *
     * This method creates the Recipe object for Caipiroska.
     * It sets the name of Recipe and manages the ingredients (zutat) and amounts (menge).
@@ -125,7 +120,6 @@ public:
     void createCaipiroska();
 
     /** @brief Function that creates a Recipe Object
-    * @param [in] r1 pointer to class Recipe
     *
     * This method creates the Recipe object for Caipirissima.
     * It sets the name of Recipe and manages the ingredients (zutat) and amounts (menge).
@@ -133,7 +127,6 @@ public:
     void createCaipirissima();
 
     /** @brief Function that creates a Recipe Object
-    * @param [in] r1 pointer to class Recipe
     *
     * This method creates the Recipe object for Cuban Island.
     * It sets the name of Recipe and manages the ingredients (zutat) and amounts (menge).
@@ -141,7 +134,6 @@ public:
     void createCubanIsland();
 
     /** @brief Function that creates a Recipe Object
-    * @param [in] r1 pointer to class Recipe
     *
     * This method creates the Recipe object for Martini James B.
     * It sets the name of Recipe and manages the ingredients (zutat) and amounts (menge).

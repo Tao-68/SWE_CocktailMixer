@@ -8,6 +8,7 @@ Recipe::Recipe(void) {
     m_RecipeStep.clear();
     m_Name = "";
     hidden = false;
+    recipeID = 0;
 }
 
 Recipe::~Recipe() {

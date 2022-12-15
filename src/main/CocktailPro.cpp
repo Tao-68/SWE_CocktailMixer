@@ -18,11 +18,10 @@ void CocktailPro::start() {
 
 CocktailPro::CocktailPro(int argc, char **param) {
     availableIngredients = new AvailableIngredients;
-
     mixableRecipeBook = new MixableRecipeBook(availableIngredients);
     deviceManager = new DeviceManager(availableIngredients);
     barTender = new BarTender(deviceManager);
-
+    lastInputForDebug = 0;
     Timer *theTimer = Timer::getInstance();
     if (argc == 2) {
         if (std::string(param[1]) == "-D") {
@@ -53,11 +52,10 @@ CocktailPro::~CocktailPro() {
 CocktailPro::CocktailPro(const CocktailPro &cocktailPro) {
 
     availableIngredients = new AvailableIngredients;
-
     mixableRecipeBook = new MixableRecipeBook(availableIngredients);
     deviceManager = new DeviceManager(availableIngredients);
     barTender = new BarTender(deviceManager);
-
+    lastInputForDebug = 0;
     this->OperatingMode = cocktailPro.OperatingMode;
 
 }
