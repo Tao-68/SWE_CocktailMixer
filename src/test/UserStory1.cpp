@@ -41,3 +41,10 @@ TEST_F(UserStory1, validateSelectedNumber){
     Recipe* recipe = cp->mixableRecipeBook->getRecipeWithID(id);
     EXPECT_TRUE(recipe->isHidden());
 }
+
+TEST_F(UserStory1, checkTimer){
+    cp->OperatingMode = cp->USERSTORY1;
+    cp->debug = true;
+    cp->start();
+    EXPECT_EQ(1000, cp->barTender->myDeviceVerwalter->drainer->myTimer->booster);
+}
