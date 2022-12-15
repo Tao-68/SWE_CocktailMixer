@@ -17,7 +17,6 @@ void CocktailPro::start() {
 }
 
 CocktailPro::CocktailPro(int argc, char **param) {
-    std::cout << "test: " << param[0] << " " << param[1] << std::endl;
     availableIngredients = new AvailableIngredients;
     mixableRecipeBook = new MixableRecipeBook(availableIngredients);
     deviceManager = new DeviceManager(availableIngredients);

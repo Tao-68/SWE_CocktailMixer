@@ -16,7 +16,7 @@ protected:
         std::cout << "Start of " << "UserStory1" << std::endl << std::flush;
         orig_cout = std::cout.rdbuf(test_cout.rdbuf());
 
-        // char placeholder to let mode at param[1]
+        // char placeholder[] to let mode[] at param[1]
         char mode[] = "-USERSTORY1";
         char placeholder[] = "";
         char *param[2] = { placeholder,mode};
