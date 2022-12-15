@@ -21,6 +21,17 @@ private:
      */
     std::string m_Name;
 
+    /**
+     * Variable RecipeID
+     */
+    unsigned int recipeID;
+
+    /**
+     * Variable hidden for UserStory1 debug
+     */
+    bool hidden = false;
+
+
 public:
     /**
      * @brief Deletes the current recipe step and sets the default name
@@ -32,6 +43,16 @@ public:
      */
     ~Recipe();
 
+    /**
+     * @brief Getter-method of isHidden
+     * @return Get the boolean value of variable isHidden
+     */
+    bool isHidden() const;
+
+    /**
+     * @brief Setter-method of name
+     */
+    void setHidden(bool hidden);
 
     /**
      * @brief Give number of recipe steps from the list "m_RecipeStep".
@@ -55,9 +76,21 @@ public:
 
     /**
      * @brief Setter-method of name
-     * @return Set the variable name
+     * @param Name the name of cocktail
      */
     void setName(const std::string& Name);
+
+    /**
+     * @brief Getter-method of RecipeID
+     * @return Get the variable RecipeID
+     */
+    unsigned int getRecipeID();
+
+    /**
+     * @brief Setter-method of RecipeID
+     * @param id the id of cocktail
+     */
+    void setRecipeID(unsigned int id);
 
     /**
      * @brief Adds another step to the recipe.

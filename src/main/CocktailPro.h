@@ -23,6 +23,12 @@ private:
      */
     bool debug = false;
 
+    /**
+     * This is lastInputForDebug value that we use in CocktailPro_Test.cpp especially by start() and selectCocktail() method
+     * This is for UserStory1
+     */
+    int lastInputForDebug;
+
 protected:
 
     /**
@@ -50,7 +56,7 @@ protected:
      * Enum modes that the CocktailPro uses in constructor and start method.
      */
     enum OpMode {
-        NORMAL, DEMO, STOP, US2
+        NORMAL, DEMO, STOP, USERSTORY1, US2
     };
 
     /**
@@ -122,19 +128,23 @@ public:
     */
     void start();
 
+    /**
+     * @brief Getter-method of lastInputForDebug
+     * @return Get the variable lastInputForDebug
+     */
+    int getLastInputForDebug() const;
+
+    /**
+     * @brief Setter-method of lastInputForDebug
+     * @param lastInputForDebug the last input from user
+     */
+    void setLastInputForDebug(int lastInputForDebug);
 
     /**
      * @brief validate selected number
      * @param cocktailNumberInput  must be an integer number.
      */
     void validateSelectedNumber(int cocktailNumberInput);
-
-    /**
-     * @brief checks, if cocktailNumberInput is not valid cocktail number.
-     * @param cocktailNumberInput must be an integer number.
-     * @return true if cocktailNumberInput is not valid number, otherwise false.
-     */
-    bool isNotValidNumber(int cocktailNumberInput) const;
 
     /**
      * @brief print message, that input was not valid.
@@ -146,6 +156,8 @@ public:
      * @brief This is a variable how often method start() has been executing for tests
      */
     int executeStart = 0;
+
+
 };
 
 #endif

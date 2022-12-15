@@ -5,15 +5,16 @@
 void MixableRecipeBook::getAllCocktails() {
     std::cout << "*********************************************" << std::endl;
     std::cout << "Es gibt " << this->getNumberOfRecipes() << " Cocktails" << std::endl;
-
-    for (int i = 0; i<this->getNumberOfRecipes(); i++) {
+    for (int i = 0; i < this->getNumberOfRecipes(); i++) {
         Recipe* r = this->getRecipe(i);
-        std::cout << i + 1 << ". ";
+        if(r->isHidden()){
+            continue;
+        }
+        std::cout << r->getRecipeID() << ". ";
         r->getAllIngredients();
         std::cout << std::endl;
     }
     std::cout << "*********************************************" << std::endl;
-
 }
 
 MixableRecipeBook::MixableRecipeBook(AvailableIngredients * zv) {

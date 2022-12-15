@@ -48,10 +48,10 @@ TEST_F(MixableRecipeBookTest, getAllCocktails)
                              + "Es gibt 6 Cocktails" + backN
                              + "1. Caipirinha: Limettenstuecke, Zucker, Stampfen, Eis, Cachaca, Mischen" + backN
                              + "2. Margarita: Zitronensaft, Cointreau, Tequilla, Eis, Mischen" + backN
-                             + "3. Caipiroska: Limettenstuecke, Zucker, Stampfen, Eis, Wodka, Mischen" + backN
-                             + "4. Caipirissima: Limettenstuecke, Zucker, Stampfen, Eis, Rum weiss, Mischen" + backN
-                             + "5. Cuban Island: Zitronensaft, Cointreau, Rum weiss, Wodka, Eis, Mischen" + backN
-                             + "6. Martini James B: Gin, Wodka, Noilly Prat, Schuetteln" + backN
+                             + "5. Caipiroska: Limettenstuecke, Zucker, Stampfen, Eis, Wodka, Mischen" + backN
+                             + "6. Caipirissima: Limettenstuecke, Zucker, Stampfen, Eis, Rum weiss, Mischen" + backN
+                             + "7. Cuban Island: Zitronensaft, Cointreau, Rum weiss, Wodka, Eis, Mischen" + backN
+                             + "8. Martini James B: Gin, Wodka, Noilly Prat, Schuetteln" + backN
                              + "*********************************************" + backN;
 
     mrb_1->getAllCocktails();

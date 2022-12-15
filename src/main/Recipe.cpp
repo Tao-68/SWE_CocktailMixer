@@ -7,6 +7,7 @@
 Recipe::Recipe(void) {
     m_RecipeStep.clear();
     m_Name = "";
+    hidden = false;
 }
 
 Recipe::~Recipe() {
@@ -33,6 +34,14 @@ void Recipe::setName(const std::string& Name) {
     this->m_Name = Name;
 }
 
+unsigned int Recipe::getRecipeID() {
+    return recipeID;
+}
+
+void Recipe::setRecipeID(unsigned int id){
+    this->recipeID = id;
+}
+
 void Recipe::getAllIngredients() {
     std::cout << m_Name << ": ";
     for (int i = 0; i< this->getNoOfRecipeSteps(); i++) {
@@ -47,4 +56,12 @@ void Recipe::appendStep(std::string z, float m) {
     t->setZutat(z);
     t->setMenge(m);
     m_RecipeStep.push_back(t);
+}
+
+bool Recipe::isHidden() const {
+    return hidden;
+}
+
+void Recipe::setHidden(bool Hidden){
+    this->hidden = Hidden;
 }

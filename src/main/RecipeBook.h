@@ -25,10 +25,16 @@ class RecipeBook {
     /**
     * This is the list of recipes that the RecipeBook manages
     */
-  private:
+private:
     std::list<Recipe *> recipes;
 
-  public:
+    /**
+    * Counter variable
+    * which increments for each cocktail
+    */
+    int counter = 0;
+
+public:
     /** @brief Constructor that creates a RecipeBook
     * @return A pointer to the created RecipeBook
     *
@@ -56,7 +62,17 @@ class RecipeBook {
     * where recipeIndex is an integer from 0 to n-1
     * where n is the number of recipes in the RecipeBook
     */
-    Recipe * getRecipe(unsigned int recipeIndex);
+    Recipe *getRecipe(unsigned int recipeIndex);
+
+    /** @brief fetches the i-th recipe at position recipeIndex
+    * @param [in] recipeID a positive integer for the recipe ID
+    * @return A pointer to the requested recipe object, NULL for invalid recipeIndex
+    *
+    * This method returns the recipeID of recipe;
+    * where recipeIndex is constant for each cocktail
+    */
+    Recipe *getRecipeWithID(unsigned int recipeID);
+
 
     /** @brief Deletes the i-th recipe from the RecipeBook at position recipeIndex
     * @param [in] recipeIndex a positive integer for the i-th recipe
@@ -74,7 +90,7 @@ class RecipeBook {
     * This method creates the Recipe object for Caipirinha.
     * It sets the name of Recipe and manages the ingredients (zutat) and amounts (menge).
     */
-    void createCaipirinha(Recipe *r1);
+    void createCaipirinha();
 
     /** @brief Function that creates a Recipe Object
     * @param [in] r1 pointer to class Recipe
@@ -82,7 +98,7 @@ class RecipeBook {
     * This method creates the Recipe object for Margarita.
     * It sets the name of Recipe and manages the ingredients (zutat) and amounts (menge).
     */
-    void createMargarita(Recipe *r1);
+    void createMargarita();
 
     /** @brief Function that creates a Recipe Object
     * @param [in] r1 pointer to class Recipe
@@ -90,7 +106,7 @@ class RecipeBook {
     * This method creates the Recipe object for Daiquri.
     * It sets the name of Recipe and manages the ingredients (zutat) and amounts (menge).
     */
-    void createDaiquiri(Recipe *r1);
+    void createDaiquiri();
 
     /** @brief Function that creates a Recipe Object
     * @param [in] r1 pointer to class Recipe
@@ -98,7 +114,7 @@ class RecipeBook {
     * This method creates the Recipe object for Planters Punch.
     * It sets the name of Recipe and manages the ingredients (zutat) and amounts (menge).
     */
-    void createPlantersPunch(Recipe *r1);
+    void createPlantersPunch();
 
     /** @brief Function that creates a Recipe Object
     * @param [in] r1 pointer to class Recipe
@@ -106,7 +122,7 @@ class RecipeBook {
     * This method creates the Recipe object for Caipiroska.
     * It sets the name of Recipe and manages the ingredients (zutat) and amounts (menge).
     */
-    void createCaipiroska(Recipe *r1);
+    void createCaipiroska();
 
     /** @brief Function that creates a Recipe Object
     * @param [in] r1 pointer to class Recipe
@@ -114,7 +130,7 @@ class RecipeBook {
     * This method creates the Recipe object for Caipirissima.
     * It sets the name of Recipe and manages the ingredients (zutat) and amounts (menge).
     */
-    void createCaipirissima(Recipe *r1);
+    void createCaipirissima();
 
     /** @brief Function that creates a Recipe Object
     * @param [in] r1 pointer to class Recipe
@@ -122,7 +138,7 @@ class RecipeBook {
     * This method creates the Recipe object for Cuban Island.
     * It sets the name of Recipe and manages the ingredients (zutat) and amounts (menge).
     */
-    void createCubanIsland(Recipe *r1);
+    void createCubanIsland();
 
     /** @brief Function that creates a Recipe Object
     * @param [in] r1 pointer to class Recipe
@@ -130,7 +146,7 @@ class RecipeBook {
     * This method creates the Recipe object for Martini James B.
     * It sets the name of Recipe and manages the ingredients (zutat) and amounts (menge).
     */
-    void createMartiniJamesB(Recipe *r1);
+    void createMartiniJamesB();
 };
 
 #endif

@@ -12,28 +12,27 @@
 
 RecipeBook::RecipeBook() {
     recipes.clear();
-    Recipe *r1 = new Recipe();
 
-    createCaipirinha(r1);
+    createCaipirinha();
 
-    createMargarita(r1);
+    createMargarita();
 
-    createDaiquiri(r1);
+    createDaiquiri();
 
-    createPlantersPunch(r1);
+    createPlantersPunch();
 
-    createCaipiroska(r1);
+    createCaipiroska();
 
-    createCaipirissima(r1);
+    createCaipirissima();
 
-    createCubanIsland(r1);
+    createCubanIsland();
 
-    createMartiniJamesB(r1);
+    createMartiniJamesB();
 
 }
 
-void RecipeBook::createCaipirinha(Recipe *r1) {
-    r1 = new Recipe;
+void RecipeBook::createCaipirinha() {
+    Recipe* r1 = new Recipe();
     r1->setName("Caipirinha");
     r1->appendStep("Limettenstuecke", 8);
     r1->appendStep("Zucker", 15);
@@ -41,32 +40,42 @@ void RecipeBook::createCaipirinha(Recipe *r1) {
     r1->appendStep("Eis", 90);
     r1->appendStep("Cachaca", 5);
     r1->appendStep("Mischen", 10);
+    int id = ++counter;
+    r1->setRecipeID(id);
     recipes.push_back(r1);
+
 }
 
-void RecipeBook::createMargarita(Recipe *r1) {
-    r1 = new Recipe;
+void RecipeBook::createMargarita() {
+    Recipe* r1 = new Recipe();
     r1->setName("Margarita");
     r1->appendStep("Zitronensaft", 2);
     r1->appendStep("Cointreau", 2);
     r1->appendStep("Tequilla", 4);
     r1->appendStep("Eis", 50);
     r1->appendStep("Mischen", 20);
+    int id = ++counter;
+    r1->setRecipeID(id);
     recipes.push_back(r1);
+
 }
 
-void RecipeBook::createDaiquiri(Recipe *r1) {
-    r1 = new Recipe;
+void RecipeBook::createDaiquiri() {
+    Recipe* r1 = new Recipe();
     r1->setName("Daiquiri");
     r1->appendStep("Limettensaft", 2);
     r1->appendStep("Zuckersirup", 2);
     r1->appendStep("Rum weiss", 5);
     r1->appendStep("Eis", 50);
     r1->appendStep("Mischen", 20);
+    int id = ++counter;
+    r1->setRecipeID(id);
     recipes.push_back(r1);
+
 }
-void RecipeBook::createPlantersPunch(Recipe *r1) {
-    r1 = new Recipe;
+
+void RecipeBook::createPlantersPunch() {
+    Recipe* r1 = new Recipe();
     r1->setName("Planters Punch");
     r1->appendStep("Zitronensaft", 2);
     r1->appendStep("Grenadine", 1);
@@ -74,11 +83,14 @@ void RecipeBook::createPlantersPunch(Recipe *r1) {
     r1->appendStep("Rum braun", 6);
     r1->appendStep("Eis", 100);
     r1->appendStep("Mischen", 20);
+    int id = ++counter;
+    r1->setRecipeID(id);
     recipes.push_back(r1);
+
 }
 
-void RecipeBook::createCaipiroska(Recipe *r1) {
-    r1 = new Recipe;
+void RecipeBook::createCaipiroska(){
+    Recipe* r1 = new Recipe();
     r1->setName("Caipiroska");
     r1->appendStep("Limettenstuecke", 8);
     r1->appendStep("Zucker", 15);
@@ -86,11 +98,13 @@ void RecipeBook::createCaipiroska(Recipe *r1) {
     r1->appendStep("Eis", 90);
     r1->appendStep("Wodka", 5);
     r1->appendStep("Mischen", 10);
+    int id = ++counter;
+    r1->setRecipeID(id);
     recipes.push_back(r1);
 }
 
-void RecipeBook::createCaipirissima(Recipe *r1) {
-    r1 = new Recipe;
+void RecipeBook::createCaipirissima() {
+    Recipe* r1 = new Recipe();
     r1->setName("Caipirissima");
     r1->appendStep("Limettenstuecke", 8);
     r1->appendStep("Zucker", 15);
@@ -98,11 +112,13 @@ void RecipeBook::createCaipirissima(Recipe *r1) {
     r1->appendStep("Eis", 90);
     r1->appendStep("Rum weiss", 5);
     r1->appendStep("Mischen", 10);
+    int id = ++counter;
+    r1->setRecipeID(id);
     recipes.push_back(r1);
 }
 
-void RecipeBook::createCubanIsland(Recipe *r1) {
-    r1 = new Recipe;
+void RecipeBook::createCubanIsland() {
+    Recipe* r1 = new Recipe();
     r1->setName("Cuban Island");
     r1->appendStep("Zitronensaft", 2);
     r1->appendStep("Cointreau", 2);
@@ -110,16 +126,20 @@ void RecipeBook::createCubanIsland(Recipe *r1) {
     r1->appendStep("Wodka", 2);
     r1->appendStep("Eis", 30);
     r1->appendStep("Mischen", 30);
+    int id = ++counter;
+    r1->setRecipeID(id);
     recipes.push_back(r1);
 }
 
-void RecipeBook::createMartiniJamesB(Recipe *r1) {
-    r1 = new Recipe;
+void RecipeBook::createMartiniJamesB() {
+    Recipe* r1 = new Recipe();
     r1->setName("Martini James B");
     r1->appendStep("Gin", 6);
     r1->appendStep("Wodka", 2);
     r1->appendStep("Noilly Prat", 1);
     r1->appendStep("Schuetteln", 10);
+    int id = ++counter;
+    r1->setRecipeID(id);
     recipes.push_back(r1);
 }
 
@@ -140,6 +160,15 @@ Recipe *RecipeBook::getRecipe(unsigned int recipeIndex) {
         advance(recipe = recipes.begin(), recipeIndex); // p zeigt jetzt auf das i-te Element
         return *recipe; // Wert von p - also den Pointer zurueck
     }
+}
+
+Recipe *RecipeBook::getRecipeWithID(unsigned int recipeID) {
+    for (Recipe* recipe : recipes){
+        if(recipeID == recipe->getRecipeID()){
+            return recipe;
+        }
+    }
+    return nullptr;
 }
 
 bool RecipeBook::deleteRecipe(unsigned int recipeIndex) {

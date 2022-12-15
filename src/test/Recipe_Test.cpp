@@ -27,9 +27,6 @@ protected:
         r_1->appendStep("Vodka", 1.7);
 
         r_2 = new Recipe();
-
-
-
     }
 
     virtual void TearDown()
@@ -89,6 +86,29 @@ TEST_F(RecipeTest, getAllIngredients)
 
     // Second: The Steps
     EXPECT_EQ(expectedSteps, test_cout.str().substr(12, 16));
-
 }
 
+TEST_F(RecipeTest, setRecipeID){
+    r_1->setRecipeID(10);
+    EXPECT_EQ(10, r_1->getRecipeID());
+    EXPECT_NE(1, r_1->getRecipeID());
+    EXPECT_NE(100, r_1->getRecipeID());
+}
+
+TEST_F(RecipeTest, getRecipeID){
+    r_1->setRecipeID(5);
+    EXPECT_EQ(5, r_1->getRecipeID());
+    EXPECT_NE(-5, r_1->getRecipeID());
+    EXPECT_NE(50, r_1->getRecipeID());
+}
+TEST_F(RecipeTest, setHidden){
+    r_1->setHidden(true);
+    EXPECT_TRUE(r_1->isHidden());
+    EXPECT_FALSE(r_2->isHidden());
+}
+
+TEST_F(RecipeTest, isHidden){
+    r_1->setHidden(false);
+    EXPECT_FALSE(r_1->isHidden());
+    EXPECT_FALSE(r_2->isHidden());
+}
