@@ -153,6 +153,17 @@ public:
     void notValidInputMsg(int cocktailNumberInput);
 
     /**
+     * @brief validate selected number when true
+     * @param cocktailNumberInput must be an integer number.
+     */
+    void validateSelectedNumberIsTrue(int cocktailNumberInput);
+
+    /**
+     * @brief validate selected number for UserStory1
+     * @param cocktailNumberInput must be an integer number.
+     */
+    void validateSelectedNumberUserStory1(int cocktailNumberInput);
+    /**
      * @brief This is a variable how often method start() has been executing for tests
      */
     int executeStart = 0;

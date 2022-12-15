@@ -93,27 +93,32 @@ void CocktailPro::validateSelectedNumber(int cocktailNumberInput) {
     if (cocktailNumberInput == -1)
         OperatingMode = OpMode::STOP;
     else if (OperatingMode == OpMode::USERSTORY1 && debug) {
-        Recipe *rezeptptr = mixableRecipeBook->getRecipeWithID(this->getLastInputForDebug());
-        if (rezeptptr == nullptr) {
-            notValidInputMsg(cocktailNumberInput);
-            return;
-        } else {
-            rezeptptr->setHidden(true);
-        }
+        validateSelectedNumberUserStory1(cocktailNumberInput);
     } else {
-        Recipe *rezeptptr = mixableRecipeBook->getRecipeWithID(cocktailNumberInput);
-        if (rezeptptr == nullptr) {
-            notValidInputMsg(cocktailNumberInput);
-        } else {
-            std::cout << rezeptptr->getName() << std::endl;
-            barTender->prepareCocktail(rezeptptr);
-            if (OperatingMode == OpMode::USERSTORY1){
-                setLastInputForDebug(cocktailNumberInput);
-            }
+        validateSelectedNumberIsTrue(cocktailNumberInput);
+    }
+}
+
+void CocktailPro::validateSelectedNumberIsTrue(int cocktailNumberInput) {
+    Recipe *rezeptptr = mixableRecipeBook->getRecipeWithID(cocktailNumberInput);
+    if (rezeptptr == nullptr) {
+        notValidInputMsg(cocktailNumberInput);
+    } else {
+        barTender->prepareCocktail(rezeptptr);
+        if (OperatingMode == OpMode::USERSTORY1) {
+            setLastInputForDebug(cocktailNumberInput);
         }
     }
 }
 
+void CocktailPro::validateSelectedNumberUserStory1(int cocktailNumberInput) {
+    Recipe *rezeptptr = mixableRecipeBook->getRecipeWithID(this->getLastInputForDebug());
+    if (rezeptptr == nullptr) {
+        notValidInputMsg(cocktailNumberInput);
+        return;
+    }
+    rezeptptr->setHidden(true);
+}
 
 void CocktailPro::notValidInputMsg(int cocktailNumberInput) {
     std::cout << "Falsche Cocktailnummer! Ihre Eingabe: " << cocktailNumberInput << " ist nicht mischbar!" << std::endl;
@@ -132,8 +137,8 @@ void CocktailPro::selectCocktail() {
 
     if (OperatingMode == OpMode::US2 && debug) {
         input = "1";
-    } else if (OperatingMode == OpMode::USERSTORY1 && debug){
-        if (getLastInputForDebug() == 1){
+    } else if (OperatingMode == OpMode::USERSTORY1 && debug) {
+        if (getLastInputForDebug() == 1) {
             setLastInputForDebug(2);
             return;
         }

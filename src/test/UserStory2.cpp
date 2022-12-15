@@ -79,7 +79,7 @@ TEST_F(UserStory2, validateOutput) {
                                 "Ihr Cocktail hat ein Gesamtgewicht von 200g"
             ;
 
-    EXPECT_EQ(expected_text, test_cout.str().substr(1592, 919));
+    EXPECT_EQ(expected_text, test_cout.str().substr(1581, 919));
 }
 
 TEST_F(UserStory2, validateNullCapacity) {
