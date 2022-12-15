@@ -58,13 +58,13 @@ TEST_F(DispenserTest, updateIsValid) {
     scale->deltaWeight = 100;
 
     // Case 1: deltaWeight > weight
-    scale->weight = 10;
+    dispenser->weight = 10;
     dispenser->update();
     EXPECT_EQ(dispenser->doinIt, false);
 
     // Case 2: deltaWeight = weight
     dispenser->doinIt = true;
-    scale->weight = 100;
+    dispenser->weight = 100;
     dispenser->update();
     EXPECT_EQ(dispenser->doinIt, false);
 }
