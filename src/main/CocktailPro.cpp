@@ -17,6 +17,7 @@ void CocktailPro::start() {
 }
 
 CocktailPro::CocktailPro(int argc, char **param) {
+    std::cout << "test: " << param[0] << " " << param[1] << std::endl;
     availableIngredients = new AvailableIngredients;
     mixableRecipeBook = new MixableRecipeBook(availableIngredients);
     deviceManager = new DeviceManager(availableIngredients);
@@ -32,7 +33,7 @@ CocktailPro::CocktailPro(int argc, char **param) {
             OperatingMode = US2;
             theTimer->set_Turbo(1000); // increase preparing time.
             debug = true;
-        } else if (std::string(param[0]) == "-USERSTORY1") {
+        } else if (std::string(param[1]) == "-USERSTORY1") {
             OperatingMode = USERSTORY1;
             theTimer->set_Turbo(1000); // increase preparing time.
             debug = true;
