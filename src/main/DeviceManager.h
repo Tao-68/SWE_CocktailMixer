@@ -42,7 +42,7 @@ public:
      * @param amount must not be null.
      *
      */
-    void prepareRecipeSteps(std::string ingredient, float amount);
+    bool prepareRecipeSteps(std::string ingredient, float amount);
 
     /**
      * This is the drainer, that the DeviceManager uses in createDevices method.

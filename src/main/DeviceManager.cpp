@@ -39,16 +39,22 @@ void DeviceManager::setIngredientsManager(AvailableIngredients *ze) {
     availableIngredients = ze;
 }
 
-void DeviceManager::prepareRecipeSteps(std::string ingredient, float amount) {
+bool DeviceManager::prepareRecipeSteps(std::string ingredient, float amount) {
+
+    bool isStepSucceeded;
 
     if (ingredient == "Limettenstuecke") {
         // Der Kunde will Limetten ja unbedingt nach Stueck und nicht nach Gewicht abmessen...
         int stckProZeit = dynamic_cast<Dispenser *>(devices->at(ingredient))->getPiecePerTime();
-        devices->at(ingredient)->doIt(amount * stckProZeit);
-    }else
-        devices->at(ingredient)->doIt(amount);
+        isStepSucceeded = devices->at(ingredient)->doIt(amount * stckProZeit);
+    } else
+        isStepSucceeded = devices->at(ingredient)->doIt(amount);
 
-    auto usedDevice = devices->find(ingredient);
-    usedDevices.push_back(usedDevice);
+    if(isStepSucceeded) {
+        auto usedDevice = devices->find(ingredient);
+        usedDevices.push_back(usedDevice);
+    }
+
+    return isStepSucceeded;
 }
 
