@@ -73,7 +73,7 @@ void AvailableIngredients::readIngredientsFile(std::string fileName) {
 }
 
 void AvailableIngredients::browse() {
-    std::cout << "*********** Verfuegbare Zutaten: *************" << std::endl;
+    std::cout << "\n*********** Verfuegbare Zutaten: *************" << std::endl;
     for (auto & ingredient : *ingredients)
         std::cout << ingredient << std::endl;
     std::cout << "*********************************************" << std::endl;

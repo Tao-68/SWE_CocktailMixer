@@ -81,9 +81,9 @@ TEST_F(BarTenderTest, cleaningDevice)
     std::string name = device->first;
     bt->myDeviceVerwalter->usedDevices.push_back(device);
 
-    std::string ausgabe = "Device mit der Aktion: " + name + " wird jetzt geputzt: ";
+    std::string ausgabe = "Dosierer " + name + " wird geputzt\n**\nDosierer " +name + " ist geputzt worden.\n\n";
 
     bt->cleaningDevices();
-    EXPECT_EQ( ausgabe, test_cout.str().substr(0, 51) );
+    EXPECT_EQ( ausgabe, test_cout.str().substr(0, 96) );
 
 }

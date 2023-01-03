@@ -54,7 +54,7 @@ public:
      * @param isUndrinkable must be a boolean.
      * @return true, if we do not have enough an amount of ingredient or ingredient is missing else false.
      */
-    bool setIsUndrinkableCocktail(bool isUndrinkable);
+    void setIsUndrinkableCocktail(bool isUndrinkable);
 
 private:
 

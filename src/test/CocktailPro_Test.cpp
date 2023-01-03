@@ -138,7 +138,7 @@ TEST_F(CocktailProTest, selectCocktailIsValid){
     test_cout.clear();
     std::string backN = "\n";
     std::string expectedText =
-            "************* Mischbare Rezepte *************" + backN
+    backN + "************* Mischbare Rezepte *************" + backN
             +"*********************************************" + backN
             + "Es gibt 6 Cocktails" + backN
             + "1. Caipirinha: Limettenstuecke, Zucker, Stampfen, Eis, Cachaca, Mischen" + backN
@@ -155,7 +155,7 @@ TEST_F(CocktailProTest, selectCocktailIsValid){
     // call selectCocktail
     cocktailPro->selectCocktail();
 
-    EXPECT_EQ(expectedText, test_cout.str().substr(0, 650));
+    EXPECT_EQ(expectedText, test_cout.str().substr(0, 651));
 
     std::string input = "1";
     int inputNumber = (int)strtol(input.c_str(), nullptr, 0);

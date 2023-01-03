@@ -8,4 +8,6 @@ InternalDevice::InternalDevice() {
 
 void InternalDevice::putzen() {
 
+    myTimer->sleep_in_intervals(2000);
+    std::cout << std::endl;
 }

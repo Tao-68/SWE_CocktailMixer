@@ -20,7 +20,7 @@ void MixableRecipeBook::getAllCocktails() {
 MixableRecipeBook::MixableRecipeBook(AvailableIngredients * zv) {
 
     // Debug *********
-    std::cout << "********** Rezepte vor dem Filtern **********" << std::endl;
+    std::cout << "\n********** Rezepte vor dem Filtern **********" << std::endl;
     getAllCocktails();
     // ******************
 

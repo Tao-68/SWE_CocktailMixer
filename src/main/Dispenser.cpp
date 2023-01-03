@@ -22,7 +22,7 @@ bool Dispenser::doIt(float gramm) {
     this->maxAvailableOutput(gramm);
     scale->resetDeltaWeight();
 
-    std::cout << content << " Dosierer-Kapazitaet (" << capacity << weightTyp << ")" << std::endl;
+    std::cout << content << " Dosierer-Kapazitaet vor der Ventiloeffnung (" << capacity << weightTyp << ")" << std::endl;
     auto capacityToFloat = static_cast<float>(capacity);
     if(capacityToFloat < gramm)
         return false;
@@ -38,7 +38,7 @@ bool Dispenser::doIt(float gramm) {
     std::cout << std::endl << content << " Ventil wurde geschlossen" << std::endl;
     std::cout << "Es wurden " << scale->getDeltaWeight() << weightTyp << " " << content << " abgefuellt" << std::endl;
     this->decreaseCapacity(static_cast<int>(gramm) );
-    std::cout << std::endl;
+    std::cout << content << " Dosierer-Kapazitaet nach der Ventilschliessung (" << capacity << weightTyp << ")" << std::endl;
 
     return true;
 }

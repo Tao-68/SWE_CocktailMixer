@@ -22,7 +22,7 @@ bool Drainer::doIt(float drainValue) {
 
 
     if (!isUndrinkableCocktail) {
-        std::cout << "Ihr Cocktail hat ein Gesamtgewicht von " << scale->getWeight() << "g" << std::endl;
+        std::cout << "\nIhr Cocktail hat ein Gesamtgewicht von " << scale->getWeight() << "g \n" << std::endl;
     }
     std::cout << "Entleervorgang wird begonnen..." << std::endl;
     this->value = drainValue;
@@ -41,6 +41,6 @@ bool Drainer::doIt(float drainValue) {
     return true;
 }
 
-bool Drainer::setIsUndrinkableCocktail(bool isUndrinkable) {
+void Drainer::setIsUndrinkableCocktail(bool isUndrinkable) {
     isUndrinkableCocktail = isUndrinkable;
 }

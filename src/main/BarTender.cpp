@@ -9,7 +9,7 @@ bool BarTender::prepareCocktail(Recipe *recipe) {
 
     std::cout << "Hallo, ich bin der BarTender!" << std::endl
               << "Ich habe Ihre Bestellung: " << recipe->getName() << " erhalten." << std::endl
-              << "Jetzt geht es los!\n" << std::endl;
+              << "Jetzt geht es los!" << std::endl;
     int i = 0;
 
     for (i = 0; i < recipe->getNoOfRecipeSteps(); i++) {
@@ -23,7 +23,7 @@ bool BarTender::prepareCocktail(Recipe *recipe) {
         else
             ingredientType = "ml";
 
-        std::cout << "Rezeptschritt: " << zutat << ", " << menge << ingredientType << std::endl;
+        std::cout << "\nRezeptschritt: " << zutat << ", " << menge << ingredientType << std::endl;
 
         bool isStepSucceeded = myDeviceVerwalter->prepareRecipeSteps(zutat, menge);
         if (!isStepSucceeded) {
@@ -49,8 +49,18 @@ void BarTender::undrinkableCocktailDetected() {
 void BarTender::cleaningDevices() {
     // device manager cleaning
     for (auto &cleanDevice: myDeviceVerwalter->usedDevices) {
-        std::cout << "Device mit der Aktion: " << cleanDevice->first << " wird jetzt geputzt: " << std::endl;
+        std::string deviceName;
+        if(cleanDevice->first == "Entleeren" ||
+        cleanDevice->first == "Stampfen" ||
+        cleanDevice->first == "Schuetteln" ||
+        cleanDevice->first == "Mischen") {
+            deviceName = "Device ";
+        } else {
+            deviceName = "Dosierer ";
+        }
+        std::cout << deviceName << cleanDevice->first << " wird geputzt" << std::endl;
         cleanDevice->second->putzen();
+        std::cout << deviceName << cleanDevice->first << " ist geputzt worden.\n" << std::endl;
     }
     myDeviceVerwalter->usedDevices.clear();
 }
