@@ -6,14 +6,18 @@ void CocktailPro::start() {
     bool b = OperatingMode == OpMode::USERSTORY1 && getLastInputForDebug() != 2;
     bool c = OperatingMode == OpMode::US2 && executeStart != 0;
     bool d = OperatingMode == OpMode::USERSTORY3;
-    bool condition = a || b || c || d;
 
-    while (condition) {
+
+    while (a || b || c || d) {
+
         selectCocktail();
         if (executeStart != 0)
             executeStart = executeStart - 1;
 
-        condition = a || b || c || d;
+        a = OperatingMode == OpMode::NORMAL && !debug;
+        b = OperatingMode == OpMode::USERSTORY1 && getLastInputForDebug() != 2;
+        c = OperatingMode == OpMode::US2 && executeStart != 0;
+        d = OperatingMode == OpMode::USERSTORY3;
     }
 }
 
