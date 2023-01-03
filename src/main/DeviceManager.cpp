@@ -6,7 +6,7 @@ DeviceManager::DeviceManager(AvailableIngredients *zv) {
 }
 
 void DeviceManager::createDevices() {
-    scale = new Waage(0,0);
+    scale = new Waage(0, 0);
     devices = new std::map<std::string, InternalDevice *>;
 
     drainer = new Drainer(25, 1000, scale);
@@ -25,13 +25,42 @@ void DeviceManager::createDevices() {
     for (int i = availableIngredients->getNumberAvailableIngredients() - 1; i >= 0; i--) {
         myZutat = availableIngredients->getIngredient(i);
         if (myZutat == "Eis")
-            devices->insert(std::make_pair(myZutat, new Dispenser(20, 1000, myZutat, scale, "g")));
+            devices->insert(std::make_pair(
+                    myZutat,
+                    new Dispenser(
+                            20,
+                            1000,
+                            myZutat,
+                            scale,
+                            "g")
+            ));
         else if (myZutat == "Limettenstuecke")
-            devices->insert(std::make_pair(myZutat, new Dispenser(10, 1000, myZutat, scale, "g")));
+            devices->insert(std::make_pair(
+                    myZutat, new Dispenser(
+                            10,
+                            1000,
+                            myZutat,
+                            scale,
+                            "g")
+            ));
         else if (myZutat == "Zucker")
-            devices->insert(std::make_pair(myZutat, new Dispenser(1, 250, myZutat, scale, "g")));
+            devices->insert(std::make_pair(
+                    myZutat, new Dispenser(
+                            1,
+                            250,
+                            myZutat,
+                            scale,
+                            "g")
+            ));
         else
-            devices->insert(std::make_pair(myZutat, new Dispenser(1, 250, myZutat, scale, "ml")));
+            devices->insert(std::make_pair(
+                    myZutat, new Dispenser(
+                            1,
+                            250,
+                            myZutat,
+                            scale,
+                            "ml")
+            ));
     }
 }
 
@@ -50,7 +79,7 @@ bool DeviceManager::prepareRecipeSteps(std::string ingredient, float amount) {
     } else
         isStepSucceeded = devices->at(ingredient)->doIt(amount);
 
-    if(isStepSucceeded) {
+    if (isStepSucceeded) {
         auto usedDevice = devices->find(ingredient);
         usedDevices.push_back(usedDevice);
     }

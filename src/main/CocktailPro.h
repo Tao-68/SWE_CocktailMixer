@@ -62,7 +62,7 @@ protected:
      * Enum modes that the CocktailPro uses in constructor and start method.
      */
     enum OpMode {
-        NORMAL, DEMO, STOP, USERSTORY1, US2
+        NORMAL, DEMO, STOP, USERSTORY1, US2, USERSTORY3
     };
 
     /**
@@ -81,7 +81,6 @@ protected:
     *
     */
     void demo();
-
 public:
 
     /**
@@ -174,7 +173,10 @@ public:
      */
     int executeStart = 0;
 
-
+    /**
+     * @brief This is a variable for UserStory3 presentation and debug
+     */
+     std::string testInput;
 };
 
 #endif

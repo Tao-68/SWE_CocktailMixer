@@ -3,16 +3,15 @@
 
 void CocktailPro::start() {
 
-    while (OperatingMode == OpMode::NORMAL && !debug)
-        selectCocktail();
+    while (
+            (OperatingMode == OpMode::NORMAL && !debug) ||
+            (OperatingMode == OpMode::USERSTORY1 && getLastInputForDebug() != 2) ||
+            (OperatingMode == OpMode::US2 && executeStart != 0) ||
+            OperatingMode == OpMode::USERSTORY3) {
 
-    while (OperatingMode == OpMode::USERSTORY1 && getLastInputForDebug() != 2) {
         selectCocktail();
-    }
-
-    while (OperatingMode == OpMode::US2 && executeStart != 0) {
-        selectCocktail();
-        executeStart = executeStart - 1;
+        if (executeStart != 0)
+            executeStart = executeStart - 1;
     }
 }
 
@@ -28,19 +27,24 @@ CocktailPro::CocktailPro(int argc, char **param) {
             this->OperatingMode = OpMode::DEMO;
             theTimer->set_Turbo(1000); // increase preparing time.
             this->demo();
-        } else if (std::string(param[0]) == "-US2") {
+        } else if (std::string(param[0]) == "-US2")
             OperatingMode = US2;
-            theTimer->set_Turbo(1000); // increase preparing time.
-            debug = true;
-        } else if (std::string(param[1]) == "-USERSTORY1") {
+        else if (std::string(param[1]) == "-USERSTORY1")
             OperatingMode = USERSTORY1;
-            theTimer->set_Turbo(1000); // increase preparing time.
-            debug = true;
-        } else {
+        else if (std::string(param[1]) == "-USERSTORY3")
+            OperatingMode = USERSTORY3;
+        else
             theTimer->set_Turbo(10);
+
+        if (std::string(param[0]) == "-US2" ||
+            std::string(param[1]) == "-USERSTORY1" ||
+            std::string(param[1]) == "-USERSTORY3") {
+            theTimer->set_Turbo(1000);
+            debug = true;
         }
     }
 }
+
 
 CocktailPro::~CocktailPro() {
     delete availableIngredients;
@@ -114,8 +118,6 @@ void CocktailPro::validateSelectedNumberIsTrue(int cocktailNumberInput) {
             std::cout << "\nDer nächste Cocktail ist ungenießbar, bitte wegschütteln!" << std::endl;
             std::cout << "Drücken Sie -2 für Bestätigung, dass Sie diese Warnung gelesen haben." << std::endl;
             isPrepareCocktailFailed = true;
-            // soll mit einem Parameter erweitert werden.
-            // Wenn Param 1. Funktioniert normal. Param 2. User Stories 3 Kontext
             selectCocktail();
         }
         if (OperatingMode == OpMode::USERSTORY1) {
@@ -148,11 +150,22 @@ void CocktailPro::selectCocktail() {
 
     }
 
+    if (OperatingMode == OpMode::USERSTORY3) {
+        if (isPrepareCocktailFailed) {
+            input = "-2";
+            std::cout << "-2" << std::endl;
+        } else {
+            input = testInput;
+            std::cout << testInput << std::endl;
+        }
+    }
+
     if (!debug)
         std::cin >> input;
 
     if (OperatingMode == OpMode::US2 && debug) {
         input = "1";
+        std::cout << "1" << std::endl;
     } else if (OperatingMode == OpMode::USERSTORY1 && debug) {
         if (getLastInputForDebug() == 1) {
             setLastInputForDebug(2);

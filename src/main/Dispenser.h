@@ -65,6 +65,11 @@ public:
      */
     void decreaseCapacity(int amount);
 
+    /**
+     * @brief update a capacity value for UserStory3 demo
+     */
+    void setCapacity(int c);
+
 private:
 
     /**
@@ -94,7 +99,7 @@ private:
     int capacity;
 
     /**
-     * This is the weightTyp, that Dispenser calculate the right capacity
+     * This is the weightTyp, that Dispenser calculates the right capacity
      */
      std::string weightTyp;
 

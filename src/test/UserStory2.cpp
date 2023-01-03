@@ -40,46 +40,43 @@ TEST_F(UserStory2, validateOutput) {
 
 
     std::string backN = "\n";
-    std::string expected_text = "Hallo, ich bin der BarTender!" + backN +
-                                "Ich habe Ihre Bestellung: Caipirinha erhalten." + backN +
-                                "Jetzt geht es los!" + backN +
-                                backN +
-                                "Rezeptschritt: Limettenstuecke, 8" + backN +
-                                "Limettenstuecke Ventil wurde geoeffnet" + backN +
-                                "********" + backN +
-                                "Limettenstuecke Ventil wurde geschlossen" + backN +
-                                "Es wurden 80g Limettenstuecke abgefuellt" + backN +
-                                "Limettenstuecke Dosierer-Kapazitaet (920g)" + backN +
-                                backN +
-                                "Rezeptschritt: Zucker, 15" + backN +
-                                "Zucker Ventil wurde geoeffnet" + backN +
-                                "..............." + backN +
-                                "Zucker Ventil wurde geschlossen" + backN +
-                                "Es wurden 15g Zucker abgefuellt" + backN +
-                                "Zucker Dosierer-Kapazitaet (985g)" + backN +
-                                backN +
-                                "Rezeptschritt: Stampfen, 20" + backN +
-                                "********************" + backN +
-                                "Rezeptschritt: Eis, 90" + backN +
-                                "Eis Ventil wurde geoeffnet" + backN +
-                                "*****" + backN +
-                                "Eis Ventil wurde geschlossen" + backN +
-                                "Es wurden 100g Eis abgefuellt" + backN +
-                                "Eis Dosierer-Kapazitaet (910g)" + backN +
-                                backN +
-                                "Rezeptschritt: Cachaca, 5" + backN +
-                                "Cachaca Ventil wurde geoeffnet" + backN +
-                                "....." + backN +
-                                "Cachaca Ventil wurde geschlossen" + backN +
-                                "Es wurden 5ml Cachaca abgefuellt" + backN +
-                                "Cachaca Dosierer-Kapazitaet (995ml)" + backN +
-                                backN +
-                                "Rezeptschritt: Mischen, 10" + backN +
-                                "**********" + backN +
-                                "Ihr Cocktail hat ein Gesamtgewicht von 200g"
-            ;
+    std::string expected_text = 
+            "1" + backN +
+            "Hallo, ich bin der BarTender!" + backN + 
+            "Ich habe Ihre Bestellung: Caipirinha erhalten." + backN +
+            "Jetzt geht es los!" +  backN + backN +
+            "Rezeptschritt: Limettenstuecke, 8g" + backN + 
+            "Limettenstuecke Dosierer-Kapazitaet (1000g)" + backN +
+            "Limettenstuecke Ventil wurde geoeffnet" + backN + 
+            "********" + backN + "Limettenstuecke Ventil wurde geschlossen" + backN +
+            "Es wurden 80g Limettenstuecke abgefuellt" + backN + backN +
+            "Rezeptschritt: Zucker, 15g" + backN +
+            "Zucker Dosierer-Kapazitaet (1000g)" + backN +
+            "Zucker Ventil wurde geoeffnet" + backN +
+            "..............." + backN +
+            "Zucker Ventil wurde geschlossen" + backN +
+            "Es wurden 15g Zucker abgefuellt" + backN + backN +
+            "Rezeptschritt: Stampfen, 20ml" + backN +
+            "********************" + backN +
+            "Rezeptschritt: Eis, 90g" + backN +
+            "Eis Dosierer-Kapazitaet (1000g)" + backN +
+            "Eis Ventil wurde geoeffnet" + backN +
+            "*****" + backN +
+            "Eis Ventil wurde geschlossen" + backN +
+            "Es wurden 100g Eis abgefuellt" + backN +
+            "" + backN +
+            "Rezeptschritt: Cachaca, 5ml" + backN +
+            "Cachaca Dosierer-Kapazitaet (1000ml)" + backN +
+            "Cachaca Ventil wurde geoeffnet" + backN +
+            "....." + backN +
+            "Cachaca Ventil wurde geschlossen" + backN +
+            "Es wurden 5ml Cachaca abgefuellt" + backN +
+            "" + backN +
+            "Rezeptschritt: Mischen, 10ml" + backN +
+            "**********" + backN +
+            "Ihr Cocktail hat ein Gesamtgewicht von 200g";
 
-    EXPECT_EQ(expected_text, test_cout.str().substr(1581, 919));
+    EXPECT_EQ(expected_text, test_cout.str().substr(1581, 934));
 }
 
 TEST_F(UserStory2, validateNullCapacity) {

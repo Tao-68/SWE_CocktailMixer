@@ -1,25 +1,32 @@
 #include "BarTender.h"
 
-BarTender::BarTender(DeviceManager * dv) {
+BarTender::BarTender(DeviceManager *dv) {
     myDeviceVerwalter = dv;
 }
 
 
-bool BarTender::prepareCocktail(Recipe * recipe) {
+bool BarTender::prepareCocktail(Recipe *recipe) {
 
     std::cout << "Hallo, ich bin der BarTender!" << std::endl
-            << "Ich habe Ihre Bestellung: " << recipe->getName() << " erhalten." << std::endl
-            << "Jetzt geht es los!\n" << std::endl;
-	int i=0;
+              << "Ich habe Ihre Bestellung: " << recipe->getName() << " erhalten." << std::endl
+              << "Jetzt geht es los!\n" << std::endl;
+    int i = 0;
 
     for (i = 0; i < recipe->getNoOfRecipeSteps(); i++) {
-        RecipeStep * schritt = recipe->getRecipeStep(i);
+        RecipeStep *schritt = recipe->getRecipeStep(i);
         std::string zutat = schritt->getZutat();
         float menge = schritt->getMenge();
-        std::cout << "Rezeptschritt: " << zutat << ", " << menge << std::endl;
+
+        std::string ingredientType;
+        if (zutat == "Limettenstuecke" || zutat == "Eis" || zutat == "Zucker")
+            ingredientType = "g";
+        else
+            ingredientType = "ml";
+
+        std::cout << "Rezeptschritt: " << zutat << ", " << menge << ingredientType << std::endl;
 
         bool isStepSucceeded = myDeviceVerwalter->prepareRecipeSteps(zutat, menge);
-        if(!isStepSucceeded) {
+        if (!isStepSucceeded) {
             numberOfStepsDone = i;
             return false;
         }
@@ -41,7 +48,7 @@ void BarTender::undrinkableCocktailDetected() {
 
 void BarTender::cleaningDevices() {
     // device manager cleaning
-    for (auto & cleanDevice : myDeviceVerwalter->usedDevices) {
+    for (auto &cleanDevice: myDeviceVerwalter->usedDevices) {
         std::cout << "Device mit der Aktion: " << cleanDevice->first << " wird jetzt geputzt: " << std::endl;
         cleanDevice->second->putzen();
     }
