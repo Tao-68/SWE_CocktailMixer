@@ -1,5 +1,3 @@
-//@(#) Mixer.h
-
 #ifndef MIXER_H_H
 #define MIXER_H_H
 
@@ -23,7 +21,7 @@ public:
      * @brief This methode set the myTimer to sleep in intervals with the time in milliseconds.
      * @param time
      */
-    void doIt(float time);
+    bool doIt(float time);
 
 private:
 

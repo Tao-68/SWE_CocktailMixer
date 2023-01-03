@@ -1,5 +1,3 @@
-//@(#) Masher.h
-
 #ifndef STAMPFER_H_H
 #define STAMPFER_H_H
 
@@ -20,7 +18,7 @@ public:
      *
      * @param time
      */
-    void doIt(float time);
+    bool doIt(float time);
 
 private:
 };

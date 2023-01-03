@@ -47,7 +47,14 @@ public:
      * @brief Starts the drainer action.
      * @param drainValue  must not be null.
      */
-    void doIt(float drainValue) override;
+    bool doIt(float drainValue) override;
+
+    /**
+     *
+     * @param isUndrinkable must be a boolean.
+     * @return true, if we do not have enough an amount of ingredient or ingredient is missing else false.
+     */
+    bool setIsUndrinkableCocktail(bool isUndrinkable);
 
 private:
 
@@ -67,6 +74,12 @@ private:
      * This is the value, that the Drainer uses in doIt method and update method.
      */
     float value = 0;
+
+    /**
+     * Undrinkable Cocktail if a recipe step is failed
+     * because we do not have enough an amount of ingredient or ingredient is missing.
+     */
+    bool isUndrinkableCocktail = false;
 
 };
 

@@ -50,7 +50,7 @@ public:
      *
      * @param gramm must not be null.
      */
-    void doIt(float gramm);
+    bool doIt(float gramm);
 
     /**
      * @brief Returns the number of gram per time.

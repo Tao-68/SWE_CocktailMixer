@@ -14,7 +14,7 @@ public:
      * @brief This virtual methode is not declared.
      * @param value
      */
-    virtual void doIt(float value) = 0;
+    virtual bool doIt(float value) = 0;
 
 
     /** @brief Can be used to clean the Devices.

@@ -1,5 +1,3 @@
-//@(#) Shaker.h
-
 #ifndef SCHUETTLER_H_H
 #define SCHUETTLER_H_H
 
@@ -21,7 +19,7 @@ public:
     *
     * This method makes the timer sleep for a given time
     */
-    void doIt(float time);
+    bool doIt(float time);
 
 private:
 };
