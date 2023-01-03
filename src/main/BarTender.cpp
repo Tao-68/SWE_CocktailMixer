@@ -17,13 +17,27 @@ bool BarTender::prepareCocktail(Recipe * recipe) {
         std::string zutat = schritt->getZutat();
         float menge = schritt->getMenge();
         std::cout << "Rezeptschritt: " << zutat << ", " << menge << std::endl;
-        myDeviceVerwalter->prepareRecipeSteps(zutat, menge);
+
+        bool isStepSucceeded = myDeviceVerwalter->prepareRecipeSteps(zutat, menge);
+        if(!isStepSucceeded) {
+            numberOfStepsDone = i;
+            return false;
+        }
     }
 
-    myDeviceVerwalter->drainer->doIt(i); // give out a cocktail
+    auto drainValue = static_cast<float>(i);
+    myDeviceVerwalter->drainer->doIt(drainValue); // give out a cocktail
     cleaningDevices();
-    return (true);
+    return true;
 }
+
+void BarTender::undrinkableCocktailDetected() {
+    myDeviceVerwalter->drainer->setIsUndrinkableCocktail(true);
+    auto drainValue = static_cast<float>(numberOfStepsDone);
+    myDeviceVerwalter->drainer->doIt(drainValue);
+    cleaningDevices();
+}
+
 
 void BarTender::cleaningDevices() {
     // device manager cleaning

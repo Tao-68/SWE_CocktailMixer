@@ -32,7 +32,19 @@ public:
      */
     bool prepareCocktail(Recipe * recipe);
 
+    /**
+     * @brief  undrinkableCocktailDetected starts the drainer action and clean devices method.
+     */
+    void undrinkableCocktailDetected();
+
 private:
+
+    /**
+     * This is number of steps done. We set this value, if we invoke the method prepareCocktail,
+     * and we have undrinkable cocktail.
+     *
+     */
+    int numberOfStepsDone = 0;
 
     /**
     * This is the device manager that the BarTender uses for cocktail preparing.
@@ -43,7 +55,6 @@ private:
      * This cleaning all devices that are to clean up
      */
     void cleaningDevices();
-
 
 };
 

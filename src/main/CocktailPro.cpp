@@ -94,9 +94,14 @@ void CocktailPro::validateSelectedNumber(int cocktailNumberInput) {
         OperatingMode = OpMode::STOP;
     else if (OperatingMode == OpMode::USERSTORY1 && debug) {
         validateSelectedNumberUserStory1(cocktailNumberInput);
+    } else if (cocktailNumberInput == -2) {
+        barTender->undrinkableCocktailDetected();
+        isPrepareCocktailFailed = false;
+        OperatingMode = OpMode::STOP;
     } else {
         validateSelectedNumberIsTrue(cocktailNumberInput);
     }
+
 }
 
 void CocktailPro::validateSelectedNumberIsTrue(int cocktailNumberInput) {
@@ -104,7 +109,15 @@ void CocktailPro::validateSelectedNumberIsTrue(int cocktailNumberInput) {
     if (rezeptptr == nullptr) {
         notValidInputMsg(cocktailNumberInput);
     } else {
-        barTender->prepareCocktail(rezeptptr);
+        bool isPrepareCocktailSucceeded = barTender->prepareCocktail(rezeptptr);
+        if (!isPrepareCocktailSucceeded && (OperatingMode != OpMode::US2)) {
+            std::cout << "\nDer nächste Cocktail ist ungenießbar, bitte wegschütteln!" << std::endl;
+            std::cout << "Drücken Sie -2 für Bestätigung, dass Sie diese Warnung gelesen haben." << std::endl;
+            isPrepareCocktailFailed = true;
+            // soll mit einem Parameter erweitert werden.
+            // Wenn Param 1. Funktioniert normal. Param 2. User Stories 3 Kontext
+            selectCocktail();
+        }
         if (OperatingMode == OpMode::USERSTORY1) {
             setLastInputForDebug(cocktailNumberInput);
         }
@@ -128,9 +141,12 @@ void CocktailPro::selectCocktail() {
 
     std::string input;
 
-    std::cout << "************* Mischbare Rezepte *************" << std::endl;
-    mixableRecipeBook->getAllCocktails();
-    std::cout << "Was haetten Sie denn gern? (-1 zum Verlassen)" << std::endl;
+    if (!isPrepareCocktailFailed) {
+        std::cout << "************* Mischbare Rezepte *************" << std::endl;
+        mixableRecipeBook->getAllCocktails();
+        std::cout << "Was haetten Sie denn gern? (-1 zum Verlassen)" << std::endl;
+
+    }
 
     if (!debug)
         std::cin >> input;

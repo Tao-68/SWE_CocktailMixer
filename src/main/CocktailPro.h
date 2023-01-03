@@ -29,6 +29,12 @@ private:
      */
     int lastInputForDebug = 0;
 
+    /**
+     * This is isPrepareCocktailFailed value, that we use to check, if a cocktail preparing is failed
+     * (because a recipe step is failed).
+     */
+    bool isPrepareCocktailFailed = false;
+
 protected:
 
     /**
