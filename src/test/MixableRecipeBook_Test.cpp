@@ -51,7 +51,7 @@ TEST_F(MixableRecipeBookTest, getAllCocktails)
                              + "5. Caipiroska: Limettenstuecke, Zucker, Stampfen, Eis, Wodka, Mischen" + backN
                              + "6. Caipirissima: Limettenstuecke, Zucker, Stampfen, Eis, Rum weiss, Mischen" + backN
                              + "7. Cuban Island: Zitronensaft, Cointreau, Rum weiss, Wodka, Eis, Mischen" + backN
-                             + "8. Martini James B: Gin, Wodka, Noilly Prat, Schuetteln" + backN
+                             + "8. Martini James B: Gin, Wodka, Noilly Prat, Schuetteln" + backN + backN
                              + "*********************************************" + backN;
 
     mrb_1->getAllCocktails();

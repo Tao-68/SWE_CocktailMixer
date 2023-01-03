@@ -56,6 +56,19 @@ private:
      */
     void cleaningDevices();
 
+    /**
+     *
+     * @param s must be a valid string like "Eis" or "Mischen".
+     * @return "Dosierer" or "Device" depend on input string s.
+     */
+    std::string getRightNameOfDevices(std::string s);
+
+    /**
+     *
+     * @param s must be a valid string like "Eis", "Zucker" and so on.
+     * @return "g" or "ml" depend on input string s.
+     */
+    std::string getIngridientType(std::string s);
 };
 
 #endif

@@ -2,16 +2,18 @@
 #include <string>
 
 void CocktailPro::start() {
+    bool a = OperatingMode == OpMode::NORMAL && !debug;
+    bool b = OperatingMode == OpMode::USERSTORY1 && getLastInputForDebug() != 2;
+    bool c = OperatingMode == OpMode::US2 && executeStart != 0;
+    bool d = OperatingMode == OpMode::USERSTORY3;
+    bool condition = a || b || c || d;
 
-    while (
-            (OperatingMode == OpMode::NORMAL && !debug) ||
-            (OperatingMode == OpMode::USERSTORY1 && getLastInputForDebug() != 2) ||
-            (OperatingMode == OpMode::US2 && executeStart != 0) ||
-            OperatingMode == OpMode::USERSTORY3) {
-
+    while (condition) {
         selectCocktail();
         if (executeStart != 0)
             executeStart = executeStart - 1;
+
+        condition = a || b || c || d;
     }
 }
 
@@ -23,25 +25,32 @@ CocktailPro::CocktailPro(int argc, char **param) {
     lastInputForDebug = 0;
     Timer *theTimer = Timer::getInstance();
     if (argc == 2) {
-        if (std::string(param[1]) == "-D") {
-            this->OperatingMode = OpMode::DEMO;
-            theTimer->set_Turbo(1000); // increase preparing time.
-            this->demo();
-        } else if (std::string(param[0]) == "-US2")
-            OperatingMode = US2;
-        else if (std::string(param[1]) == "-USERSTORY1")
-            OperatingMode = USERSTORY1;
-        else if (std::string(param[1]) == "-USERSTORY3")
-            OperatingMode = USERSTORY3;
-        else
-            theTimer->set_Turbo(10);
+        initializeOperatingMode(param, theTimer);
+        setUpUserStories(param, theTimer);
+    }
+}
 
-        if (std::string(param[0]) == "-US2" ||
-            std::string(param[1]) == "-USERSTORY1" ||
-            std::string(param[1]) == "-USERSTORY3") {
-            theTimer->set_Turbo(1000);
-            debug = true;
-        }
+void CocktailPro::initializeOperatingMode(char *const *param, Timer *theTimer) {
+    if (std::string(param[1]) == "-D") {
+        OperatingMode = DEMO;
+        theTimer->set_Turbo(1000); // increase preparing time.
+        demo();
+    } else if (std::string(param[0]) == "-US2")
+        OperatingMode = US2;
+    else if (std::string(param[1]) == "-USERSTORY1")
+        OperatingMode = USERSTORY1;
+    else if (std::string(param[1]) == "-USERSTORY3")
+        OperatingMode = USERSTORY3;
+    else
+        theTimer->set_Turbo(10);
+}
+
+void CocktailPro::setUpUserStories(char *const *param, Timer *theTimer) {
+    if (std::string(param[0]) == "-US2" ||
+        std::string(param[1]) == "-USERSTORY1" ||
+        std::string(param[1]) == "-USERSTORY3") {
+        theTimer->set_Turbo(1000);
+        debug = true;
     }
 }
 
@@ -115,8 +124,8 @@ void CocktailPro::validateSelectedNumberIsTrue(int cocktailNumberInput) {
     } else {
         bool isPrepareCocktailSucceeded = barTender->prepareCocktail(rezeptptr);
         if (!isPrepareCocktailSucceeded && (OperatingMode != OpMode::US2)) {
-            std::cout << "\nDer nächste Cocktail ist ungenießbar, bitte wegschütteln!" << std::endl;
-            std::cout << "Drücken Sie -2 für Bestätigung, dass Sie diese Warnung gelesen haben." << std::endl;
+            std::cout << "\nDer naechste Cocktail ist ungeniessbar, bitte wegschuetteln!" << std::endl;
+            std::cout << "Druecken Sie -2 fuer Bestaetigung, dass Sie diese Warnung gelesen haben." << std::endl;
             isPrepareCocktailFailed = true;
             selectCocktail();
         }
@@ -140,33 +149,15 @@ void CocktailPro::notValidInputMsg(int cocktailNumberInput) {
 }
 
 void CocktailPro::selectCocktail() {
+    printMsgWithMixedRecipe();
 
     std::string input;
+    input = setInputForUserStory3(input);
+    input = isDebugNotEnabled(input);
+    input = setInputForUserStory2(input);
 
-    if (!isPrepareCocktailFailed) {
-        std::cout << "\n************* Mischbare Rezepte *************" << std::endl;
-        mixableRecipeBook->getAllCocktails();
-        std::cout << "Was haetten Sie denn gern? (-1 zum Verlassen)" << std::endl;
-
-    }
-
-    if (OperatingMode == OpMode::USERSTORY3) {
-        if (isPrepareCocktailFailed) {
-            input = "-2";
-            std::cout << "-2" << std::endl;
-        } else {
-            input = testInput;
-            std::cout << testInput << std::endl;
-        }
-    }
-
-    if (!debug)
-        std::cin >> input;
-
-    if (OperatingMode == OpMode::US2 && debug) {
-        input = "1";
-        std::cout << "1" << std::endl;
-    } else if (OperatingMode == OpMode::USERSTORY1 && debug) {
+    bool isUserStory1Enabled = (OperatingMode == OpMode::USERSTORY1 && debug);
+    if (isUserStory1Enabled) {
         if (getLastInputForDebug() == 1) {
             setLastInputForDebug(2);
             return;
@@ -176,10 +167,44 @@ void CocktailPro::selectCocktail() {
         std::cout << "1" << std::endl;
     }
 
-    // int zahl = atoi(eingabe.c_str()); // alternative 1: converts a string to int.
-    int inputNumber = (int) strtol(input.c_str(), nullptr, 0); // alternative 2: converts a string to int.
-
+    int inputNumber = (int) strtol(input.c_str(), nullptr, 0);
     validateSelectedNumber(inputNumber);
+}
+
+std::string &CocktailPro::isDebugNotEnabled(std::string &input) const {
+    if (!debug)
+        std::cin >> input;
+    return input;
+}
+
+std::string &CocktailPro::setInputForUserStory2(std::string &input) const {
+    if (OperatingMode == US2 && debug) {
+        input = "1";
+        std::cout << "1" << std::endl;
+    }
+    return input;
+}
+
+void CocktailPro::printMsgWithMixedRecipe() {
+    if (!isPrepareCocktailFailed) {
+        std::cout << "************* Mischbare Rezepte *************" << std::endl;
+        mixableRecipeBook->getAllCocktails();
+        std::cout << "Was haetten Sie denn gern? (-1 zum Verlassen)" << std::endl;
+
+    }
+}
+
+std::string &CocktailPro::setInputForUserStory3(std::string &input) const {
+    if (OperatingMode == USERSTORY3) {
+        if (isPrepareCocktailFailed) {
+            input = "-2";
+            std::cout << "-2" << std::endl;
+        } else {
+            input = testInput;
+            std::cout << testInput << std::endl;
+        }
+    }
+    return input;
 }
 
 int CocktailPro::getLastInputForDebug() const {

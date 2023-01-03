@@ -36,7 +36,7 @@ bool Drainer::doIt(float drainValue) {
         std::cout << "\nEntleervorgang wurde beendet, bitte entnehmen Sie ihren Cocktail!\n" << std::endl;
     } else {
         std::cout << "\nEntleervorgang wurde beendet, "
-                  <<  "bitte entnehmen Sie ungeniessbaren Cocktail und schütteln diesen weg!\n" << std::endl;
+                  <<  "bitte entnehmen Sie ungeniessbaren Cocktail und schuetteln diesen weg!\n" << std::endl;
     }
     return true;
 }

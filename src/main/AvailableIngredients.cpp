@@ -76,7 +76,7 @@ void AvailableIngredients::browse() {
     std::cout << "\n*********** Verfuegbare Zutaten: *************" << std::endl;
     for (auto & ingredient : *ingredients)
         std::cout << ingredient << std::endl;
-    std::cout << "*********************************************" << std::endl;
+    std::cout << "\n*********************************************" << std::endl;
 }
 
 std::string AvailableIngredients::getIngredient(int position) {

@@ -87,3 +87,21 @@ TEST_F(BarTenderTest, cleaningDevice)
     EXPECT_EQ( ausgabe, test_cout.str().substr(0, 96) );
 
 }
+
+TEST_F(BarTenderTest, undrinkableCocktailDetectedIsValid)
+{
+    bt->undrinkableCocktailDetected();
+    EXPECT_TRUE(bt->myDeviceVerwalter->drainer->isUndrinkableCocktail);
+}
+
+TEST_F(BarTenderTest, getRightNameOfDevicesIsValid)
+{
+    EXPECT_EQ( "Device ", bt->getRightNameOfDevices("Mischen") );
+    EXPECT_EQ( "Dosierer ", bt->getRightNameOfDevices("Eis") );
+}
+
+TEST_F(BarTenderTest, getIngridientTypeIsValid)
+{
+    EXPECT_EQ( "ml", bt->getIngridientType("Gin") );
+    EXPECT_EQ( "g", bt->getIngridientType("Eis") );
+}

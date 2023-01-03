@@ -104,6 +104,16 @@ private:
      */
     void createDevices();
 
+    /**
+     * @brief initializes all devices in CocktailPro.
+     */
+    void initializeDevices();
+
+    /**
+     * @brief initializes all dispensers depend on an available ingredients in CocktailPro.
+     * @param myZutat must be a valid ingredient.
+     */
+    void initializeDispenser(std::string myZutat);
 };
 
 #endif

@@ -64,3 +64,10 @@ TEST_F(DrainerTest, DoItIsValid) {
     EXPECT_EQ(drainer->value, 15.0);
     EXPECT_EQ(drainer->doinIt, false);
 }
+
+TEST_F(DrainerTest, setIsUndrinkableCocktailIsValid) {
+
+    drainer->setIsUndrinkableCocktail(true);
+
+    EXPECT_EQ(drainer->isUndrinkableCocktail, true);
+}

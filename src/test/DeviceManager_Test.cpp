@@ -114,3 +114,20 @@ TEST_F(DeviceManagerTest, prepareRecipeStepsIsValid) {
     EXPECT_EQ(isGinFound, true);
      
 }
+
+TEST_F(DeviceManagerTest, initializeDevicesIsValid) {
+
+    DeviceManager deviceManager(availableIngredients);
+    deviceManager.initializeDevices();
+    EXPECT_NE(nullptr, deviceManager.masher);
+    EXPECT_NE(nullptr, deviceManager.drainer);
+    EXPECT_NE(nullptr, deviceManager.shaker);
+    EXPECT_NE(nullptr, deviceManager.mixer);
+}
+
+TEST_F(DeviceManagerTest, initializeDispenser) {
+
+    DeviceManager deviceManager(availableIngredients);
+    deviceManager.initializeDispenser("Eis");
+    EXPECT_NE(nullptr, deviceManager.devices->at("Eis"));
+}

@@ -17,11 +17,7 @@ bool BarTender::prepareCocktail(Recipe *recipe) {
         std::string zutat = schritt->getZutat();
         float menge = schritt->getMenge();
 
-        std::string ingredientType;
-        if (zutat == "Limettenstuecke" || zutat == "Eis" || zutat == "Zucker")
-            ingredientType = "g";
-        else
-            ingredientType = "ml";
+        std::string ingredientType = getIngridientType(zutat);
 
         std::cout << "\nRezeptschritt: " << zutat << ", " << menge << ingredientType << std::endl;
 
@@ -49,19 +45,34 @@ void BarTender::undrinkableCocktailDetected() {
 void BarTender::cleaningDevices() {
     // device manager cleaning
     for (auto &cleanDevice: myDeviceVerwalter->usedDevices) {
-        std::string deviceName;
-        if(cleanDevice->first == "Entleeren" ||
-        cleanDevice->first == "Stampfen" ||
-        cleanDevice->first == "Schuetteln" ||
-        cleanDevice->first == "Mischen") {
-            deviceName = "Device ";
-        } else {
-            deviceName = "Dosierer ";
-        }
+        std::string deviceName = getRightNameOfDevices(cleanDevice->first);
         std::cout << deviceName << cleanDevice->first << " wird geputzt" << std::endl;
         cleanDevice->second->putzen();
         std::cout << deviceName << cleanDevice->first << " ist geputzt worden.\n" << std::endl;
     }
     myDeviceVerwalter->usedDevices.clear();
+}
+
+std::string BarTender::getIngridientType(std::string s)  {
+    std::string ingredientType;
+    if (s == "Limettenstuecke" || s == "Eis" || s == "Zucker")
+        ingredientType = "g";
+    else
+        ingredientType = "ml";
+
+    return ingredientType;
+}
+
+std::string BarTender::getRightNameOfDevices(std::string s) {
+    std::string deviceName;
+    if (s == "Entleeren" ||
+        s == "Stampfen" ||
+        s == "Schuetteln" ||
+        s == "Mischen") {
+        deviceName = "Device ";
+    } else {
+        deviceName = "Dosierer ";
+    }
+    return deviceName;
 }
 

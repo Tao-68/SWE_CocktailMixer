@@ -41,8 +41,6 @@ TEST_F(UserStory2, validateOutput) {
 
     std::string backN = "\n";
     std::string expected_text =
-           "n)" + backN +
-           "1" + backN +
            "Hallo, ich bin der BarTender!" + backN +
            "Ich habe Ihre Bestellung: Caipirinha erhalten." + backN +
            "Jetzt geht es los!" + backN +
@@ -96,7 +94,7 @@ TEST_F(UserStory2, validateOutput) {
            "Device Mischen wird geputzt" + backN + "**" + backN +
            "Device Mischen ist geputzt worden." + backN + "" + backN + "";
 
-    EXPECT_EQ(expected_text, test_cout.str().substr(1581, 2100));
+    EXPECT_EQ(expected_text, test_cout.str().substr(1587, 2100));
 }
 
 TEST_F(UserStory2, validateNullCapacity) {

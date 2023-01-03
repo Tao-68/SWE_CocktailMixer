@@ -81,6 +81,7 @@ protected:
     *
     */
     void demo();
+
 public:
 
     /**
@@ -114,7 +115,7 @@ public:
      * @param rhs must be a valid CocktailPro object.
      * @return copied CocktailPro object.
      */
-    CocktailPro& operator=(CocktailPro rhs);
+    CocktailPro &operator=(CocktailPro rhs);
 
     /**
      * @brief swap a data between two CocktailPro objects.
@@ -168,6 +169,7 @@ public:
      * @param cocktailNumberInput must be an integer number.
      */
     void validateSelectedNumberUserStory1(int cocktailNumberInput);
+
     /**
      * @brief This is a variable how often method start() has been executing for tests
      */
@@ -176,7 +178,47 @@ public:
     /**
      * @brief This is a variable for UserStory3 presentation and debug
      */
-     std::string testInput;
+    std::string testInput;
+
+    /**
+     * @brief sets up all user stories depend on param.
+     * @param param must be valid param
+     * @param theTimer must be not null
+     */
+    void setUpUserStories(char *const *param, Timer *theTimer);
+
+    /**
+     * @brief initializes operating mode depend on param
+     * @param param must be valid param
+     * @param theTimer must be not null
+     */
+    void initializeOperatingMode(char *const *param, Timer *theTimer);
+
+    /**
+     * @brief sets input for user story 3
+     * @param input must be reference to input string in the selectCocktail method.
+     * @return input string for user story 3
+     */
+    std::string &setInputForUserStory3(std::string &input) const;
+
+    /**
+     * @brief prints out the message with mixable recipes
+     */
+    void printMsgWithMixedRecipe();
+
+    /**
+     * @brief sets input for user story 2
+     * @param input must be reference to input string in the selectCocktail method.
+     * @return input string for user story 2
+     */
+    std::string &setInputForUserStory2(std::string &input) const;
+
+    /**
+     * @brief checks if debug enabled or not.
+     * @param input must be reference to input string in the selectCocktail method.
+     * @return input string for standard operating mode.
+     */
+    std::string &isDebugNotEnabled(std::string &input) const;
 };
 
 #endif

@@ -6,6 +6,55 @@ DeviceManager::DeviceManager(AvailableIngredients *zv) {
 }
 
 void DeviceManager::createDevices() {
+    initializeDevices();
+
+    std::string myZutat;
+    for (int i = availableIngredients->getNumberAvailableIngredients() - 1; i >= 0; i--)
+        initializeDispenser(availableIngredients->getIngredient(i));
+}
+
+void DeviceManager::initializeDispenser(std::string myZutat) {
+    if (myZutat == "Eis")
+        devices->insert(std::make_pair(
+                myZutat,
+                new Dispenser(
+                        20,
+                        1000,
+                        myZutat,
+                        scale,
+                        "g")
+        ));
+    else if (myZutat == "Limettenstuecke")
+        devices->insert(std::make_pair(
+                myZutat, new Dispenser(
+                        10,
+                        1000,
+                        myZutat,
+                        scale,
+                        "g")
+        ));
+    else if (myZutat == "Zucker")
+        devices->insert(std::make_pair(
+                myZutat, new Dispenser(
+                        1,
+                        250,
+                        myZutat,
+                        scale,
+                        "g")
+        ));
+    else
+        devices->insert(std::make_pair(
+                myZutat, new Dispenser(
+                        1,
+                        250,
+                        myZutat,
+                        scale,
+                        "ml")
+        ));
+
+}
+
+void DeviceManager::initializeDevices() {
     scale = new Waage(0, 0);
     devices = new std::map<std::string, InternalDevice *>;
 
@@ -20,48 +69,6 @@ void DeviceManager::createDevices() {
 
     mixer = new Mixer();
     devices->insert(std::make_pair("Mischen", mixer));
-
-    std::string myZutat;
-    for (int i = availableIngredients->getNumberAvailableIngredients() - 1; i >= 0; i--) {
-        myZutat = availableIngredients->getIngredient(i);
-        if (myZutat == "Eis")
-            devices->insert(std::make_pair(
-                    myZutat,
-                    new Dispenser(
-                            20,
-                            1000,
-                            myZutat,
-                            scale,
-                            "g")
-            ));
-        else if (myZutat == "Limettenstuecke")
-            devices->insert(std::make_pair(
-                    myZutat, new Dispenser(
-                            10,
-                            1000,
-                            myZutat,
-                            scale,
-                            "g")
-            ));
-        else if (myZutat == "Zucker")
-            devices->insert(std::make_pair(
-                    myZutat, new Dispenser(
-                            1,
-                            250,
-                            myZutat,
-                            scale,
-                            "g")
-            ));
-        else
-            devices->insert(std::make_pair(
-                    myZutat, new Dispenser(
-                            1,
-                            250,
-                            myZutat,
-                            scale,
-                            "ml")
-            ));
-    }
 }
 
 void DeviceManager::setIngredientsManager(AvailableIngredients *ze) {
