@@ -35,7 +35,7 @@ protected:
 // We need to comment the line 17, 28 and 40 if we want to see a output in the terminal.
 TEST_F(UserStory3, userStory3Demo1) {
     Dispenser* dispenserCachaca = dynamic_cast<Dispenser*>(cp->deviceManager->devices->at("Cachaca"));
-    dispenserCachaca->setCapacity(4);
+    dispenserCachaca->capacity = 4;
 
     test_cout.clear();
     cp->testInput = "1";
@@ -87,7 +87,7 @@ TEST_F(UserStory3, userStory3Demo1) {
 // We need to comment the line 17, 28 and 91 if we want to see a output in the terminal.
 TEST_F(UserStory3, userStory3Demo2) {
     Dispenser* dispenserCachaca = dynamic_cast<Dispenser*>(cp->deviceManager->devices->at("Eis"));
-    dispenserCachaca->setCapacity(20);
+    dispenserCachaca->capacity =20;
     test_cout.clear();
 
     test_cout.clear();

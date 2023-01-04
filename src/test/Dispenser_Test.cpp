@@ -105,8 +105,3 @@ TEST_F(DispenserTest, maxAvailableOutput) {
 
     dispenser->weight = temp_weight;
 }
-
-TEST_F(DispenserTest, setCapacityIsValid) {
-    dispenser->setCapacity(500);
-    EXPECT_EQ(dispenser->capacity, 500);
-}

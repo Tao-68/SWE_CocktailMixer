@@ -61,7 +61,7 @@ private:
      * @param s must be a valid string like "Eis" or "Mischen".
      * @return "Dosierer" or "Device" depend on input string s.
      */
-    std::string getRightNameOfDevices(std::string s);
+    std::string getRightNameOfDevices(const std::string& s);
 
     /**
      *

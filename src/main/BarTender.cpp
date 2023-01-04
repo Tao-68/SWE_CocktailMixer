@@ -63,7 +63,7 @@ std::string BarTender::getIngridientType(const std::string& s)  {
     return ingredientType;
 }
 
-std::string BarTender::getRightNameOfDevices(std::string s) {
+std::string BarTender::getRightNameOfDevices(const std::string& s) {
     if (isDevice(s))
         return "Device ";
     else
