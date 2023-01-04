@@ -105,3 +105,9 @@ TEST_F(BarTenderTest, getIngridientTypeIsValid)
     EXPECT_EQ( "ml", bt->getIngridientType("Gin") );
     EXPECT_EQ( "g", bt->getIngridientType("Eis") );
 }
+
+TEST_F(BarTenderTest, isDeviceIsValid)
+{
+    EXPECT_EQ( true, bt->isDevice("Stampfen") );
+
+}

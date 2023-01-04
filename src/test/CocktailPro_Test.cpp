@@ -216,3 +216,35 @@ TEST_F(CocktailProTest, printMsgWithMixedRecipeIsValid){
 
     EXPECT_EQ(expectedText, test_cout.str().substr(0, 651));
 }
+
+TEST_F(CocktailProTest, isOpModeUS3IsValid){
+
+    cocktailPro->OperatingMode = CocktailPro::USERSTORY3;
+    EXPECT_EQ(true, cocktailPro->isOpModeUS3());
+}
+
+TEST_F(CocktailProTest, isCondTrueForStartMethodIsValid){
+
+    cocktailPro->OperatingMode = CocktailPro::USERSTORY3;
+    EXPECT_EQ(true, cocktailPro->isCondTrueForStartMethod());
+}
+
+TEST_F(CocktailProTest, isOpUS2AndExecStartNotEq0IsValid){
+
+    cocktailPro->executeStart = 5;
+    cocktailPro->OperatingMode = CocktailPro::US2;
+    EXPECT_EQ(true, cocktailPro->isOpUS2AndExecStartNotEq0());
+}
+TEST_F(CocktailProTest, isOpUS1AndInpForDebNotEq2IsValid){
+
+    cocktailPro->lastInputForDebug = 3;
+    cocktailPro->OperatingMode = CocktailPro::USERSTORY1;
+    EXPECT_EQ(true, cocktailPro->isOpUS1AndInpForDebNotEq2());
+}
+
+TEST_F(CocktailProTest, isOpNormalAndDebugIsFalseIsValid){
+
+    cocktailPro->debug = false;
+    cocktailPro->OperatingMode = CocktailPro::NORMAL;
+    EXPECT_EQ(true, cocktailPro->isOpNormalAndDebugIsFalse());
+}

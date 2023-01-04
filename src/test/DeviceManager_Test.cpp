@@ -131,3 +131,11 @@ TEST_F(DeviceManagerTest, initializeDispenser) {
     deviceManager.initializeDispenser("Eis");
     EXPECT_NE(nullptr, deviceManager.devices->at("Eis"));
 }
+
+TEST_F(DeviceManagerTest, addDeviceIsValid) {
+
+    DeviceManager deviceManager(availableIngredients);
+    std::string ingredient = "Eis";
+    deviceManager.addDevice(ingredient, 20, 1000, "g");
+    EXPECT_NE(nullptr, deviceManager.devices->at("Eis"));
+}

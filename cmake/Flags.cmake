@@ -130,7 +130,7 @@ same as the Google Test name (i.e. ``suite.testcase``); see also
   .. code-block:: cmake
 
     include(GoogleTest)
-    set(FooTestArgs --foo 1 --bar 2)
+    set(FooTestArgs --addDevice 1 --bar 2)
     add_executable(FooTest FooUnitTest.cxx)
     gtest_add_tests(FooTest "${FooTestArgs}" AUTO)
 

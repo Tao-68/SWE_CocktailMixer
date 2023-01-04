@@ -8,50 +8,30 @@ DeviceManager::DeviceManager(AvailableIngredients *zv) {
 void DeviceManager::createDevices() {
     initializeDevices();
 
-    std::string myZutat;
     for (int i = availableIngredients->getNumberAvailableIngredients() - 1; i >= 0; i--)
         initializeDispenser(availableIngredients->getIngredient(i));
 }
 
 void DeviceManager::initializeDispenser(std::string myZutat) {
     if (myZutat == "Eis")
-        devices->insert(std::make_pair(
-                myZutat,
-                new Dispenser(
-                        20,
-                        1000,
-                        myZutat,
-                        scale,
-                        "g")
-        ));
+        addDevice(myZutat, 20, 1000, "g");
     else if (myZutat == "Limettenstuecke")
-        devices->insert(std::make_pair(
-                myZutat, new Dispenser(
-                        10,
-                        1000,
-                        myZutat,
-                        scale,
-                        "g")
-        ));
+        addDevice(myZutat, 10, 1000, "g");
     else if (myZutat == "Zucker")
-        devices->insert(std::make_pair(
-                myZutat, new Dispenser(
-                        1,
-                        250,
-                        myZutat,
-                        scale,
-                        "g")
-        ));
+        addDevice(myZutat, 1, 250, "g");
     else
-        devices->insert(std::make_pair(
-                myZutat, new Dispenser(
-                        1,
-                        250,
-                        myZutat,
-                        scale,
-                        "ml")
-        ));
+        addDevice(myZutat, 1, 250, "ml");
+}
 
+void DeviceManager::addDevice(std::string &myZutat, float gram, int timeUnit, const std::string &type) {
+    devices->insert(std::make_pair(
+            myZutat,
+            new Dispenser(gram,
+                          timeUnit,
+                          myZutat,
+                          scale,
+                          type)
+    ));
 }
 
 void DeviceManager::initializeDevices() {

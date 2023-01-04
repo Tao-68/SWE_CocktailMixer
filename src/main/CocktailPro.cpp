@@ -2,24 +2,30 @@
 #include <string>
 
 void CocktailPro::start() {
-    bool a = OperatingMode == OpMode::NORMAL && !debug;
-    bool b = OperatingMode == OpMode::USERSTORY1 && getLastInputForDebug() != 2;
-    bool c = OperatingMode == OpMode::US2 && executeStart != 0;
-    bool d = OperatingMode == OpMode::USERSTORY3;
-
-
-    while (a || b || c || d) {
-
+    while (isCondTrueForStartMethod()) {
         selectCocktail();
         if (executeStart != 0)
             executeStart = executeStart - 1;
-
-        a = OperatingMode == OpMode::NORMAL && !debug;
-        b = OperatingMode == OpMode::USERSTORY1 && getLastInputForDebug() != 2;
-        c = OperatingMode == OpMode::US2 && executeStart != 0;
-        d = OperatingMode == OpMode::USERSTORY3;
     }
 }
+
+bool CocktailPro::isCondTrueForStartMethod() const {
+    return isOpNormalAndDebugIsFalse() ||
+    isOpUS1AndInpForDebNotEq2() ||
+    isOpUS2AndExecStartNotEq0() ||
+    isOpModeUS3();
+}
+
+bool CocktailPro::isOpModeUS3() const { return OperatingMode == USERSTORY3; }
+
+bool CocktailPro::isOpUS2AndExecStartNotEq0() const { return OperatingMode == US2 && executeStart != 0; }
+
+bool CocktailPro::isOpUS1AndInpForDebNotEq2() const {
+    return OperatingMode == USERSTORY1 &&
+    getLastInputForDebug() != 2;
+}
+
+bool CocktailPro::isOpNormalAndDebugIsFalse() const { return OperatingMode == NORMAL && !debug; }
 
 CocktailPro::CocktailPro(int argc, char **param) {
     availableIngredients = new AvailableIngredients;

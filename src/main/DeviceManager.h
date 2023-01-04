@@ -114,6 +114,15 @@ private:
      * @param myZutat must be a valid ingredient.
      */
     void initializeDispenser(std::string myZutat);
+
+    /**
+     * @brief add a new device in CocktailPro
+     * @param myZutat must be a valid ingredient
+     * @param gram must be a right amount of gram
+     * @param timeUnit must be a right time unit.
+     * @param type must be a right type ("ml" or "g")
+     */
+    void addDevice(std::string &myZutat, float gram, int timeUnit, const std::string &type);
 };
 
 #endif

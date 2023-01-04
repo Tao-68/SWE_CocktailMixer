@@ -219,6 +219,37 @@ public:
      * @return input string for standard operating mode.
      */
     std::string &isDebugNotEnabled(std::string &input) const;
+
+    /**
+     * @brief is used to simplify awhile loop in start method.
+     * @return true if we have a normal mode and debug is disabled otherwise false.
+     */
+    bool isOpNormalAndDebugIsFalse() const;
+
+    /**
+     * @brief is used to simplify awhile loop in start method.
+     * @return true if we have a US1 mode and InputForDebug is not equal 2.
+     */
+    bool isOpUS1AndInpForDebNotEq2() const;
+
+    /**
+     * @brief is used to simplify awhile loop in start method.
+     * @return true if we have a US2 mode and ExecStart not equal 0.
+     */
+    bool isOpUS2AndExecStartNotEq0() const;
+
+    /**
+     * @brief is used to simplify awhile loop in start method.
+     * @return true if we have a US3 mode.
+     */
+    bool isOpModeUS3() const;
+
+    /**
+     * @brief wrap up all bool methods in one function.
+     * @return true if isOpNormalAndDebugIsFalse, isOpUS1AndInpForDebNotEq2, isOpUS2AndExecStartNotEq0 and
+     * isOpModeUS3 return true otherwise false.
+     */
+    bool isCondTrueForStartMethod() const;
 };
 
 #endif

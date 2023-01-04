@@ -68,7 +68,14 @@ private:
      * @param s must be a valid string like "Eis", "Zucker" and so on.
      * @return "g" or "ml" depend on input string s.
      */
-    std::string getIngridientType(std::string s);
+    std::string getIngridientType(const std::string& s);
+
+    /**
+     * @brief checks if "s" a device or not.
+     * @param s must be a valid device "Entleeren", "Stampfen", "Mischen" or "Schuetteln".
+     * @return true if we have a valid device otherwise false.
+     */
+    bool isDevice(const std::string &s) const;
 };
 
 #endif

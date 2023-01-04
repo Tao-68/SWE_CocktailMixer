@@ -53,7 +53,7 @@ void BarTender::cleaningDevices() {
     myDeviceVerwalter->usedDevices.clear();
 }
 
-std::string BarTender::getIngridientType(std::string s)  {
+std::string BarTender::getIngridientType(const std::string& s)  {
     std::string ingredientType;
     if (s == "Limettenstuecke" || s == "Eis" || s == "Zucker")
         ingredientType = "g";
@@ -64,15 +64,16 @@ std::string BarTender::getIngridientType(std::string s)  {
 }
 
 std::string BarTender::getRightNameOfDevices(std::string s) {
-    std::string deviceName;
-    if (s == "Entleeren" ||
-        s == "Stampfen" ||
-        s == "Schuetteln" ||
-        s == "Mischen") {
-        deviceName = "Device ";
-    } else {
-        deviceName = "Dosierer ";
-    }
-    return deviceName;
+    if (isDevice(s))
+        return "Device ";
+    else
+        return "Dosierer ";
+}
+
+bool BarTender::isDevice(const std::string &s) const {
+    return s == "Entleeren" ||
+            s == "Stampfen" ||
+            s == "Schuetteln" ||
+            s == "Mischen";
 }
 
