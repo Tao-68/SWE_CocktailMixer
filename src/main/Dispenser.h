@@ -65,11 +65,6 @@ public:
      */
     void decreaseCapacity(int amount);
 
-    /**
-     * @brief update a capacity value for UserStory3 demo
-     */
-    void setCapacity(int c);
-
 private:
 
     /**

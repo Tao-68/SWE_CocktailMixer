@@ -62,6 +62,3 @@ void Dispenser::decreaseCapacity(int amount) {
     }
 }
 
-void Dispenser::setCapacity(int c) {
-  capacity = c;
-}
