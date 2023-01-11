@@ -3,6 +3,8 @@
 
 #include <string>
 #include <map>
+#include <list>
+#include <algorithm>
 
 #include "InternalDevice.h"
 #include "AvailableIngredients.h"
@@ -55,6 +57,7 @@ public:
      * and prepareRecipeSteps method.
      */
     std::map<std::string, InternalDevice *> *devices;
+    std::list<InternalDevice *> deviceList;
 
     /**
      * This is a vector with iterator on map from devices, where all used Devices from the BarTender that have to clean up

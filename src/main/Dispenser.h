@@ -65,6 +65,18 @@ public:
      */
     void decreaseCapacity(int amount);
 
+    /**
+    * @brief Getter-method of Capacity
+    * @return Get the variable Capacity
+     */
+    const int &getCapacity() const;
+
+    /**
+     * @brief Setter-method of Capacity
+     * @param inputCapacity the name of Capacity
+     */
+    void setCapacity(const int &inputCapacity);
+
 private:
 
     /**

@@ -62,3 +62,11 @@ void Dispenser::decreaseCapacity(int amount) {
     }
 }
 
+const int & Dispenser::getCapacity() const {
+    return capacity;
+}
+
+void Dispenser::setCapacity(const int &inputCapacity) {
+    Dispenser::capacity = inputCapacity;
+}
+
