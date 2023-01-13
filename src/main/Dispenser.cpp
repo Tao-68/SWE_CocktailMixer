@@ -5,7 +5,7 @@ Dispenser::Dispenser(float gram, int timeUnit, const std::string &dispenserConte
     this->zeiteinheit = timeUnit;
     this->scale = dispenserScale;
     this->scale->attach(this);
-    this->capacity = 1000;
+    this->setCapacity(1000);
 }
 
 Dispenser::~Dispenser(){
