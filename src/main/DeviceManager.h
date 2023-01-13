@@ -57,6 +57,11 @@ public:
      * and prepareRecipeSteps method.
      */
     std::map<std::string, InternalDevice *> *devices;
+
+    /**
+     * This is a list which store pointers of InternalDevice.
+     * This allows duplicate in ingredients.
+     */
     std::list<InternalDevice *> deviceList;
 
     /**

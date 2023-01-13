@@ -11,6 +11,7 @@ protected:
     std::basic_streambuf<char> *orig_cout = nullptr;
     std::stringstream test_cout;
     CocktailPro *cp;
+    Dispenser *dispenser;
 
     void SetUp() override {
         std::cout << "\n\nStart of " << "UserStory3\n" << std::endl << std::flush;
@@ -34,8 +35,21 @@ protected:
 // For presentation 13. January (1/2)
 // We need to comment the line 17, 28 and 40 if we want to see a output in the terminal.
 TEST_F(UserStory3, userStory3Demo1) {
-    Dispenser* dispenserCachaca = dynamic_cast<Dispenser*>(cp->deviceManager->devices->at("Cachaca"));
-    dispenserCachaca->capacity = 4;
+    InternalDevice* internalDevice;
+    for (InternalDevice * iDevice : cp->deviceManager->deviceList)  {
+        std::string deviceName = iDevice->getDeviceName();
+
+        if(deviceName == "Cachaca"){
+            internalDevice = iDevice;
+            Dispenser* dispenserCachaca = dynamic_cast<Dispenser *>(iDevice);
+            dispenserCachaca->setCapacity(4);
+
+            break;
+        }
+    }
+    //Dispenser* dispenserCachaca = dynamic_cast<Dispenser*>(cp->deviceManager->devices->at("Cachaca"));
+    //dispenserCachaca->capacity = 4;
+
 
     test_cout.clear();
     cp->testInput = "1";
@@ -86,8 +100,20 @@ TEST_F(UserStory3, userStory3Demo1) {
 // For presentation 13. January (2/2)
 // We need to comment the line 17, 28 and 91 if we want to see a output in the terminal.
 TEST_F(UserStory3, userStory3Demo2) {
-    Dispenser* dispenserCachaca = dynamic_cast<Dispenser*>(cp->deviceManager->devices->at("Eis"));
-    dispenserCachaca->capacity =20;
+    InternalDevice* internalDevice;
+    for (InternalDevice * iDevice : cp->deviceManager->deviceList)  {
+        std::string deviceName = iDevice->getDeviceName();
+
+        if(deviceName == "Eis"){
+            internalDevice = iDevice;
+            Dispenser* dispenserCachaca = dynamic_cast<Dispenser *>(iDevice);
+            dispenserCachaca->setCapacity(20);
+
+            break;
+        }
+    }
+    //Dispenser* dispenserCachaca = dynamic_cast<Dispenser*>(cp->deviceManager->devices->at("Eis"));
+    //dispenserCachaca->capacity =20;
     test_cout.clear();
 
     test_cout.clear();
