@@ -31,6 +31,8 @@ protected:
     }
 };
 
+/* Turn off User Story 3, because User Story 3 is replaced by user Story 5.
+
 // For presentation 13. January (1/2)
 // We need to comment the line 17, 28 and 40 if we want to see a output in the terminal.
 TEST_F(UserStory3, userStory3Demo1) {
@@ -141,3 +143,5 @@ TEST_F(UserStory3, userStory3Demo2) {
 
     EXPECT_EQ(expected_text, test_cout.str().substr(1587, 2100));
 };
+
+ */
