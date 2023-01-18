@@ -38,7 +38,7 @@ void RecipeBook::createCaipirinha() {
     r1->appendStep("Zucker", 15);
     r1->appendStep("Stampfen", 20);
     r1->appendStep("Eis", 90);
-    r1->appendStep("Cachaca", 5000);
+    r1->appendStep("Cachaca", 5);
     r1->appendStep("Mischen", 10);
     int id = ++counter;
     r1->setRecipeID(id);
