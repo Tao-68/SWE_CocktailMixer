@@ -45,7 +45,22 @@ private:
      */
     void getAllCocktails();
 
+    /**
+     * Determines mixable and not mixable cocktails
+     */
+    void determineCocktails();
 
+    /**
+     * prints out mixable and not mixable cocktails
+     */
+    void printOutCocktails();
+
+    /**
+     * set input for UserStory1
+     * @param input must be a valid test string for UserStory1
+     * @return input string for user story 1
+     */
+    std::string &setInputForUserStory1(std::string &input);
 
 protected:
 
@@ -262,12 +277,6 @@ public:
      * isOpModeUS5 return true otherwise false.
      */
     bool isCondTrueForStartMethod() const;
-
-    void DetermineMixableAndNotMixableCocktails();
-
-    void printOutCocktails();
-
-    std::string &setInputForUserStory1(std::string &input);
 };
 
 #endif

@@ -47,7 +47,7 @@ void CocktailPro::getAllCocktails() {
     std::cout << "Es gibt " << mixableRecipeBook->getNumberOfRecipes() << " Cocktails" << std::endl;
 
     // Check if we have a cocktail where we do not have enough of capacity for specific ingredient.
-    DetermineMixableAndNotMixableCocktails();
+    determineCocktails();
 
     printOutCocktails();
 
@@ -73,7 +73,7 @@ void CocktailPro::printOutCocktails() {
     }
 }
 
-void CocktailPro::DetermineMixableAndNotMixableCocktails() {
+void CocktailPro::determineCocktails() {
     for (int i = 0; i < mixableRecipeBook->getNumberOfRecipes(); i++) {
         Recipe* r = mixableRecipeBook->getRecipe(i);
         if(r->isHidden())
