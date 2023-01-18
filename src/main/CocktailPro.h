@@ -250,6 +250,11 @@ public:
      * isOpModeUS3 return true otherwise false.
      */
     bool isCondTrueForStartMethod() const;
+
+    void getAllCocktails();
+
+    // int=cocktailNumber, bool=true if not mixable
+    std::map<unsigned int, bool> notMixableCocktail;
 };
 
 #endif

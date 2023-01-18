@@ -40,6 +40,56 @@ CocktailPro::CocktailPro(int argc, char **param) {
     }
 }
 
+// Move getAllCocktails from MixableRecipeBook into CocktailPro
+// because we have access to AvailableIngredients,  MixableRecipeBook and DeviceManager in it.
+void CocktailPro::getAllCocktails() {
+    std::cout << "*********************************************" << std::endl;
+    std::cout << "Es gibt " << mixableRecipeBook->getNumberOfRecipes() << " Cocktails" << std::endl;
+
+    // Check if we have a cocktail where we do not have enough of capacity for specific ingredient.
+    for (int i = 0; i < mixableRecipeBook->getNumberOfRecipes(); i++) {
+        Recipe* r = mixableRecipeBook->getRecipe(i);
+        if(r->isHidden())
+            continue;
+
+        for (int j = 0; j< r->getNoOfRecipeSteps(); j++) {
+            std::string ingredient = r->getRecipeStep(j)->getZutat();
+            float amountOfIngredient = r->getRecipeStep(j)->getMenge();
+            if(typeid(*deviceManager->devices->at(ingredient)) == typeid(Dispenser)) {
+                auto* dispenser = dynamic_cast<Dispenser *>(deviceManager->devices->at(ingredient));
+                auto dispenserCapacity = static_cast<float>(dispenser->getCapacity());
+                if(dispenserCapacity < amountOfIngredient)
+                    notMixableCocktail.insert(std::make_pair(r->getRecipeID(), true));
+            }
+        }
+
+        if(notMixableCocktail.find(r->getRecipeID()) == notMixableCocktail.end())
+            notMixableCocktail.insert(std::make_pair(r->getRecipeID(), false));
+    }
+
+    for (int i = 0; i < mixableRecipeBook->getNumberOfRecipes(); i++) {
+        Recipe* r = mixableRecipeBook->getRecipe(i);
+        if(r->isHidden())
+            continue;
+
+        // Die Nummer eines nicht mischbaren Cocktails wird nicht mehr angezeigt.
+        if(!notMixableCocktail.at(r->getRecipeID())) // if notMixableCocktail is false
+            std::cout << r->getRecipeID() << ". ";
+
+        r->getAllIngredients();
+
+        // Die Makierung wird durch eine Info an den Cocktail geschrieben
+        //z.B.: "Caipirinha [...]. (*Nicht mischbar!*)
+        if(notMixableCocktail.at(r->getRecipeID())) // if notMixableCocktail is true
+            std::cout << " (*Nicht mischbar!*)";
+
+        std::cout << std::endl;
+    }
+
+
+    std::cout << "\n*********************************************" << std::endl;
+}
+
 void CocktailPro::initializeOperatingMode(char *const *param, Timer *theTimer) {
     if (std::string(param[1]) == "-D") {
         OperatingMode = DEMO;
@@ -121,6 +171,9 @@ void CocktailPro::validateSelectedNumber(int cocktailNumberInput) {
         barTender->undrinkableCocktailDetected();
         isPrepareCocktailFailed = false;
         OperatingMode = OpMode::STOP;
+    } else if(notMixableCocktail.at(cocktailNumberInput)) {
+        std::cout << "Dieser Cocktail ist nicht mischbar, wähle einen anderen." << std::endl;
+        selectCocktail();
     } else {
         validateSelectedNumberIsTrue(cocktailNumberInput);
     }
@@ -198,7 +251,8 @@ std::string &CocktailPro::setInputForUserStory2(std::string &input) const {
 void CocktailPro::printMsgWithMixedRecipe() {
     if (!isPrepareCocktailFailed) {
         std::cout << "************* Mischbare Rezepte *************" << std::endl;
-        mixableRecipeBook->getAllCocktails();
+        // mixableRecipeBook->getAllCocktails();
+        this->getAllCocktails();
         std::cout << "Was haetten Sie denn gern? (-1 zum Verlassen)" << std::endl;
 
     }

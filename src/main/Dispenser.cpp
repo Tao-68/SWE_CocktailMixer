@@ -62,3 +62,7 @@ void Dispenser::decreaseCapacity(int amount) {
     }
 }
 
+int Dispenser::getCapacity() const {
+    return capacity;
+}
+

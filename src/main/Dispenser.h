@@ -65,6 +65,8 @@ public:
      */
     void decreaseCapacity(int amount);
 
+    int getCapacity() const;
+
 private:
 
     /**
