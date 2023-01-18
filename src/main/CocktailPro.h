@@ -211,7 +211,7 @@ public:
      * @param input must be reference to input string in the selectCocktail method.
      * @return input string for user story 5
      */
-    std::string &setInputForUserStory5(std::string &input) const;
+    std::string &setInputForUserStory5(std::string &input);
 
     /**
      * @brief prints out the message with mixable recipes

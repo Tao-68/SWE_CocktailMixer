@@ -20,10 +20,8 @@ void Drainer::update() {
 
 bool Drainer::doIt(float drainValue) {
 
+    std::cout << "\nIhr Cocktail hat ein Gesamtgewicht von " << scale->getWeight() << "g \n" << std::endl;
 
-    if (!isUndrinkableCocktail) {
-        std::cout << "\nIhr Cocktail hat ein Gesamtgewicht von " << scale->getWeight() << "g \n" << std::endl;
-    }
     std::cout << "Entleervorgang wird begonnen..." << std::endl;
     this->value = drainValue;
     doinIt = true;
@@ -32,15 +30,9 @@ bool Drainer::doIt(float drainValue) {
         myTimer->sleep_in_intervals(zeiteinheit);
         scale->changeWeight(-static_cast<int>(gramPerTime));
     }
-    if (!isUndrinkableCocktail) {
-        std::cout << "\nEntleervorgang wurde beendet, bitte entnehmen Sie ihren Cocktail!\n" << std::endl;
-    } else {
-        std::cout << "\nEntleervorgang wurde beendet, "
-                  <<  "bitte entnehmen Sie ungeniessbaren Cocktail und schuetteln diesen weg!\n" << std::endl;
-    }
+
+    std::cout << "\nEntleervorgang wurde beendet, bitte entnehmen Sie ihren Cocktail!\n" << std::endl;
+
     return true;
 }
 
-void Drainer::setIsUndrinkableCocktail(bool isUndrinkable) {
-    isUndrinkableCocktail = isUndrinkable;
-}

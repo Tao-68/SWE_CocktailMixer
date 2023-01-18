@@ -206,7 +206,7 @@ void CocktailPro::selectCocktail() {
     printMsgWithMixedRecipe();
 
     std::string input;
-    // input = setInputForUserStory5(input);
+    input = setInputForUserStory5(input);
     input = isDebugNotEnabled(input);
     input = setInputForUserStory2(input);
 
@@ -219,23 +219,6 @@ void CocktailPro::selectCocktail() {
         input = "1";
         setLastInputForDebug(1);
         std::cout << "1" << std::endl;
-    }
-
-    if (OperatingMode == USERSTORY5) {
-      if(inputForUserStory5 == 3) {
-          input = "8";
-          inputForUserStory5--;
-
-      } else if(inputForUserStory5 == 2) {
-          input = "6";
-          inputForUserStory5--;
-      } else if(inputForUserStory5 == 1)  {
-          input = "1";
-          inputForUserStory5--;
-      } else {
-          input = "-1";
-      }
-        std::cout << input << std::endl;
     }
 
     int inputNumber = (int) strtol(input.c_str(), nullptr, 0);
@@ -262,10 +245,22 @@ void CocktailPro::printMsgWithMixedRecipe() {
         std::cout << "Was haetten Sie denn gern? (-1 zum Verlassen)" << std::endl;
 }
 
-std::string &CocktailPro::setInputForUserStory5(std::string &input) const {
+std::string &CocktailPro::setInputForUserStory5(std::string &input) {
     if (OperatingMode == USERSTORY5) {
-            input = testInput;
-            std::cout << testInput << std::endl;
+        if(inputForUserStory5 == 3) {
+            input = "8";
+            inputForUserStory5--;
+
+        } else if(inputForUserStory5 == 2) {
+            input = "6";
+            inputForUserStory5--;
+        } else if(inputForUserStory5 == 1)  {
+            input = "1";
+            inputForUserStory5--;
+        } else {
+            input = "-1";
+        }
+        std::cout << input << std::endl;
     }
     return input;
 }

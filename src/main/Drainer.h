@@ -49,13 +49,6 @@ public:
      */
     bool doIt(float drainValue) override;
 
-    /**
-     *
-     * @param isUndrinkable must be a boolean.
-     * @return true, if we do not have enough an amount of ingredient or ingredient is missing else false.
-     */
-    void setIsUndrinkableCocktail(bool isUndrinkable);
-
 private:
 
 

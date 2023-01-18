@@ -177,9 +177,8 @@ TEST_F(CocktailProTest, getLastInputForDebug){
 TEST_F(CocktailProTest, setInputForUserStory5IsValid){
     cocktailPro->OperatingMode = cocktailPro->USERSTORY5;
     std::string str;
-    cocktailPro->testInput = "1";
     cocktailPro->setInputForUserStory5(str);
-    EXPECT_EQ(cocktailPro->setInputForUserStory5(str), "1");
+    EXPECT_EQ(cocktailPro->setInputForUserStory5(str), "6");
 }
 
 TEST_F(CocktailProTest, setInputForUserStory2IsValid){
