@@ -47,6 +47,33 @@ void CocktailPro::getAllCocktails() {
     std::cout << "Es gibt " << mixableRecipeBook->getNumberOfRecipes() << " Cocktails" << std::endl;
 
     // Check if we have a cocktail where we do not have enough of capacity for specific ingredient.
+    DetermineMixableAndNotMixableCocktails();
+
+    printOutCocktails();
+
+
+    std::cout << "\n*********************************************" << std::endl;
+}
+
+void CocktailPro::printOutCocktails() {
+    for (int i = 0; i < mixableRecipeBook->getNumberOfRecipes(); i++) {
+        Recipe* r = mixableRecipeBook->getRecipe(i);
+        if(r->isHidden())
+            continue;
+
+        if(!notMixableCocktail.at(r->getRecipeID()))
+            std::cout << r->getRecipeID() << ". ";
+
+        r->getAllIngredients();
+
+        if(notMixableCocktail.at(r->getRecipeID()))
+            std::cout << " (*Nicht mischbar!*)";
+
+        std::cout << std::endl;
+    }
+}
+
+void CocktailPro::DetermineMixableAndNotMixableCocktails() {
     for (int i = 0; i < mixableRecipeBook->getNumberOfRecipes(); i++) {
         Recipe* r = mixableRecipeBook->getRecipe(i);
         if(r->isHidden())
@@ -66,28 +93,6 @@ void CocktailPro::getAllCocktails() {
         if(notMixableCocktail.find(r->getRecipeID()) == notMixableCocktail.end())
             notMixableCocktail.insert(std::make_pair(r->getRecipeID(), false));
     }
-
-    for (int i = 0; i < mixableRecipeBook->getNumberOfRecipes(); i++) {
-        Recipe* r = mixableRecipeBook->getRecipe(i);
-        if(r->isHidden())
-            continue;
-
-        // Die Nummer eines nicht mischbaren Cocktails wird nicht mehr angezeigt.
-        if(!notMixableCocktail.at(r->getRecipeID())) // if notMixableCocktail is false
-            std::cout << r->getRecipeID() << ". ";
-
-        r->getAllIngredients();
-
-        // Die Makierung wird durch eine Info an den Cocktail geschrieben
-        //z.B.: "Caipirinha [...]. (*Nicht mischbar!*)
-        if(notMixableCocktail.at(r->getRecipeID())) // if notMixableCocktail is true
-            std::cout << " (*Nicht mischbar!*)";
-
-        std::cout << std::endl;
-    }
-
-
-    std::cout << "\n*********************************************" << std::endl;
 }
 
 void CocktailPro::initializeOperatingMode(char *const *param, Timer *theTimer) {
@@ -210,19 +215,24 @@ void CocktailPro::selectCocktail() {
     input = isDebugNotEnabled(input);
     input = setInputForUserStory2(input);
 
-    bool isUserStory1Enabled = (OperatingMode == OpMode::USERSTORY1 && debug);
-    if (isUserStory1Enabled) {
-        if (getLastInputForDebug() == 1) {
-            setLastInputForDebug(2);
-            return;
-        }
-        input = "1";
-        setLastInputForDebug(1);
-        std::cout << "1" << std::endl;
-    }
+    input = setInputForUserStory1(input);
 
     int inputNumber = (int) strtol(input.c_str(), nullptr, 0);
     validateSelectedNumber(inputNumber);
+}
+
+std::string &CocktailPro::setInputForUserStory1(std::string &input) {
+    bool isUserStory1Enabled = (OperatingMode == USERSTORY1 && debug);
+    if (isUserStory1Enabled) {
+        if (getLastInputForDebug() == 1)
+            setLastInputForDebug(2);
+        else {
+            input = "1";
+            setLastInputForDebug(1);
+            std::cout << "1" << std::endl;
+        }
+    }
+    return input;
 }
 
 std::string &CocktailPro::isDebugNotEnabled(std::string &input) const {
@@ -247,19 +257,16 @@ void CocktailPro::printMsgWithMixedRecipe() {
 
 std::string &CocktailPro::setInputForUserStory5(std::string &input) {
     if (OperatingMode == USERSTORY5) {
-        if(inputForUserStory5 == 3) {
+        if(inputForUserStory5 == 3)
             input = "8";
-            inputForUserStory5--;
-
-        } else if(inputForUserStory5 == 2) {
+        else if(inputForUserStory5 == 2)
             input = "6";
-            inputForUserStory5--;
-        } else if(inputForUserStory5 == 1)  {
+        else if(inputForUserStory5 == 1)
             input = "1";
-            inputForUserStory5--;
-        } else {
+        else
             input = "-1";
-        }
+
+        inputForUserStory5--;
         std::cout << input << std::endl;
     }
     return input;

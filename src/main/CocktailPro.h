@@ -262,6 +262,12 @@ public:
      * isOpModeUS5 return true otherwise false.
      */
     bool isCondTrueForStartMethod() const;
+
+    void DetermineMixableAndNotMixableCocktails();
+
+    void printOutCocktails();
+
+    std::string &setInputForUserStory1(std::string &input);
 };
 
 #endif
