@@ -206,7 +206,7 @@ void CocktailPro::selectCocktail() {
     printMsgWithMixedRecipe();
 
     std::string input;
-    input = setInputForUserStory5(input);
+    // input = setInputForUserStory5(input);
     input = isDebugNotEnabled(input);
     input = setInputForUserStory2(input);
 
@@ -219,6 +219,23 @@ void CocktailPro::selectCocktail() {
         input = "1";
         setLastInputForDebug(1);
         std::cout << "1" << std::endl;
+    }
+
+    if (OperatingMode == USERSTORY5) {
+      if(forUserStory5 == 3) {
+          input = "8";
+          forUserStory5--;
+
+      } else if(forUserStory5 == 2) {
+          input = "6";
+          forUserStory5--;
+      } else if(forUserStory5 == 1)  {
+          input = "1";
+          forUserStory5--;
+      } else {
+          input = "-1";
+      }
+        std::cout << input << std::endl;
     }
 
     int inputNumber = (int) strtol(input.c_str(), nullptr, 0);

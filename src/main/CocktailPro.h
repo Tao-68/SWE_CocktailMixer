@@ -249,6 +249,8 @@ public:
 
     // int=cocktailNumber, bool=true if not mixable
     std::map<unsigned int, bool> notMixableCocktail;
+
+    int forUserStory5 = 3;
 };
 
 #endif
