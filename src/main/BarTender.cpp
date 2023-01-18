@@ -34,13 +34,6 @@ bool BarTender::prepareCocktail(Recipe *recipe) {
     return true;
 }
 
-void BarTender::undrinkableCocktailDetected() {
-    myDeviceVerwalter->drainer->setIsUndrinkableCocktail(true);
-    auto drainValue = static_cast<float>(numberOfStepsDone);
-    myDeviceVerwalter->drainer->doIt(drainValue);
-    cleaningDevices();
-}
-
 
 void BarTender::cleaningDevices() {
     // device manager cleaning

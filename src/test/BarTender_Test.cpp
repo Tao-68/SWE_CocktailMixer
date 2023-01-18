@@ -88,12 +88,6 @@ TEST_F(BarTenderTest, cleaningDevice)
 
 }
 
-TEST_F(BarTenderTest, undrinkableCocktailDetectedIsValid)
-{
-    bt->undrinkableCocktailDetected();
-    EXPECT_TRUE(bt->myDeviceVerwalter->drainer->isUndrinkableCocktail);
-}
-
 TEST_F(BarTenderTest, getRightNameOfDevicesIsValid)
 {
     EXPECT_EQ( "Device ", bt->getRightNameOfDevices("Mischen") );

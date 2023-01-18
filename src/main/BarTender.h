@@ -32,11 +32,6 @@ public:
      */
     bool prepareCocktail(Recipe * recipe);
 
-    /**
-     * @brief  undrinkableCocktailDetected starts the drainer action and clean devices method.
-     */
-    void undrinkableCocktailDetected();
-
 private:
 
     /**

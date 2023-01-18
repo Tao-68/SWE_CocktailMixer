@@ -29,12 +29,6 @@ private:
      */
     int lastInputForDebug = 0;
 
-    /**
-     * This is isPrepareCocktailFailed value, that we use to check, if a cocktail preparing is failed
-     * (because a recipe step is failed).
-     */
-    bool isPrepareCocktailFailed = false;
-
 protected:
 
     /**
@@ -62,7 +56,7 @@ protected:
      * Enum modes that the CocktailPro uses in constructor and start method.
      */
     enum OpMode {
-        NORMAL, DEMO, STOP, USERSTORY1, US2, USERSTORY3
+        NORMAL, DEMO, STOP, USERSTORY1, US2, USERSTORY5
     };
 
     /**
@@ -176,7 +170,7 @@ public:
     int executeStart = 0;
 
     /**
-     * @brief This is a variable for UserStory3 presentation and debug
+     * @brief This is a variable for UserStory5 presentation and debug
      */
     std::string testInput;
 
@@ -195,11 +189,11 @@ public:
     void initializeOperatingMode(char *const *param, Timer *theTimer);
 
     /**
-     * @brief sets input for user story 3
+     * @brief sets input for user story 5
      * @param input must be reference to input string in the selectCocktail method.
-     * @return input string for user story 3
+     * @return input string for user story 5
      */
-    std::string &setInputForUserStory3(std::string &input) const;
+    std::string &setInputForUserStory5(std::string &input) const;
 
     /**
      * @brief prints out the message with mixable recipes
@@ -240,14 +234,14 @@ public:
 
     /**
      * @brief is used to simplify awhile loop in start method.
-     * @return true if we have a US3 mode.
+     * @return true if we have a US5 mode.
      */
-    bool isOpModeUS3() const;
+    bool isOpModeUS5() const;
 
     /**
      * @brief wrap up all bool methods in one function.
      * @return true if isOpNormalAndDebugIsFalse, isOpUS1AndInpForDebNotEq2, isOpUS2AndExecStartNotEq0 and
-     * isOpModeUS3 return true otherwise false.
+     * isOpModeUS5 return true otherwise false.
      */
     bool isCondTrueForStartMethod() const;
 

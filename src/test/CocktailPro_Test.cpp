@@ -174,13 +174,12 @@ TEST_F(CocktailProTest, getLastInputForDebug){
     EXPECT_FALSE(cocktailPro->getLastInputForDebug() == 2);
 }
 
-TEST_F(CocktailProTest, setInputForUserStory3IsValid){
-    cocktailPro->OperatingMode = cocktailPro->USERSTORY3;
-    cocktailPro->isPrepareCocktailFailed = true;
+TEST_F(CocktailProTest, setInputForUserStory5IsValid){
+    cocktailPro->OperatingMode = cocktailPro->USERSTORY5;
     std::string str;
-
-    cocktailPro->setInputForUserStory3(str);
-    EXPECT_EQ(cocktailPro->setInputForUserStory3(str), "-2");
+    cocktailPro->testInput = "1";
+    cocktailPro->setInputForUserStory5(str);
+    EXPECT_EQ(cocktailPro->setInputForUserStory5(str), "1");
 }
 
 TEST_F(CocktailProTest, setInputForUserStory2IsValid){
@@ -219,13 +218,13 @@ TEST_F(CocktailProTest, printMsgWithMixedRecipeIsValid){
 
 TEST_F(CocktailProTest, isOpModeUS3IsValid){
 
-    cocktailPro->OperatingMode = CocktailPro::USERSTORY3;
-    EXPECT_EQ(true, cocktailPro->isOpModeUS3());
+    cocktailPro->OperatingMode = CocktailPro::USERSTORY5;
+    EXPECT_EQ(true, cocktailPro->isOpModeUS5());
 }
 
 TEST_F(CocktailProTest, isCondTrueForStartMethodIsValid){
 
-    cocktailPro->OperatingMode = CocktailPro::USERSTORY3;
+    cocktailPro->OperatingMode = CocktailPro::USERSTORY5;
     EXPECT_EQ(true, cocktailPro->isCondTrueForStartMethod());
 }
 
