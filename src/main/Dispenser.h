@@ -65,6 +65,10 @@ public:
      */
     void decreaseCapacity(int amount);
 
+    /**
+     * @brief We use this method in CocktailPro for checking, if we have enough dispenser capacity for cocktail preparation.
+     * @return dispenser capacity value
+     */
     int getCapacity() const;
 
 private:

@@ -29,6 +29,24 @@ private:
      */
     int lastInputForDebug = 0;
 
+
+    /**
+     * Key is cocktail id (RecipeID) , value is true if cocktail is not mixable otherwise false.
+     */
+    std::map<unsigned int, bool> notMixableCocktail;
+
+    /**
+     * Used for UserStory5 test.
+     */
+    int inputForUserStory5 = 3;
+
+    /**
+     * @brief checks mixable and not mixable cocktails and print their out.
+     */
+    void getAllCocktails();
+
+
+
 protected:
 
     /**
@@ -244,13 +262,6 @@ public:
      * isOpModeUS5 return true otherwise false.
      */
     bool isCondTrueForStartMethod() const;
-
-    void getAllCocktails();
-
-    // int=cocktailNumber, bool=true if not mixable
-    std::map<unsigned int, bool> notMixableCocktail;
-
-    int forUserStory5 = 3;
 };
 
 #endif

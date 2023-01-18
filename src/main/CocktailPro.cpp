@@ -222,16 +222,16 @@ void CocktailPro::selectCocktail() {
     }
 
     if (OperatingMode == USERSTORY5) {
-      if(forUserStory5 == 3) {
+      if(inputForUserStory5 == 3) {
           input = "8";
-          forUserStory5--;
+          inputForUserStory5--;
 
-      } else if(forUserStory5 == 2) {
+      } else if(inputForUserStory5 == 2) {
           input = "6";
-          forUserStory5--;
-      } else if(forUserStory5 == 1)  {
+          inputForUserStory5--;
+      } else if(inputForUserStory5 == 1)  {
           input = "1";
-          forUserStory5--;
+          inputForUserStory5--;
       } else {
           input = "-1";
       }
