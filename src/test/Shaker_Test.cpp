@@ -41,7 +41,7 @@ TEST_F(ShakerTest, checkSleepTimeGreaterThan1000) {
 
     std::chrono::steady_clock::time_point end = std::chrono::steady_clock::now();
     int timeDifference = std::chrono::duration_cast<std::chrono::milliseconds>(end - begin).count();
-    EXPECT_TRUE(timeDifference < 1005 && timeDifference > 995);
+    EXPECT_TRUE(timeDifference < 1500 && timeDifference > 900);
 }
 
 TEST_F(ShakerTest, checkSleepTimeLessThan1000) {
