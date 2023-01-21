@@ -22,20 +22,35 @@ public:
      */
     void putzen();
 
-private:
-    /** @brief Can be used to clean the Devices.
-     * This method have no code.
+    /**
+    * @brief Getter-method of deviceName
+    * @return Get the variable deviceName
      */
-    void setTimer();
+    const std::string &getDeviceName() const;
 
-
-public:
+    /**
+     * @brief Setter-method of deviceName
+     * @param deviceName the name of device
+     */
+    void setDeviceName(const std::string &deviceName);
 
     /** @brief The Constructor initial the Device.
      * This method generate a timer with variable myTimer.
      * Set the variable doinIt to 0.
      */
     InternalDevice();
+
+private:
+    /** @brief Can be used to clean the Devices.
+     * This method have no code.
+     */
+    void setTimer();
+
+    /**
+     * @brief Can be used name the Devices.
+     */
+    std::string deviceName;
+
 protected:
     /**
      * This is not used.

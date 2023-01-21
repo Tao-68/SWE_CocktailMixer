@@ -64,3 +64,24 @@ TEST_F(DrainerTest, DoItIsValid) {
     EXPECT_EQ(drainer->value, 15.0);
     EXPECT_EQ(drainer->doinIt, false);
 }
+
+TEST_F(DrainerTest, setIsUndrinkableCocktailIsValid) {
+
+    drainer->setIsUndrinkableCocktail(true);
+
+    EXPECT_EQ(drainer->isUndrinkableCocktail, true);
+}
+
+TEST_F(DrainerTest, checkSetDeviceName) {
+
+    drainer->setDeviceName("Drainer");
+
+    EXPECT_EQ(drainer->deviceName, "Drainer");
+}
+
+TEST_F(DrainerTest, checkGetDeviceName) {
+
+    drainer->setDeviceName("Drainer");
+
+    EXPECT_EQ(drainer->getDeviceName(), "Drainer");
+}

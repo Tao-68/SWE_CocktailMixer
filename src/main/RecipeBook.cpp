@@ -51,7 +51,7 @@ void RecipeBook::createMargarita() {
     r1->setName("Margarita");
     r1->appendStep("Zitronensaft", 2);
     r1->appendStep("Cointreau", 2);
-    r1->appendStep("Tequilla", 4);
+    r1->appendStep("Tequilla", 800);
     r1->appendStep("Eis", 50);
     r1->appendStep("Mischen", 20);
     int id = ++counter;

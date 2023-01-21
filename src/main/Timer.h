@@ -70,7 +70,7 @@ class Timer {
     * This method creates a Timer;
     * where the booster has a default value of 1.
     */
-    Timer() : booster(1) {
+    Timer() : booster(100) {
     };
 
 };

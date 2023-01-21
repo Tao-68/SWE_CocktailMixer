@@ -24,6 +24,14 @@ void DeviceManager::initializeDispenser(std::string myZutat) {
 }
 
 void DeviceManager::addDevice(std::string &myZutat, float gram, int timeUnit, const std::string &type) {
+    Dispenser* dispenser = new Dispenser(gram,
+                                         timeUnit,
+                                         myZutat,
+                                         scale,
+                                         type);
+    dispenser->setDeviceName(myZutat);
+    deviceList.push_back(dispenser);
+
     devices->insert(std::make_pair(
             myZutat,
             new Dispenser(gram,
@@ -39,15 +47,23 @@ void DeviceManager::initializeDevices() {
     devices = new std::map<std::string, InternalDevice *>;
 
     drainer = new Drainer(25, 1000, scale);
+    drainer->setDeviceName("Entleeren");
+    deviceList.push_back(drainer);
     devices->insert(std::make_pair("Entleeren", drainer));
 
     masher = new Masher();
+    masher->setDeviceName("Stampfen");
+    deviceList.push_back(masher);
     devices->insert(std::make_pair("Stampfen", masher));
 
     shaker = new Shaker();
+    shaker->setDeviceName("Schuetteln");
+    deviceList.push_back(shaker);
     devices->insert(std::make_pair("Schuetteln", shaker));
 
     mixer = new Mixer();
+    mixer->setDeviceName("Mischen");
+    deviceList.push_back(mixer);
     devices->insert(std::make_pair("Mischen", mixer));
 }
 
@@ -58,13 +74,31 @@ void DeviceManager::setIngredientsManager(AvailableIngredients *ze) {
 bool DeviceManager::prepareRecipeSteps(std::string ingredient, float amount) {
 
     bool isStepSucceeded;
+    InternalDevice* internalDevice;
+    for (InternalDevice * iDevice : deviceList)  {
+        std::string deviceName = iDevice->getDeviceName();
+
+        if(deviceName == ingredient){
+            internalDevice = iDevice;
+            Dispenser* dispenser = dynamic_cast<Dispenser *>(iDevice);
+            if (dispenser == NULL){
+                //CLION states unreachable code but output appears in terminal
+                //std::cout << "dispenser test " << std::endl;
+                break;
+            }
+            if(dispenser->getCapacity() < amount){
+                continue;
+            }
+            break;
+        }
+    }
 
     if (ingredient == "Limettenstuecke") {
         // Der Kunde will Limetten ja unbedingt nach Stueck und nicht nach Gewicht abmessen...
-        int stckProZeit = dynamic_cast<Dispenser *>(devices->at(ingredient))->getPiecePerTime();
-        isStepSucceeded = devices->at(ingredient)->doIt(amount * stckProZeit);
+        int stckProZeit = dynamic_cast<Dispenser *>(internalDevice)->getPiecePerTime();
+        isStepSucceeded = internalDevice->doIt(amount * stckProZeit);
     } else
-        isStepSucceeded = devices->at(ingredient)->doIt(amount);
+        isStepSucceeded = internalDevice->doIt(amount);
 
     if (isStepSucceeded) {
         auto usedDevice = devices->find(ingredient);
