@@ -82,8 +82,6 @@ bool DeviceManager::prepareRecipeSteps(std::string ingredient, float amount) {
             internalDevice = iDevice;
             Dispenser* dispenser = dynamic_cast<Dispenser *>(iDevice);
             if (dispenser == NULL){
-                //CLION states unreachable code but output appears in terminal
-                //std::cout << "dispenser test " << std::endl;
                 break;
             }
             if(dispenser->getCapacity() < amount){
